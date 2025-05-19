@@ -1,0 +1,86 @@
+.TopMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(./images/backgrounds/home-back.jpg);
+  height: 70vh;
+  width: 100%;
+  background-size: cover;
+}
+.TopMain__Wrapper {
+  background-color: rgba(0, 0, 0, 0.477);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+  gap: 1rem;
+}
+.TopMain__title {
+  color: aliceblue;
+  font-size: 2rem;
+  text-align: center;
+  text-shadow: 0 3px 1px black;
+}
+.TopMain__container {
+  margin: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.TopMain__contractCatBtn,
+.TopMain__settypeCat {
+  background-color: aliceblue;
+  color: gray;
+  border: 2px solid gray;
+  padding: 0.5rem 1.2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+}
+.TopMain__contractCatBtn.active {
+  background-color: var(--white);
+  border-color: var(--Normal-Green);
+  color: var(--Normal-Green);
+}
+.Topmain__searchInput__container,
+.Topmain__searchBtn__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.TopMain__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 7rem;
+}
+#citySelector {
+  width: 15rem;
+}
+.Topmain__searchBtn {
+  padding: 0.7rem 1.5rem;
+  border-radius: 10px;
+  background-color: rgb(79, 192, 116);
+  font-size: larger;
+  font-weight: bolder;
+  color: aliceblue;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: 0.7rem;
+  transition: all ease 0.5s;
+}
+.Topmain__searchBtn:hover {
+  background-color: var(--Pine-Green);
+  cursor: pointer;
+}
+.Topmain__searchIcon {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}

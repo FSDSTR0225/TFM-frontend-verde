@@ -1,0 +1,132 @@
+:root {
+  --Forest-Green: #228b22;
+  --Pine-Green: #01796f;
+  --Mint-Green: #98ff98;
+  --Lemon-Lime: #b2ff66;
+  --Soft-Seafoam: #a3d9d1;
+  --Sky-Blue: #87cefa;
+  --Light-Jade: #b3e2d9;
+  --Off-White: #e6e6fa;
+  --white: #f9f9f9;
+  --light-Gray: #d3d3d3;
+  --dark-Gray: #464646;
+}
+.Topbar__container {
+  height: 9vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 5rem;
+  background-color: var(--Pine-Green);
+  color: var(--white) !important;
+}
+
+.Topbar__logoWrapper {
+  font-family: Fascinate;
+  color: var(--white);
+  font-size: 2.2rem;
+  cursor: pointer;
+}
+.Topbar__right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+.Topbar__menu {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 0.5rem;
+}
+.Topbar__profiledata {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.Topbar__menuItem {
+  padding: 0.5rem 1.2rem;
+  border-radius: 10px;
+  font-size: large;
+  color: var(--white) !important;
+  text-decoration: none;
+  padding: 0.8rem 1rem;
+}
+.Topbar__menuItem:hover {
+  color: var(--Lemon-Lime) !important;
+}
+.Topbar__profileInfoWrapper {
+  margin-left: 1rem;
+  background-color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.2rem 0.2rem;
+  border-radius: 50px;
+  gap: 0.7rem;
+  padding-right: 1rem;
+  transition: all ease 0.5s;
+}
+.Topbar__profileInfoWrapper:hover {
+  background-color: var(--Normal-Green);
+  box-shadow: 0 0 5px 5px rgba(24, 159, 29, 0.6);
+}
+.Topbar__profileInfoWrapper:hover > .Topbar__profileName {
+  color: var(--dark-Gray);
+}
+
+.Topbar__profileFoto {
+  width: 3.5rem;
+  border-radius: 50%;
+}
+.Topbar__profileName {
+  color: var(--Pine-Green);
+  text-decoration: underline;
+  font-weight: bold;
+  transition: all ease 0.5s;
+}
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+}
+
+.hover-underline-animation::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 3px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--Normal-Green);
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+}
+
+.hover-underline-animation.left::after {
+  transform-origin: bottom right;
+}
+
+.hover-underline-animation.left:hover::after {
+  transform-origin: bottom left;
+}
+.loginBtn__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+#registerBtn {
+  background-color: var(--white);
+  color: var(--Pine-Green) !important;
+}
+#registerBtn:hover {
+  background-color: var(--Light-Jade);
+  color: var(--Pine-Green) !important;
+}

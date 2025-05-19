@@ -1,0 +1,31 @@
+.LinkCart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aliceblue;
+  width: 30rem;
+  border: 1px solid gray;
+  gap: 10px;
+}
+.LinkCart__Img {
+  width: 30%;
+}
+.LinkCart__textContainer {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  justify-content: center;
+  align-items: start;
+}
+.LinkCart__Title {
+  font-size: large;
+  font-weight: bold;
+  color: black;
+}
+.LinkCart__Text {
+  color: gray;
+}
+.LinkCart__Link {
+  color: green;
+}

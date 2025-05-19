@@ -1,0 +1,180 @@
+:root {
+  --Forest-Green: #228b22;
+  --Pine-Green: #01796f;
+  --Mint-Green: #98ff98;
+  --Lemon-Lime: #b2ff66;
+  --Soft-Seafoam: #a3d9d1;
+  --Sky-Blue: #87cefa;
+  --Light-Jade: #b3e2d9;
+  --Off-White: #e6e6fa;
+  --white: #f9f9f9;
+  --light-Gray: #eaeaea;
+  --dark-Gray: #3c3c3c;
+}
+.profile {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--White);
+}
+.profile__sidebar {
+  width: 20%;
+}
+.profile__sidebarLogo {
+  font-family: Fascinate;
+  color: var(--Pine-Green);
+  font-size: 2.2rem;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  padding: 1rem;
+}
+.profile__sidebarWrapper {
+  display: flex;
+  padding: 2rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 2rem;
+}
+.profile__sidebarItem {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  font-size: 1.3rem;
+  padding: 1rem;
+  padding-left: 2rem;
+  background-color: white;
+  color: var(--Pine-Green);
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 10px -5px rgba(0, 0, 0, 0.463);
+  transition: all ease 400ms;
+}
+.profile__sidebarItem.active {
+  /* background-color: rgb(255, 196, 0); */
+  background-color: #c5e90b;
+}
+.profile__sidebarItem:hover {
+  background-color: var(--Pine-Green);
+  color: var(--Off-White);
+}
+.profile__mainbar__wrapper {
+  width: 80%;
+}
+
+.profile__mainbar {
+  width: 98%;
+  height: 98%;
+  margin: 1% 1%;
+  padding: 0;
+  background-color: #a3d9d152;
+  border-radius: 5rem 5rem 0 0;
+}
+.profile__mainbar__titlebar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 3rem;
+}
+.mainbar__titlebox {
+  padding: 1rem;
+}
+.mainbar__title {
+  font-size: 2rem;
+  color: var(--white);
+  text-shadow: 0 0 5px var(--Pine-Green);
+}
+.mainbar__subtitle {
+  color: var(--Pine-Green);
+  font-size: large;
+}
+.mainbar__datebox {
+  background-color: var(--Light-Jade);
+  font-size: large;
+  padding: 1.2rem;
+  border-radius: 10px;
+  color: var(--white);
+  text-shadow: 0 0 5px var(--Pine-Green);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.mainbar__datebox:hover {
+  background-color: var(--Pine-Green);
+  color: var(--white);
+  cursor: pointer;
+}
+.mainbar__datebox:hover > .mainbar__datebox__icon {
+  color: var(--white);
+}
+.mainbar__datebox__icon {
+  font-size: 1.5rem;
+  color: var(--Pine-Green);
+}
+
+.mainbar__titlebox__title {
+  padding: 2rem;
+}
+
+.profile__mainbar__body {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  color: var(--dark-Gray);
+}
+.mainbar__leftbody {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  width: 40%;
+}
+.mainbar__leftbody__img {
+  width: 10rem;
+  border-radius: 10px;
+}
+.mainbar__leftbody__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.mainbar__leftbody {
+  box-shadow: 0 0 10px -5px rgba(0, 0, 0, 0.463);
+  border-radius: 10px;
+  padding: 1rem;
+  background-color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.mainbar__rightbody {
+  width: 60%;
+  box-shadow: 0 0 10px -5px rgba(0, 0, 0, 0.463);
+  border-radius: 10px;
+  padding: 1rem;
+  background-color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 1rem;
+}
+.rightbody__img {
+  width: 12rem;
+  border-radius: 10px;
+}
+.mainbar__rightbody__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.mainbar__rightbody__title {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  color: var(--Pine-Green);
+}
+

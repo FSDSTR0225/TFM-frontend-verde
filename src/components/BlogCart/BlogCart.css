@@ -1,0 +1,46 @@
+.BlogCart {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: start;
+  margin: 6rem 15rem;
+}
+.leftBlogCart {
+  flex-direction: row-reverse;
+}
+.BlogCart__Img {
+  width: 70%;
+  top: 0;
+  left: 3rem;
+}
+.BlogCart__textContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: start;
+  width: 30%;
+  border: 1px solid gray;
+  color: gray;
+  padding: 2rem;
+  gap: 1rem;
+  z-index: 99;
+  background-color: aliceblue;
+  margin-top: -2rem;
+  margin-left: -4rem;
+}
+.leftBlogCart > div {
+  margin-left: 0;
+  margin-right: -4rem;
+}
+.BlogCart__Title {
+  font-size: larger;
+  font-weight: bold;
+  color: black;
+}
+.BlogCart__Text {
+  color: gray;
+}
+.BlogCart__Link {
+  color: green;
+  font-weight: bold;
+}

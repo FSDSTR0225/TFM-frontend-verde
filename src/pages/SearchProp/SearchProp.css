@@ -1,0 +1,17 @@
+.TopSearchFilter {
+  background-color: greenyellow;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.propertyCardWrapper {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  column-gap: 0px;
+  row-gap: 50px;
+  grid-template-columns: 1fr 1fr;
+}

@@ -1,0 +1,14 @@
+.LinkCart__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  margin: 5rem 3rem;
+}
+.BlogCart__container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+}
+

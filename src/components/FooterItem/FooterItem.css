@@ -1,0 +1,75 @@
+:root {
+  --Forest-Green: #228b22;
+  --Pine-Green: #01796f;
+  --Mint-Green: #98ff98;
+  --Lemon-Lime: #b2ff66;
+  --Soft-Seafoam: #a3d9d1;
+  --Sky-Blue: #87cefa;
+  --Light-Jade: #b3e2d9;
+  --Off-White: #e6e6fa;
+  --white: #f9f9f9;
+  --light-Gray: #d3d3d3;
+  --dark-Gray: #464646;
+}
+.FooterItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  background-color: var(--Pine-Green);
+  color: var(--white);
+  width: 100%;
+  padding: 2rem;
+  margin-top: 4rem;
+}
+.Footer__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 5rem;
+}
+.Footer__left {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: start;
+}
+.footer__logo {
+  font-family: Fascinate;
+  color: var(--white);
+  font-size: 2.2rem;
+  cursor: pointer;
+  margin-bottom: 3rem;
+}
+.Footer__col {
+}
+.Footer__colTitle {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+}
+.Footer__colspan {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.Footer__right {
+  width: 30%;
+}
+.socialContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+.socialItems {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}

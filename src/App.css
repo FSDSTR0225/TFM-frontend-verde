@@ -1,0 +1,43 @@
+:root {
+  --Forest-Green: #228b22;
+  --Pine-Green: #01796f;
+  --Mint-Green: #98ff98;
+  --Normal-Green: #4fc074;
+  --Lemon-Lime: #b2ff66;
+  --Soft-Seafoam: #a3d9d1;
+  --Sky-Blue: #87cefa;
+  --medium-Blue: #2375a8;
+  --Light-Jade: #b3e2d9;
+  --Off-White: #e6e6fa;
+  --white: #f9f9f9;
+  --light-Gray: #d3d3d3;
+  --dark-Gray: #464646;
+}
+@font-face {
+  font-family: Aladin;
+  src: url("/fonts/Aladin/Aladin-Regular.ttf");
+}
+@font-face {
+  font-family: Fascinate;
+  src: url("/fonts/Fascinate_Inline/FascinateInline-Regular.ttf");
+}
+@font-face {
+  font-family: Gumy;
+  src: url("/fonts/Gummy/SourGummy.ttf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  color: var(--dark-Gray);
+  font-size: 16px;
+}
+.swal-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
