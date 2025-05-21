@@ -10,8 +10,8 @@ import AuthContext from "../../contexts/AuthContext";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import UserProperties from "../../components/UserProperties/UserProperties";
 import { useNavigate } from "react-router";
-import swal from "sweetalert";
-import UserFavorites from "../../components/userFavorites/userFavorites";
+import Swal from "sweetalert2";
+import UserFavorites from "../../components/UserFavorites/UserFavorites";
 
 export default function Profile() {
   const authContext = useContext(AuthContext);
@@ -42,21 +42,23 @@ export default function Profile() {
   }, [authContext]);
 
   function logoutHandler() {
-    swal({
+    Swal.fire({
       title: "Log Out ?",
-      text: "Are you sure? You want to log out ? ",
+      text: "Are you sure you want to log out ?",
       icon: "warning",
-      buttons: ["Cancel", "Yes, Log Out"],
-      dangerMode: true,
-    }).then((willLogout) => {
-      if (willLogout) {
+      showCancelButton: true,
+      confirmButtonColor: "#4fc074",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Do this!",
+    }).then((result) => {
+      if (result.isConfirmed) {
         authContext.logout();
         navigate("/");
-        swal("You have been log out successfully", {
+        Swal.fire({
+          title: "success!",
+          text: "You have been log out successfully",
           icon: "success",
         });
-      } else {
-        swal("Progress canceled !");
       }
     });
   }

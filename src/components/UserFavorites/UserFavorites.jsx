@@ -11,8 +11,31 @@ export default function UserFavorites() {
   function addNoteHandler() {
     console.log("hi");
   }
-  function addFavoriteHandler() {
-    console.log("hi");
+  function addFavoriteHandler(itemId) {
+    fetch(`http://localhost:4000/users/favorite/${authContext.userInfos._id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ _id: itemId }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  }
+  function deleteFavoriteHandler(itemId) {
+    fetch(`http://localhost:4000/users/favorite/${authContext.userInfos._id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ _id: itemId }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   }
 
   return (
@@ -24,6 +47,7 @@ export default function UserFavorites() {
             item={item}
             addNoteHandler={addNoteHandler}
             addFavoriteHandler={addFavoriteHandler}
+            deleteFavoriteHandler={deleteFavoriteHandler}
           />
         ))}
       </div>

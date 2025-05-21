@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./PropertyCard.css";
 import { IoCallOutline } from "react-icons/io5";
 import { MdOutlineMessage } from "react-icons/md";
@@ -8,15 +8,50 @@ import ModalEditDelete from "../ModalEditDelete/ModalEditDelete";
 import { MdNoteAdd } from "react-icons/md";
 import { MdFavorite } from "react-icons/md";
 import { MdFavoriteBorder } from "react-icons/md";
+import AuthContext from "../../contexts/AuthContext";
+import Swal from "sweetalert2";
 
 export default function PropertyCard({
   item,
   deletePropertyHandler,
   getUserProperties,
   addNoteHandler,
-  addFavoriteHandler
+  addFavoriteHandler,
+  deleteFavoriteHandler,
 }) {
   const [isShowEditModal, setIsShowEditModal] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
+  const authContext = useContext(AuthContext);
+
+  useEffect(() => {
+    authContext.userFavorites.map((fav) => {
+      if (fav.title === item.title) {
+        setIsFavorite(true);
+      }
+    });
+  }, [authContext.userFavorites, item.title]);
+
+  function removeFavHandler(itemId) {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "This item will be removed from your favorites!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#4fc074",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Do this!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteFavoriteHandler(itemId);
+        setIsFavorite(false);
+        Swal.fire({
+          title: "Removed!",
+          text: "Item has been removed.",
+          icon: "success",
+        });
+      }
+    });
+  }
 
   return (
     <div className="UserProperties__item">
@@ -79,15 +114,25 @@ export default function PropertyCard({
           ) : (
             <div className="UserProperties__footerRight">
               <MdNoteAdd
-                className="UserProperties__footerIcon"
+                className="UserProperties__footerIcon noteIcon"
                 onClick={() => addNoteHandler(item._id)}
               />
-              <MdFavorite
-                className="UserProperties__footerIcon"
-                onClick={() => {
-                  addFavoriteHandler(item._id);
-                }}
-              />
+              {isFavorite ? (
+                <MdFavorite
+                  className="UserProperties__footerIcon favIcon"
+                  onClick={() => {
+                    removeFavHandler(item._id);
+                  }}
+                />
+              ) : (
+                <MdFavoriteBorder
+                  className="UserProperties__footerIcon favIcon"
+                  onClick={() => {
+                    addFavoriteHandler(item._id);
+                    setIsFavorite(true);
+                  }}
+                />
+              )}
             </div>
           )}
         </div>

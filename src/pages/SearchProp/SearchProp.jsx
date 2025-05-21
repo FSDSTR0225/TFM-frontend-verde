@@ -39,6 +39,19 @@ export default function SearchProp() {
         console.log(data);
       });
   }
+  function deleteFavoriteHandler(itemId) {
+    fetch(`http://localhost:4000/users/favorite/${authContext.userInfos._id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ _id: itemId }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  }
 
   return (
     <div className="TopSearchFilter">
@@ -51,6 +64,7 @@ export default function SearchProp() {
                 key={item._id}
                 addNoteHandler={addNoteHandler}
                 addFavoriteHandler={addFavoriteHandler}
+                deleteFavoriteHandler={deleteFavoriteHandler}
               />
             ))
           : null}

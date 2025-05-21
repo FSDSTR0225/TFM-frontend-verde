@@ -65,5 +65,14 @@
   align-items: center;
 }
 .UserProperties__footerIcon {
+  cursor: pointer;
   font-size: 1.5rem;
+}
+.noteIcon {
+  color: var(--Pine-Green);
+  cursor: pointer;
+}
+.favIcon {
+  color: rgb(191, 50, 15);
+  cursor: pointer;
 }
