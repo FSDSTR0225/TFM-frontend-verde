@@ -23,6 +23,8 @@ import {
 export default function SwiperReact() {
   return (
     <div className="SwiperReact">
+      <h1 className="swiper__title mainTitle">We have properties in all of the Spain</h1>
+      <h3 className="swiper__subtitle mainsubtitle">Please check our latest updates</h3>
       <Swiper
         spaceBetween={50}
         slidesPerView={3}

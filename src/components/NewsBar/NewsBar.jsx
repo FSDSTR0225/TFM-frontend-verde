@@ -28,8 +28,8 @@ export default function NewsBar() {
   };
   return (
     <div className="NewsBar">
-      <h2 className="NewsBar__title">Casa Verde / News</h2>
-      <p className="NewsBar__text">
+      <h2 className="NewsBar__title mainTitle">Casa Verde / News</h2>
+      <p className="NewsBar__text mainsubtitle">
         Helpful guides and practical advice for buying or renting your dream
         house abroad.
       </p>
@@ -39,7 +39,7 @@ export default function NewsBar() {
             key={allNewsCat.indexOf(cat)}
             className={
               cat === newsCategory
-                ? "NewsBar__catItem active"
+                ? "NewsBar__catItem activeItem"
                 : "NewsBar__catItem"
             }
             name={cat}

@@ -8,7 +8,11 @@ export default function Topbar() {
   let navigate = useNavigate();
   const authContext = useContext(AuthContext);
 
-  // console.log(currentUser.currentUser.userName);
+  const navbarItems = [
+    { id: 1, title: "Home", link: "/" },
+    { id: 2, title: "About us", link: "/about" },
+    { id: 3, title: "News", link: "news" },
+  ];
 
   return (
     <div className="Topbar">
@@ -25,25 +29,19 @@ export default function Topbar() {
         </div>
         <div className="Topbar__right">
           <div className="Topbar__menu">
-            <NavLink to="/" className="Topbar__menuItem">
-              Home
-            </NavLink>
-            <NavLink to="/about" className="Topbar__menuItem">
-              About us
-            </NavLink>
-            <NavLink to="/news" className="Topbar__menuItem">
-              News
-            </NavLink>
+            {navbarItems.map((item) => (
+              <NavLink
+                key={item.id}
+                to={item.link}
+                className="Topbar__menuItem hover-underline-animation left"
+              >
+                {item.title}
+              </NavLink>
+            ))}
           </div>
           <div className="Topbar__profiledata">
             {authContext.isLoggedIn ? (
               <>
-                {/* <NavLink
-                  to="/profile"
-                  className="Topbar__menuItem  hover-underline-animation left"
-                >
-                  Profile
-                </NavLink> */}
                 <NavLink
                   to="/newproperty"
                   className="Topbar__menuItem  hover-underline-animation left"
@@ -51,7 +49,7 @@ export default function Topbar() {
                   New props
                 </NavLink>
                 <NavLink
-                  to="/"
+                  to="/messages"
                   className="Topbar__menuItem hover-underline-animation left"
                 >
                   Messages

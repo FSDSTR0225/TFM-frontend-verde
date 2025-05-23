@@ -27,7 +27,7 @@ export default function Dashboard({ currentUser }) {
           <div className="mainbar__leftbody__text">
             <div>Username : {currentUser.username}</div>
             <div>Email : {currentUser.email}</div>
-            <div>Created At : {currentUser.createdAt}</div>
+            <div>Joined Date : {currentUser.createdAt}</div>
           </div>
         </div>
         <div className="mainbar__rightbody">

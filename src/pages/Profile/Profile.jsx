@@ -12,14 +12,14 @@ import UserProperties from "../../components/UserProperties/UserProperties";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import UserFavorites from "../../components/UserFavorites/UserFavorites";
+import SettingProfile from "../../components/SettingProfile/SettingProfile";
 
 export default function Profile() {
   const authContext = useContext(AuthContext);
   const navigate = useNavigate();
 
   const url = "http://localhost:4000/users/me";
-
-  useEffect(() => {
+  function getUserData() {
     let userLocal = localStorage.getItem("user");
     if (userLocal) {
       let userToken = JSON.parse(userLocal).token;
@@ -39,7 +39,12 @@ export default function Profile() {
           console.log(err);
         });
     }
-  }, [authContext]);
+  }
+
+  useEffect(() => {
+    getUserData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   function logoutHandler() {
     Swal.fire({
@@ -107,6 +112,12 @@ export default function Profile() {
             <UserProperties currentUser={authContext.userInfos} />
           )}
           {currentTab === "Favorites" && <UserFavorites />}
+          {currentTab === "Setting" && (
+            <SettingProfile
+              currentUser={authContext.userInfos}
+              getUserData={getUserData}
+            />
+          )}
         </div>
       </div>
     </div>

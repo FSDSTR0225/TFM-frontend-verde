@@ -11,7 +11,16 @@ export default function UserProperties({ currentUser }) {
 
   useEffect(() => {
     getUserProperties();
-  }, [getUserProperties]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  async function getUserProperties() {
+    await fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        setAllproperties(data);
+      });
+  }
 
   function deletePropertyHandler(propId) {
     Swal.fire({
@@ -51,15 +60,6 @@ export default function UserProperties({ currentUser }) {
         console.log(err);
       });
   };
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  async function getUserProperties() {
-    await fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        setAllproperties(data);
-      });
-  }
 
   return (
     <div className="UserProperties">

@@ -10,6 +10,7 @@ import { MdFavorite } from "react-icons/md";
 import { MdFavoriteBorder } from "react-icons/md";
 import AuthContext from "../../contexts/AuthContext";
 import Swal from "sweetalert2";
+import nofoto from "/images/properties/noimage.png";
 
 export default function PropertyCard({
   item,
@@ -56,7 +57,15 @@ export default function PropertyCard({
   return (
     <div className="UserProperties__item">
       <div className="UserProperties__imgContainer">
-        <img className="UserProperties__img" src={item.image} alt="" />
+        {item.image ? (
+          <img
+            className="UserProperties__img"
+            src={item.image}
+            alt="prop-img"
+          />
+        ) : (
+          <img className="UserProperties__noimg" src={nofoto} alt="prop-img" />
+        )}
       </div>
       <div className="UserProperties__bodyContainer">
         <div className="UserProperties__title">{item.title}</div>
@@ -85,57 +94,58 @@ export default function PropertyCard({
           <div className="UserProperties__desc">Location: {item.location}</div>
           <div className="UserProperties__desc">{item.desc}</div>
         </div>
-
-        <div className="UserProperties__footer">
-          <div className="UserProperties__footerLeft">
-            <span className="UserProperties__footerIconWrapper">
-              <IoCallOutline className="UserProperties__footerIcon" />
-              View phone
-            </span>
-            <span className="UserProperties__footerIconWrapper">
-              <MdOutlineMessage className="UserProperties__footerIcon" />
-              Contact
-            </span>
+        {authContext.isLoggedIn ? (
+          <div className="UserProperties__footer">
+            <div className="UserProperties__footerLeft">
+              <span className="UserProperties__footerIconWrapper">
+                <IoCallOutline className="UserProperties__footerIcon" />
+                View phone
+              </span>
+              <span className="UserProperties__footerIconWrapper">
+                <MdOutlineMessage className="UserProperties__footerIcon" />
+                Contact
+              </span>
+            </div>
+            {deletePropertyHandler ? (
+              <div className="UserProperties__footerRight">
+                <MdDeleteOutline
+                  className="UserProperties__footerIcon"
+                  onClick={() => deletePropertyHandler(item._id)}
+                />
+                <FaRegEdit
+                  className="UserProperties__footerIcon"
+                  onClick={() => {
+                    setIsShowEditModal(true);
+                  }}
+                />
+                {/* <MdFavoriteBorder className="UserProperties__footerIcon" /> */}
+              </div>
+            ) : (
+              <div className="UserProperties__footerRight">
+                <MdNoteAdd
+                  className="UserProperties__footerIcon noteIcon"
+                  onClick={() => addNoteHandler(item._id)}
+                />
+                {isFavorite ? (
+                  <MdFavorite
+                    className="UserProperties__footerIcon favIcon"
+                    onClick={() => {
+                      removeFavHandler(item._id);
+                    }}
+                  />
+                ) : (
+                  <MdFavoriteBorder
+                    className="UserProperties__footerIcon favIcon"
+                    onClick={() => {
+                      addFavoriteHandler(item._id);
+                      setIsFavorite(true);
+                    }}
+                  />
+                )}
+              </div>
+            )}
           </div>
-          {deletePropertyHandler ? (
-            <div className="UserProperties__footerRight">
-              <MdDeleteOutline
-                className="UserProperties__footerIcon"
-                onClick={() => deletePropertyHandler(item._id)}
-              />
-              <FaRegEdit
-                className="UserProperties__footerIcon"
-                onClick={() => {
-                  setIsShowEditModal(true);
-                }}
-              />
-              {/* <MdFavoriteBorder className="UserProperties__footerIcon" /> */}
-            </div>
-          ) : (
-            <div className="UserProperties__footerRight">
-              <MdNoteAdd
-                className="UserProperties__footerIcon noteIcon"
-                onClick={() => addNoteHandler(item._id)}
-              />
-              {isFavorite ? (
-                <MdFavorite
-                  className="UserProperties__footerIcon favIcon"
-                  onClick={() => {
-                    removeFavHandler(item._id);
-                  }}
-                />
-              ) : (
-                <MdFavoriteBorder
-                  className="UserProperties__footerIcon favIcon"
-                  onClick={() => {
-                    addFavoriteHandler(item._id);
-                    setIsFavorite(true);
-                  }}
-                />
-              )}
-            </div>
-          )}
-        </div>
+        ) : null}
       </div>
       <ModalEditDelete
         isShowModal={isShowEditModal}

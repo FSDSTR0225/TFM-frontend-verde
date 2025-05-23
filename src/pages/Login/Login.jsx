@@ -45,13 +45,16 @@ export default function Login() {
           }, 2000);
         } else {
           setIsModalSuccess(false);
+          authContext.logout();
         }
         setIsShowModal(true);
         return response.json();
       })
       .then((result) => {
         console.log("server result:", result);
-        authContext.login(result.user, result.token);
+        if (result.token) {
+          authContext.login(result.user, result.token);
+        }
       })
       .catch((err) => {
         console.log(err);

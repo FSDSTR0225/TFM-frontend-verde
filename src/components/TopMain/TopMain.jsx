@@ -93,9 +93,11 @@ export default function TopMain() {
   }
 
   const handleSearch = async () => {
-    !city
-      ? console.log("no city selected")
-      : navigate(`/searchproperty/${city}`);
+    !city || !contractCat || !typeCat
+      ? console.log("there is some unselected item")
+      : navigate(
+          `/searchproperty/${city}/${typeCat}/${contractCat}`
+        );
   };
 
   return (

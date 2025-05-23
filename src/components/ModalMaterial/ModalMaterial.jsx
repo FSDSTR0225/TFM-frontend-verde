@@ -1,10 +1,9 @@
 import React from "react";
 import "./ModalMaterial.css";
-import {  Button, Box, Modal, Fade, Typography, Backdrop} from "@mui/material";
+import { Button, Box, Modal, Fade, Typography, Backdrop } from "@mui/material";
 import { green, red, indigo } from "@mui/material/colors";
 import { PiSealCheckFill } from "react-icons/pi";
 import { MdSmsFailed } from "react-icons/md";
-
 
 export default function ModalMaterial({
   isShowModal,
@@ -18,6 +17,7 @@ export default function ModalMaterial({
   const redstyle = {
     border: `2px solid ${red["600"]}`,
   };
+
   return (
     <div>
       <Modal
@@ -47,13 +47,15 @@ export default function ModalMaterial({
               className={isModalSuccess ? "modalFooter" : "modalFooter fail"}
             >
               <Button
-                onClick={() => setIsShowModal(false)}
+                onClick={() => {
+                  setIsShowModal(false);
+                }}
                 className={
                   isModalSuccess ? "modalFooter__btn" : "modalFooter__btn fail"
                 }
                 variant="contained"
               >
-                {isModalSuccess ? "Start playing" : "OK try again"}
+                {isModalSuccess ? "Enjoy now" : "OK try again"}
               </Button>
             </Typography>
           </Box>

@@ -20,7 +20,7 @@
   color: var(--white);
   width: 100%;
   padding: 2rem;
-  margin-top: 4rem;
+  border-top: 3px solid white;
 }
 .Footer__container {
   display: flex;
@@ -43,8 +43,6 @@
   cursor: pointer;
   margin-bottom: 3rem;
 }
-.Footer__col {
-}
 .Footer__colTitle {
   font-size: 1.8rem;
   font-weight: 800;
@@ -55,6 +53,9 @@
   margin-bottom: 1rem;
   text-decoration: underline;
   cursor: pointer;
+}
+.Footer__colspan:hover {
+  color: var(--Lemon-Lime);
 }
 .Footer__right {
   width: 30%;

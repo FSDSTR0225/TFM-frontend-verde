@@ -4,23 +4,32 @@ import TopSearchFilter from "../../components/TopSearchFilter/TopSearchFilter";
 import { useParams } from "react-router";
 import PropertyCard from "../../components/PropertyCard/PropertyCard";
 import AuthContext from "../../contexts/AuthContext";
+import NotFoundItem from "../../components/NotFoundItem/NotFoundItem";
 
 export default function SearchProp() {
   const authContext = useContext(AuthContext);
   const params = useParams();
   const [propertyArr, setPropertyArr] = useState([]);
   const [selectedCity, setSelectedCity] = useState("");
+  const [selectedType, setSelectedType] = useState("");
+  const [selectedContract, setSelectedContract] = useState("");
 
   useEffect(() => {
     setSelectedCity(params.city);
-  }, [params.city]);
+    setSelectedType(params.type);
+    setSelectedContract(params.contract);
+  }, [params, params.city]);
 
   useEffect(() => {
     selectedCity &&
-      fetch(`http://localhost:4000/properties/city/${selectedCity}`)
+      selectedType &&
+      selectedContract &&
+      fetch(
+        `http://localhost:4000/properties/search/${selectedCity}/${selectedContract}/${selectedType}`
+      )
         .then((res) => res.json())
         .then((data) => setPropertyArr(data.properties));
-  }, [selectedCity]);
+  }, [selectedCity, selectedType, selectedContract]);
 
   function addNoteHandler(itemId) {
     console.log(itemId);
@@ -57,17 +66,22 @@ export default function SearchProp() {
     <div className="TopSearchFilter">
       <TopSearchFilter />
       <div className="propertyCardWrapper">
-        {propertyArr
-          ? propertyArr.map((item) => (
-              <PropertyCard
-                item={item}
-                key={item._id}
-                addNoteHandler={addNoteHandler}
-                addFavoriteHandler={addFavoriteHandler}
-                deleteFavoriteHandler={deleteFavoriteHandler}
-              />
-            ))
-          : null}
+        {propertyArr.length ? (
+          propertyArr.map((item) => (
+            <PropertyCard
+              item={item}
+              key={item._id}
+              addNoteHandler={addNoteHandler}
+              addFavoriteHandler={addFavoriteHandler}
+              deleteFavoriteHandler={deleteFavoriteHandler}
+            />
+          ))
+        ) : (
+          <NotFoundItem
+            errorTitle={"Could Not Find Any Item ! "}
+            errorText={"Sorry we did not find your selected property"}
+          />
+        )}
       </div>
     </div>
   );

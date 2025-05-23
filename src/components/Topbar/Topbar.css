@@ -48,11 +48,14 @@
 
 .Topbar__menuItem {
   padding: 0.5rem 1.2rem;
-  border-radius: 10px;
   font-size: large;
-  color: var(--white) !important;
+  color: var(--white);
   text-decoration: none;
   padding: 0.8rem 1rem;
+}
+.active {
+  color: var(--Lemon-Lime);
+  background-color: #b3ff6631;
 }
 .Topbar__menuItem:hover {
   color: var(--Lemon-Lime) !important;
@@ -70,11 +73,12 @@
   transition: all ease 0.5s;
 }
 .Topbar__profileInfoWrapper:hover {
-  background-color: var(--Normal-Green);
-  box-shadow: 0 0 5px 5px rgba(24, 159, 29, 0.6);
+  background-color:#01796f;
+  color: var(--Lemon-Lime) !important;
+  box-shadow: 0 0 10px 1px #98ff9876;
 }
 .Topbar__profileInfoWrapper:hover > .Topbar__profileName {
-  color: var(--dark-Gray);
+    color: var(--Lemon-Lime)
 }
 
 .Topbar__profileFoto {
@@ -101,7 +105,7 @@
   height: 3px;
   bottom: 0;
   left: 0;
-  background-color: var(--Normal-Green);
+  background-color: var(--Lemon-Lime);
   transition: transform 0.25s ease-out;
 }
 
@@ -123,8 +127,9 @@
   gap: 1rem;
 }
 #registerBtn {
-  background-color: var(--white);
-  color: var(--Pine-Green) !important;
+  border: 1px solid white;
+  color: var(--white) !important;
+  border-radius: 5px;
 }
 #registerBtn:hover {
   background-color: var(--Light-Jade);

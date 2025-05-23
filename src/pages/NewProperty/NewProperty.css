@@ -1,22 +1,40 @@
-.Property {
+.NewProperty {
   width: 100%;
   height: 100vh;
   background-image: linear-gradient(
     to bottom right,
-    var(--dark-blue),
-    var(--light-blue)
+    var(--Light-Jade),
+    var(--Pine-Green)
   );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+.Property__wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.Property__wrapper {
-  width: 95%;
+  width: 90%;
   margin: 0;
   padding: 0;
+  height: 90vh;
+}
+.PropertyForm__imageWrapper {
+  height: 100%;
+  width: 30%;
+  overflow: hidden;
+}
+.PropertyForm__image {
+  height: 100%;
+  width: 100%;
+  border-radius: 200px 0 0 200px;
 }
 .PropertyForm__Container {
-  background-color: var(--white);
+  height: 100%;
+  width: 70%;
+  background-color: white;
   padding: 3rem;
   display: flex;
   flex-direction: column;
@@ -24,44 +42,45 @@
   justify-content: space-around;
 }
 .PropertyForm__Title {
+  margin-bottom: 1rem;
   text-align: center;
   font-size: 2.5rem;
   font-weight: 800;
-  color: var(--dark-blue);
-  margin-bottom: 2rem;
+  color: var(--Pine-Green);
 }
 .PropertyForm {
+  padding: 2rem 3rem;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
-.PropertyForm__right {
-  display: flex;
-  justify-content: space-around;
-  gap: 2rem;
-  align-items: center;
-}
-.PropertyForm__left {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 3fr 3fr 1fr;
+  gap: 50px 50px;
 }
 .PropertyForm__input {
   width: 20rem;
 }
+.descInput {
+  grid-row: 2 / span 2 !important;
+}
+.PropertyForm__button__wraper {
+  grid-column: 1 / span 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .PropertyForm__button {
+  width: 30%;
   font-size: larger;
+  font-weight: 800 !important;
   border: none;
-  background-color: var(--dark-blue);
-  color: var(--white);
+  background-color: var(--Light-Jade) !important;
+  color: var(--Pine-Green) !important;
   padding: 0.5rem;
-  margin-top: 2rem !important;
   cursor: pointer;
   border-radius: 5px;
 }
 .PropertyForm__button:hover {
-  background-color: var(--light-blue);
+  color: var(--Light-Jade) !important;
+  background-color: var(--Pine-Green) !important;
 }
 @media only screen and (max-width: 900px) {
   /* Mobile Size */
@@ -87,7 +106,7 @@
     border-radius: 90px 0 0 90px;
   }
   .PropertyForm__Container {
-    border-radius: 0 40px 40px 0;
+    border-radius: 0 90px 90px 0;
   }
   .PropertyForm__Title {
     padding: 2rem;

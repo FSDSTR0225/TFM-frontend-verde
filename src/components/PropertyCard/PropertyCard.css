@@ -12,6 +12,11 @@
   width: 100%;
   border-radius: 10px 0 0 10px;
 }
+.UserProperties__noimg {
+  padding: 4rem;
+  width: 100%;
+  border-radius: 10px 0 0 10px;
+}
 .UserProperties__bodyContainer {
   width: 70%;
   display: flex;
@@ -19,9 +24,10 @@
   justify-content: space-between;
   align-items: flex-start;
   padding: 1rem;
-  gap: 3rem;
+  gap: 1rem;
 }
 .UserProperties__title {
+  margin-top: 1rem;
   font-size: 1.5rem;
   color: var(--Pine-Green);
 }
@@ -49,6 +55,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0.9rem;
+  margin-top: 2rem;
 }
 .UserProperties__footerLeft {
   display: flex;
