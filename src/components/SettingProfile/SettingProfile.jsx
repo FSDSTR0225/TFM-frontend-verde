@@ -15,7 +15,14 @@ export default function SettingProfile({ currentUser, getUserData }) {
           <div className="SettingProfile__data">{currentUser.username}</div>
           <div className="SettingProfile__data">{currentUser.email}</div>
           <div className="SettingProfile__data">{currentUser.password}</div>
-          <button onClick={() => setIsShowModal(true)}>Edit</button>
+          <button
+            onClick={() => {
+              setIsShowModal(true);
+              console.log("hi");
+            }}
+          >
+            Edit
+          </button>
         </div>
       </div>
       {isShowModal && (

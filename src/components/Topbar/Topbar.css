@@ -62,7 +62,7 @@
 }
 .Topbar__profileInfoWrapper {
   margin-left: 1rem;
-  background-color: var(--white);
+  background-color:rgba(255, 255, 255, 0);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,15 +70,14 @@
   border-radius: 50px;
   gap: 0.7rem;
   padding-right: 1rem;
+  box-shadow: 0 0 1px 1px var(--white);
   transition: all ease 0.5s;
 }
 .Topbar__profileInfoWrapper:hover {
-  background-color:#01796f;
-  color: var(--Lemon-Lime) !important;
-  box-shadow: 0 0 10px 1px #98ff9876;
+  background-color: var(--white);
 }
 .Topbar__profileInfoWrapper:hover > .Topbar__profileName {
-    color: var(--Lemon-Lime)
+  color: var(--Pine-Green);
 }
 
 .Topbar__profileFoto {
@@ -86,7 +85,7 @@
   border-radius: 50%;
 }
 .Topbar__profileName {
-  color: var(--Pine-Green);
+  color: var(--white);
   text-decoration: underline;
   font-weight: bold;
   transition: all ease 0.5s;
@@ -134,4 +133,23 @@
 #registerBtn:hover {
   background-color: var(--Light-Jade);
   color: var(--Pine-Green) !important;
+}
+@media only screen and (max-width: 900px) {
+  /* Mobile Size */
+  .mobileMenue__container {
+    display: block;
+  }
+  .desktopMenu__container {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  /* Desktop Size */
+  .mobileMenue__container {
+    display: none;
+  }
+  .desktopMenu__container {
+    display: flex;
+  }
 }
