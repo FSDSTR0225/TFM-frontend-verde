@@ -10,6 +10,7 @@ export default function SearchProp() {
   const authContext = useContext(AuthContext);
   const params = useParams();
   const [propertyArr, setPropertyArr] = useState([]);
+  const [filteredArr, setFilteredArr] = useState([]);
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedType, setSelectedType] = useState("");
   const [selectedContract, setSelectedContract] = useState("");
@@ -28,8 +29,11 @@ export default function SearchProp() {
         `http://localhost:4000/properties/search/${selectedCity}/${selectedContract}/${selectedType}`
       )
         .then((res) => res.json())
-        .then((data) => setPropertyArr(data.properties));
-  }, [selectedCity, selectedType, selectedContract]);
+        .then((data) => {
+          setPropertyArr(data.properties);
+          setFilteredArr(data.properties);
+        });
+  }, [selectedCity, selectedContract, selectedType]);
 
   function addNoteHandler(itemId) {
     console.log(itemId);
@@ -64,10 +68,14 @@ export default function SearchProp() {
 
   return (
     <div className="TopSearchFilter">
-      <TopSearchFilter />
+      <TopSearchFilter
+        propertyArr={propertyArr}
+        filteredArr={filteredArr}
+        setFilteredArr={setFilteredArr}
+      />
       <div className="propertyCardWrapper">
-        {propertyArr.length ? (
-          propertyArr.map((item) => (
+        {filteredArr.length ? (
+          filteredArr.map((item) => (
             <PropertyCard
               item={item}
               key={item._id}

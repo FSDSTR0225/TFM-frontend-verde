@@ -1,0 +1,10 @@
+.TopSearchFilter {
+  width: 100%;
+}
+.TopSearchFilter__container {
+  width: 100%;
+  padding: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
