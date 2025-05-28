@@ -42,6 +42,15 @@ export default function Messages() {
           </div>
         ))}
       </div>
+      <form onSubmit={handleSubmit} className="input-form">
+        <input
+          type="text"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder="Type a message..."
+        />
+        <button type="submit">Send</button>
+      </form>
     </div>
   );
 }
