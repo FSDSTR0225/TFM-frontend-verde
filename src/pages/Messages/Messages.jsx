@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {}
+import { io } from "socket.io-client";
 import "./Messages.css";
 
 const socket = io(import.meta.env.VITE_SERVER_URL || "http://localhost:3000");
@@ -32,7 +32,16 @@ export default function Messages() {
 
   return (
     <div className="Messages">
-      <div className="Messages__container">Messages</div>
+      <div className="Messages__container">
+        Messages:
+        {messages.map((msg, index) => (
+          <div key={index} className="message">
+            <span className="message-time">{msg.time}</span>
+            <span className="message-sender">{msg.sender}:</span>
+            <span className="message-text">{msg.text}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
