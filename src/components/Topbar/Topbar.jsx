@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import "./Topbar.css";
-import { useNavigate,NavLink } from "react-router";
+import { useNavigate, NavLink } from "react-router";
 import AuthContext from "../../contexts/AuthContext";
 import MobileMenue from "../MobileMenue/MobileMenue";
 
@@ -61,7 +61,11 @@ export default function Topbar() {
                 <NavLink to="/profile" className="Topbar__profileInfoWrapper">
                   <img
                     className="Topbar__profileFoto"
-                    src="./images/users/user3.jpg"
+                    src={
+                      authContext.userInfos.image
+                        ? authContext.userInfos.image
+                        : "./images/users/icons/artist.png"
+                    }
                   />
                   <span className="Topbar__profileName">
                     {authContext.userInfos.username}

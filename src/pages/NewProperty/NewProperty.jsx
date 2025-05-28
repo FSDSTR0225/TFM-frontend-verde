@@ -11,8 +11,9 @@ import {
   FormControl,
 } from "@mui/material";
 import AuthContext from "../../contexts/AuthContext";
-import sideImg from "/images/sides/2.jpg";
+import sideImg from "/images/sides/7.jpg";
 import { useNavigate } from "react-router";
+import { FileUploader } from "../../components/FileUploader/FileUploader";
 
 export default function NewProperty() {
   const navigate = useNavigate();
@@ -27,6 +28,9 @@ export default function NewProperty() {
   const [contractCategory, setContractCategory] = useState("BUY");
   const [typeCategory, setTypeCategory] = useState("Apartment");
   const [city, setCity] = useState("Madrid");
+
+  const [uploadedFile, setUploadedFile] = useState([]);
+  const [isDisactive, setIsDisactive] = useState(false);
 
   const [isShowModal, setIsShowModal] = useState(false);
   const [isModalSuccess, setIsModalSuccess] = useState(true);
@@ -48,7 +52,6 @@ export default function NewProperty() {
   const {
     register,
     handleSubmit,
-    // watch,
     formState: { errors },
   } = useForm();
 
@@ -67,7 +70,7 @@ export default function NewProperty() {
       owner: authContext.userInfos._id,
       contractCategory: formDatas.contractCategory,
       typeCategory: formDatas.typeCategory,
-      image: formDatas.image,
+      image: uploadedFile,
       city: formDatas.city,
     };
     await fetch(url, {
@@ -102,7 +105,9 @@ export default function NewProperty() {
         </div>
 
         <div className="PropertyForm__Container">
-          <div className="PropertyForm__Title mainTitle">Crerate your new property</div>
+          <div className="PropertyForm__Title mainTitle">
+            Crerate your new property
+          </div>
           <form className="PropertyForm" onSubmit={handleSubmit(onSubmit)}>
             <TextField
               type="text"
@@ -170,35 +175,24 @@ export default function NewProperty() {
               type="text"
               {...register("desc", {
                 required: true,
-                // maxLength: 35,
                 minLength: 10,
               })}
               aria-invalid={errors.desc ? "true" : "false"}
               error={errors.desc}
-              // id="standard-error-helper-text"
               label="Description"
               defaultValue=""
-              // color=""
               helperText={errors.desc ? "Please enter valid desc!" : null}
               variant="standard"
             />
-            <TextField
-              className="PropertyForm__input"
-              type="file"
-              name="file"
-              {...register("image", {
-                required: true,
-                minLength: 10,
-              })}
-              aria-invalid={errors.image ? "true" : "false"}
-              error={errors.image}
-              // id="standard-error-helper-text"
-              label="image"
-              defaultValue=""
-              // color=""
-              helperText={errors.image ? "Please enter valid image!" : null}
-              variant="standard"
-            />
+
+            {!isDisactive ? (
+              <FileUploader
+                setUploadedFile={setUploadedFile}
+                setIsDisactive={setIsDisactive}
+              />
+            ) : (
+              <span>foto is uploaded</span>
+            )}
 
             <div className="inputHolder">
               <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
@@ -371,6 +365,7 @@ export default function NewProperty() {
                   <MenuItem value="6 Months">6 Months</MenuItem>
                   <MenuItem value="9 Months">9 Months</MenuItem>
                   <MenuItem value="12 Months">12 Months</MenuItem>
+                  <MenuItem value="forever">forever</MenuItem>
                 </Select>
               </FormControl>
             </div>

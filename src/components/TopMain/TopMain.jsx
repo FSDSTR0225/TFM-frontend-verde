@@ -101,11 +101,6 @@ export default function TopMain() {
   };
 
   return (
-    <div className="TopMain">
-      <div className="TopMain__Wrapper">
-        <h1 className="TopMain__title">
-          Find your property when ever you like !
-        </h1>
         <div className="TopMain__container">
           <div className="TopMain__item">
             {contractsCatItems.map((item) => (
@@ -169,7 +164,5 @@ export default function TopMain() {
             </button>
           </div>
         </div>
-      </div>
-    </div>
   );
 }

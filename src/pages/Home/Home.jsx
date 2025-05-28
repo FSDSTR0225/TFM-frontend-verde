@@ -5,12 +5,26 @@ import LinkCart from "../../components/LinkCart/LinkCart";
 import BlogCart from "../../components/BlogCart/BlogCart";
 import NewsBar from "../../components/NewsBar/NewsBar";
 import SwiperReact from "../../components/SwiperReact/SwiperReact";
+import CarouselTop from "../../components/CarouselTop/CarouselTop";
+import TypeWriter from "../../components/TypeWriter/TypeWriter";
+import CounterNumber from "../../components/CounterNumber/CounterNumber";
+import Capabilities from "../../components/Capabilities/Capabilities";
 
 export default function Home() {
   return (
     <div className="Home">
-      <TopMain />
+      <div className="TopMain">
+        <div className="TopMain__Wrapper">
+          <h1 className="TopMain__title">
+            Find your property when ever you like !
+          </h1>
+          <TopMain />
+        </div>
+      </div>
       <SwiperReact />
+      {/* <CarouselTop /> */}
+      {/* <TypeWriter /> */}
+      <Capabilities />
       <div className="LinkCart__container">
         <LinkCart
           title="Draw your own area"

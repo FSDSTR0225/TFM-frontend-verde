@@ -15,6 +15,7 @@ import UserFavorites from "../../components/UserFavorites/UserFavorites";
 import SettingProfile from "../../components/SettingProfile/SettingProfile";
 
 export default function Profile() {
+  const [refreshFlag, setrefreshFlag] = useState(false);
   const authContext = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -44,7 +45,7 @@ export default function Profile() {
   useEffect(() => {
     getUserData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [refreshFlag]);
 
   function logoutHandler() {
     Swal.fire({
@@ -81,7 +82,7 @@ export default function Profile() {
   return (
     <div className="profile">
       <div className="profile__sidebar">
-        <div className="profile__sidebarLogo">CASA VERDE</div>
+        <div className="profile__sidebarLogo">Welcome</div>
         <ul className="profile__sidebarWrapper">
           {menuItems.map((item) => (
             <li
@@ -106,17 +107,17 @@ export default function Profile() {
       <div className="profile__mainbar__wrapper">
         <div className="profile__mainbar">
           {currentTab === "Dashboard" && (
-            <Dashboard currentUser={authContext.userInfos} />
+            <Dashboard
+              currentUser={authContext.userInfos}
+              setrefreshFlag={setrefreshFlag}
+            />
           )}
           {currentTab === "Properties" && (
             <UserProperties currentUser={authContext.userInfos} />
           )}
           {currentTab === "Favorites" && <UserFavorites />}
           {currentTab === "Setting" && (
-            <SettingProfile
-              currentUser={authContext.userInfos}
-              getUserData={getUserData}
-            />
+            <SettingProfile currentUser={authContext.userInfos} />
           )}
         </div>
       </div>

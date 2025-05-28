@@ -1,0 +1,12 @@
+.TypeWriter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.TypeWriter__text {
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: aladin;
+    color: var(--Pine-Green);
+}

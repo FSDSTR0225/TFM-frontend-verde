@@ -15,6 +15,7 @@ import SearchProp from "./pages/SearchProp/SearchProp";
 import News from "./pages/News/News";
 import NewsMain from "./pages/NewsMain/NewsMain";
 import About from "./pages/About/About";
+import Messages from "./pages/Messages/Messages";
 
 export default function App() {
   const url = "http://localhost:4000/users/me";
@@ -86,6 +87,7 @@ export default function App() {
           <Route path="/news" element={<NewsMain />} />
           <Route path="/news/:newsId" element={<News />} />
           <Route path="/about" element={<About />} />
+          <Route path="/messages" element={<Messages />} />
         </Routes>
         <FooterItem />
       </div>

@@ -70,7 +70,11 @@ export default function PropertyCard({
       <div className="UserProperties__bodyContainer">
         <div className="UserProperties__title">{item.title}</div>
         <div className="UserProperties__bodyInfoContainer">
-          <div className="UserProperties__price">{item.price} $/month</div>
+          <div className="UserProperties__price">
+            Price:
+            {item.price}
+            {item.duration !== "forever" ? " $/month" : " $"}
+          </div>
           <div className="UserProperties__details">
             <span className="UserProperties__detailItem">
               Bedrooms: {item.bedrooms}
@@ -91,7 +95,9 @@ export default function PropertyCard({
               Duration: {item.duration}
             </span>
           </div>
-          <div className="UserProperties__desc">Location: {item.location}</div>
+          <div className="UserProperties__desc">
+            Location : {item.city} , {item.location}
+          </div>
           <div className="UserProperties__desc">{item.desc}</div>
         </div>
         {authContext.isLoggedIn ? (

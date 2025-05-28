@@ -21,7 +21,6 @@ export default function ModalEditUser({
   email,
   password,
   userId,
-  getUserData,
 }) {
   const submitForm = async (data) => {
     setIsShowModal(false);
@@ -34,9 +33,8 @@ export default function ModalEditUser({
       body: JSON.stringify(data),
     })
       .then((resposnse) => resposnse.json())
-      .then((data) => {
-        console.log(data);
-        getUserData();
+      .then((res) => {
+        console.log(res);
       })
       .catch((err) => {
         console.log(err);

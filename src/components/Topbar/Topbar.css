@@ -12,18 +12,22 @@
   --dark-Gray: #464646;
 }
 .Topbar__container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 9vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0rem 5rem;
-  background-color: var(--Pine-Green);
+  background-color: rgba(0, 0, 0, 0.584);
   color: var(--white) !important;
 }
 
 .Topbar__logoWrapper {
   font-family: Fascinate;
-  color: var(--white);
+  color: var(--Pine-Green);
   font-size: 2.2rem;
   cursor: pointer;
 }
@@ -62,7 +66,7 @@
 }
 .Topbar__profileInfoWrapper {
   margin-left: 1rem;
-  background-color:rgba(255, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,14 +74,13 @@
   border-radius: 50px;
   gap: 0.7rem;
   padding-right: 1rem;
-  box-shadow: 0 0 1px 1px var(--white);
-  transition: all ease 0.5s;
+  border: 1px solid var(--white);
 }
 .Topbar__profileInfoWrapper:hover {
-  background-color: var(--white);
+  border: 1px solid greenyellow;
 }
 .Topbar__profileInfoWrapper:hover > .Topbar__profileName {
-  color: var(--Pine-Green);
+  color: var(--Lemon-Lime);
 }
 
 .Topbar__profileFoto {
@@ -101,7 +104,7 @@
   position: absolute;
   width: 100%;
   transform: scaleX(0);
-  height: 3px;
+  height: 2px;
   bottom: 0;
   left: 0;
   background-color: var(--Lemon-Lime);

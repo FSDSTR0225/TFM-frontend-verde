@@ -12,12 +12,12 @@
   align-items: center;
   height: 9vh;
   padding: 0rem 2rem;
-  background-color: var(--Pine-Green);
+  background-color: rgba(0, 0, 0, 0.751);
   color: var(--white) !important;
 }
 .MobileMenue__logo {
   font-family: Fascinate;
-  color: var(--white);
+  color: var(--Pine-Green);
   font-size: 2rem;
   cursor: pointer;
 }

@@ -1,4 +1,6 @@
-.TopSearchFilter {
+.SearchProps {
+  background-color: var(--white);
+  padding-top: 9vh;
   width: 100%;
   display: flex;
   flex-direction: column;

@@ -1,3 +1,6 @@
+.Home{
+  background-color: var(--white);
+}
 .LinkCart__container {
   display: flex;
   justify-content: center;
@@ -9,6 +12,28 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-
 }
-
+.TopMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(./images/backgrounds/2.png);
+  height: 90vh;
+  width: 100%;
+  background-size: cover;
+}
+.TopMain__Wrapper {
+  background-color: rgba(0, 0, 0, 0.477);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+  gap: 1rem;
+}
+.TopMain__title {
+  color: aliceblue;
+  font-size: 2rem;
+  text-align: center;
+  text-shadow: 0 3px 1px black;
+}

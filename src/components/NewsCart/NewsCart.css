@@ -20,7 +20,10 @@
   color: gray;
 }
 .NewsCart__link {
-  color: var(--medium-Blue);
+  color: var(--Pine-Green);
   text-decoration: underline;
+}
+.NewsCart__link:hover {
+text-shadow: 1px 1px 1px var(--Mint-Green);
   cursor: pointer;
 }

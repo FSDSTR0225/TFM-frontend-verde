@@ -1,0 +1,26 @@
+.mainbar__leftbody__image {
+  position: relative;
+}
+.editImg__input__Wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.userAvatar-label-icon {
+  font-size: 2rem;
+  color: var(--white);
+  background-color: var(--Pine-Green);
+  border-radius: 5px;
+  padding: 6px;
+}
+.userAvatar-label-icon:hover {
+  cursor: pointer;
+  background-color: var(--Lemon-Lime);
+  color: var(--Pine-Green);
+}
+.userAvatar-input {
+  display: none;
+}

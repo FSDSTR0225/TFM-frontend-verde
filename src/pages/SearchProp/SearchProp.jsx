@@ -5,6 +5,7 @@ import { useParams } from "react-router";
 import PropertyCard from "../../components/PropertyCard/PropertyCard";
 import AuthContext from "../../contexts/AuthContext";
 import NotFoundItem from "../../components/NotFoundItem/NotFoundItem";
+import TopMain from "../../components/TopMain/TopMain";
 
 export default function SearchProp() {
   const authContext = useContext(AuthContext);
@@ -67,7 +68,8 @@ export default function SearchProp() {
   }
 
   return (
-    <div className="TopSearchFilter">
+    <div className="SearchProps">
+      <TopMain />
       <TopSearchFilter
         propertyArr={propertyArr}
         filteredArr={filteredArr}

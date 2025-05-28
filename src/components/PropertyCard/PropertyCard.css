@@ -1,8 +1,9 @@
 .UserProperties__item {
   display: flex;
   align-items: center;
-  background-color: var(--white);
-  margin: 1.2rem;
+  background-image: linear-gradient(to bottom right, #b7ded9, #eefaf4, #eefaf4);
+  border: 1px solid var(--Pine-Green);
+  margin: 1rem;
   border-radius: 10px;
 }
 .UserProperties__imgContainer {

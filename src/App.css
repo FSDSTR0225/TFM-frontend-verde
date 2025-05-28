@@ -8,6 +8,7 @@
   --Sky-Blue: #87cefa;
   --medium-Blue: #2375a8;
   --Light-Jade: #b3e2d9;
+  --veryLight-Jade: #d9f3ed;
   --Off-White: #e6e6fa;
   --white: #f9f9f9;
   --light-Gray: #d3d3d3;
@@ -35,6 +36,7 @@ body {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   color: var(--dark-Gray);
   font-size: 16px;
+  background-color: var(--Pine-Green) !important;
 }
 .swal-footer {
   display: flex;

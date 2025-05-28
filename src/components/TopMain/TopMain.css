@@ -1,27 +1,3 @@
-.TopMain {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url(./images/backgrounds/home-back.jpg);
-  height: 70vh;
-  width: 100%;
-  background-size: cover;
-}
-.TopMain__Wrapper {
-  background-color: rgba(0, 0, 0, 0.477);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 4rem;
-  gap: 1rem;
-}
-.TopMain__title {
-  color: aliceblue;
-  font-size: 2rem;
-  text-align: center;
-  text-shadow: 0 3px 1px black;
-}
 .TopMain__container {
   margin: 2rem;
   display: flex;
@@ -31,19 +7,23 @@
 }
 .TopMain__contractCatBtn,
 .TopMain__settypeCat {
-  background-color: aliceblue;
+  background-color: var(--white);
   color: gray;
-  border: 2px solid gray;
+  border: 2px solid var(--Pine-Green);
   padding: 0.5rem 1.2rem;
   font-size: 1.2rem;
   font-weight: bold;
   outline: none;
   cursor: pointer;
 }
+select:focus > option:checked {
+  background: var(--Pine-Green) !important;
+  color: var(--white) !important;
+}
 .TopMain__contractCatBtn.active {
-  background-color: var(--white);
-  border-color: var(--Normal-Green);
-  color: var(--Normal-Green);
+  background-color: var(--Light-Jade);
+  border-color: var(--Pine-Green);
+  color: var(--Pine-Green);
 }
 .Topmain__searchInput__container,
 .Topmain__searchBtn__container {
@@ -62,7 +42,6 @@
 }
 .Topmain__searchBtn {
   padding: 0.7rem 1.5rem;
-  border-radius: 10px;
   background-color: rgb(79, 192, 116);
   font-size: larger;
   font-weight: bolder;

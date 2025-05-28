@@ -27,6 +27,7 @@ export default function SwiperReact() {
       <h3 className="swiper__subtitle mainsubtitle">Please check our latest updates</h3>
       <Swiper
         spaceBetween={50}
+        loop={true}
         slidesPerView={3}
         freeMode={true}
         scrollbar={false}

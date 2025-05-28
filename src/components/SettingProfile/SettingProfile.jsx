@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./SettingProfile.css";
 import ModalEditUser from "../ModalEditUser/ModalEditUser";
 
-export default function SettingProfile({ currentUser, getUserData }) {
+export default function SettingProfile({ currentUser }) {
   const [isShowModal, setIsShowModal] = useState(false);
 
   return (
@@ -18,7 +18,6 @@ export default function SettingProfile({ currentUser, getUserData }) {
           <button
             onClick={() => {
               setIsShowModal(true);
-              console.log("hi");
             }}
           >
             Edit
@@ -33,7 +32,6 @@ export default function SettingProfile({ currentUser, getUserData }) {
           email={currentUser.email}
           password={currentUser.password}
           userId={currentUser._id}
-          getUserData={getUserData}
         />
       )}
     </div>

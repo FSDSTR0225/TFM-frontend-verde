@@ -1,11 +1,69 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
 import designImg from "/images/sides/3.jpg";
-import userImg from "/images/users/user3.jpg";
 import { HiCalendarDateRange } from "react-icons/hi2";
+import { FaEdit } from "react-icons/fa";
+import Swal from "sweetalert2";
 
-export default function Dashboard({ currentUser }) {
+export default function Dashboard({ currentUser, setrefreshFlag }) {
+  useEffect(() => {
+    setuserImg(currentUser.image);
+  }, [currentUser.image]);
+
+  const [userImg, setuserImg] = useState();
+  const CLOUDINARY_ROOT_URL = "https://api.cloudinary.com/v1_1/";
+  const CLOUDINARY_CLOUD_NAME = "dvblykeav";
+  const CLOUDINARY_UPLOAD_PRESET = "casa_verde";
   const currentDate = new Date();
+
+  const onFileChange = (event) => {
+    const selectedImg = event.target.files[0];
+    fotoUploadHandler(selectedImg);
+  };
+  async function fotoUploadHandler(selectedImg) {
+    const formData = new FormData();
+    formData.append("file", selectedImg);
+    formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
+
+    const response = await fetch(
+      // https://api.cloudinary.com/v1_1/<cloud name>/<resource_type>/upload
+      `${CLOUDINARY_ROOT_URL}${CLOUDINARY_CLOUD_NAME}/upload`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
+    const data = await response.json();
+    await Swal.fire({
+      title: "Sweet!",
+      text: "Your fot has been changed!",
+      imageUrl: data.url,
+      imageWidth: 400,
+      imageHeight: 400,
+      imageAlt: "Custom image",
+    });
+    sendImgUrlToBackend(data.url);
+    setuserImg(data.url);
+    setrefreshFlag((prev) => !prev);
+  }
+  async function sendImgUrlToBackend(imageUrl) {
+    await fetch("http://localhost:4000/users/fotoEdit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: currentUser.username,
+        image: imageUrl,
+      }),
+    })
+      .then((resposnse) => {
+        console.log(resposnse);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   return (
     <>
       <div className="profile__mainbar__titlebar">
@@ -21,9 +79,29 @@ export default function Dashboard({ currentUser }) {
       </div>
       <div className="profile__mainbar__body">
         <div className="mainbar__leftbody">
-          <div>
-            <img className="mainbar__leftbody__img" src={userImg} />
+          <div className="mainbar__leftbody__image">
+            {userImg ? (
+              <img className="mainbar__leftbody__img" src={userImg} />
+            ) : (
+              <img
+                className="mainbar__leftbody__img"
+                src="./images/users/icons/artist.png"
+              />
+            )}
+            <div className="editImg__input__Wrapper">
+              <label className="userAvatar-label" htmlFor="userInputFoto">
+                <FaEdit className="userAvatar-label-icon" />
+              </label>
+              <input
+                className="userAvatar-input"
+                type="file"
+                id="userInputFoto"
+                onChange={onFileChange}
+                multiple
+              />
+            </div>
           </div>
+
           <div className="mainbar__leftbody__text">
             <div>Username : {currentUser.username}</div>
             <div>Email : {currentUser.email}</div>

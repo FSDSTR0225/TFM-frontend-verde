@@ -3,14 +3,15 @@
   height: 91vh;
   background-image: linear-gradient(
     to bottom right,
-    var(--Light-Jade),
-    var(--Pine-Green)
+    var(--Pine-Green),
+    var(--Light-Jade)
   );
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .Register__wrapper {
+  margin-top: 9vh;
   display: flex;
 }
 .RegisterForm__Container {
@@ -22,8 +23,9 @@
   justify-content: space-around;
 }
 .RegisterForm__Title {
+  font-family: aladin;
   text-align: center;
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   font-weight: 800;
   color: var(--Pine-Green);
   margin-bottom: 2rem;
