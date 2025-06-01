@@ -1,6 +1,27 @@
-.Messages {
-  min-height: 70vh;
-  padding-top: 9vh;
+.messages {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.Messages__container {
+.messages__container {
+  margin-top: 9vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.messages__left {
+  background-color: rgb(227, 171, 88);
+  width: 40%;
+}
+.messages__right {
+  width: 60%;
+  height: 60vh;
+  background-color: rgb(224, 224, 12);
+}
+
+.messages__propItem {
+  border: 3px solid gray;
+  height: 30vh;
 }

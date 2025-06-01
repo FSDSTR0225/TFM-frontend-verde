@@ -11,7 +11,7 @@ import {
   FormControl,
 } from "@mui/material";
 import AuthContext from "../../contexts/AuthContext";
-import sideImg from "/images/sides/7.jpg";
+import sideImg from "/images/sides/side123.jpg";
 import { useNavigate } from "react-router";
 import { FileUploader } from "../../components/FileUploader/FileUploader";
 
@@ -126,27 +126,21 @@ export default function NewProperty() {
               // color=""
               variant="standard"
             />
-
             <TextField
-              type="text"
-              className="PropertyForm__input"
-              {...register("location", {
+              className="PropertyForm__input halfInput"
+              type="number"
+              {...register("price", {
                 required: true,
-                // maxLength: 20,
-                minLength: 6,
               })}
-              aria-invalid={errors.location ? "true" : "false"}
-              error={errors.location}
-              // id="standard-error-helper-text"
-              label="Location"
+              aria-invalid={errors.price ? "true" : "false"}
+              error={errors.price}
+              id="standard-error-helper-text"
+              label="Price"
               defaultValue=""
-              helperText={
-                errors.location ? "Please enter valid location!" : null
-              }
               // color=""
+              helperText={errors.price ? `Please enter correct price!  ` : null}
               variant="standard"
             />
-
             <div className="inputHolder">
               <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
                 <InputLabel id="select-city">City</InputLabel>
@@ -166,34 +160,25 @@ export default function NewProperty() {
                 </Select>
               </FormControl>
             </div>
-
             <TextField
-              multiline
-              rows={6}
-              className="descInput"
-              id="descInput"
               type="text"
-              {...register("desc", {
+              className="PropertyForm__input"
+              {...register("location", {
                 required: true,
-                minLength: 10,
+                // maxLength: 20,
+                minLength: 6,
               })}
-              aria-invalid={errors.desc ? "true" : "false"}
-              error={errors.desc}
-              label="Description"
+              aria-invalid={errors.location ? "true" : "false"}
+              error={errors.location}
+              // id="standard-error-helper-text"
+              label="Location"
               defaultValue=""
-              helperText={errors.desc ? "Please enter valid desc!" : null}
+              helperText={
+                errors.location ? "Please enter valid location!" : null
+              }
+              // color=""
               variant="standard"
             />
-
-            {!isDisactive ? (
-              <FileUploader
-                setUploadedFile={setUploadedFile}
-                setIsDisactive={setIsDisactive}
-              />
-            ) : (
-              <span>foto is uploaded</span>
-            )}
-
             <div className="inputHolder">
               <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
                 <InputLabel id="select-contractCategory">
@@ -215,24 +200,34 @@ export default function NewProperty() {
                 </Select>
               </FormControl>
             </div>
-
-            <TextField
-              className="PropertyForm__input"
-              type="number"
-              {...register("price", {
-                required: true,
-                max: 1000000,
-                min: 100,
-              })}
-              aria-invalid={errors.price ? "true" : "false"}
-              error={errors.price}
-              id="standard-error-helper-text"
-              label="Price"
-              defaultValue=""
-              // color=""
-              helperText={errors.price ? `Please enter correct price!  ` : null}
-              variant="standard"
-            />
+            <div className="inputHolder">
+              <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+                <InputLabel id="select-Bedrooms">Bedrooms</InputLabel>
+                <Select
+                  {...register("bedrooms", {
+                    required: true,
+                  })}
+                  labelId="select-Bedrooms"
+                  id="demo-simple-select"
+                  value={bedrooms}
+                  label="Bedrooms"
+                  onChange={(e) => setbedrooms(e.target.value)}
+                >
+                  <MenuItem value="1">One</MenuItem>
+                  <MenuItem value="2">Two</MenuItem>
+                  <MenuItem value="3">Threa</MenuItem>
+                  <MenuItem value="4">Four</MenuItem>
+                </Select>
+              </FormControl>
+            </div>
+            {!isDisactive ? (
+              <FileUploader
+                setUploadedFile={setUploadedFile}
+                setIsDisactive={setIsDisactive}
+              />
+            ) : (
+              <span>foto is uploaded</span>
+            )}
 
             <div className="inputHolder">
               <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
@@ -251,27 +246,6 @@ export default function NewProperty() {
                   <MenuItem value="Villa">Villa</MenuItem>
                   <MenuItem value="Garage">Garage</MenuItem>
                   <MenuItem value="Office">Office</MenuItem>
-                </Select>
-              </FormControl>
-            </div>
-
-            <div className="inputHolder">
-              <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-                <InputLabel id="select-Bedrooms">Bedrooms</InputLabel>
-                <Select
-                  {...register("bedrooms", {
-                    required: true,
-                  })}
-                  labelId="select-Bedrooms"
-                  id="demo-simple-select"
-                  value={bedrooms}
-                  label="Bedrooms"
-                  onChange={(e) => setbedrooms(e.target.value)}
-                >
-                  <MenuItem value="1">One</MenuItem>
-                  <MenuItem value="2">Two</MenuItem>
-                  <MenuItem value="3">Threa</MenuItem>
-                  <MenuItem value="4">Four</MenuItem>
                 </Select>
               </FormControl>
             </div>
@@ -329,7 +303,23 @@ export default function NewProperty() {
                 </Select>
               </FormControl>
             </div>
-
+            <TextField
+              multiline
+              rows={6}
+              className="descInput PropertyForm__input"
+              id="descInput"
+              type="text"
+              {...register("desc", {
+                required: true,
+                minLength: 10,
+              })}
+              aria-invalid={errors.desc ? "true" : "false"}
+              error={errors.desc}
+              label="Description"
+              defaultValue=""
+              helperText={errors.desc ? "Please enter valid desc!" : null}
+              variant="standard"
+            />
             <div className="inputHolder">
               <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
                 <InputLabel id="select-minors">Minors Allowed</InputLabel>

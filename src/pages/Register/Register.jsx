@@ -51,7 +51,7 @@ export default function Register() {
       .then((result) => {
         authContext.login(result.user, result.access_token);
         setTimeout(() => {
-          navigate("/login");
+          navigate("/");
         }, 2000);
       })
       .catch((err) => {

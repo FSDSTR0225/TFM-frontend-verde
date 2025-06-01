@@ -6,7 +6,7 @@ export default function NewsCart({ img, text, link }) {
   const navigate = useNavigate();
   return (
     <div className="NewsCart">
-      <img src={img} className="NewsCart__img" />
+      <img src={img ? img : null} className="NewsCart__img" alt="cart-img"/>
       <div className="NewsCart__textContainer">
         <div className="NewsCart__text">{text}</div>
         <div className="NewsCart__link" onClick={() => navigate(link)}>

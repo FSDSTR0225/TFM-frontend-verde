@@ -1,0 +1,76 @@
+.welcomeNews {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80vh;
+}
+.welcomeNews__container {
+  background-color: var(--white);
+  width: 100%;
+  margin: 0 5rem;
+  position: relative;
+}
+@keyframes animeLtr {
+  0% {
+    left: -200px;
+  }
+  100% {
+    left: 0px;
+  }
+}
+@keyframes animeRtl {
+  0% {
+    right: 0%;
+  }
+  100% {
+    right: 30%;
+  }
+}
+.welcomeNews__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 2rem;
+  padding: 5rem;
+  z-index: 99;
+  width: 60%;
+}
+.welcomeNews__title {
+  color: var(--Pine-Green);
+  z-index: 15;
+  font-family: aladin;
+  font-size: 10rem;
+  position: relative;
+  transition: all ease;
+  animation-name: animeLtr;
+  animation-duration: 3s;
+}
+.welcomeNews__subtitle {
+  color: var(--Light-Jade);
+  background-color: var(--Pine-Green);
+  padding: 1rem;
+  z-index: 15;
+  font-size: 4rem;
+  font-family: aladin;
+  position: relative;
+  transition: all ease;
+  animation-name: animeLtr;
+  animation-duration: 3s;
+}
+.welcomeNews__right {
+  position: absolute;
+  transition: all ease;
+  animation-name: animeRtl;
+  animation-duration: 3s;
+  right: 30%;
+  top: -10%;
+  width: 40%;
+  z-index: 10;
+}
+.welcomeNews__image {
+  right: 30%;
+  top: -50%;
+  width: 50rem;
+}

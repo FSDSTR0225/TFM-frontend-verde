@@ -1,56 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import "./Messages.css";
+import AuthContext from "../../contexts/AuthContext";
 
-const socket = io(import.meta.env.VITE_SERVER_URL || "http://localhost:3000");
-const SENDER_NAME = import.meta.env.VITE_SENDER_NAME || "Anonymous";
+// https://socket.io/docs/v4/rooms/
+
+// const socket = io(import.meta.env.VITE_SERVER_URL || "http://localhost:4000");
+// const SENDER_NAME = import.meta.env.VITE_SENDER_NAME || "Anonymous";
 
 export default function Messages() {
-  const [message, setMessage] = useState("");
+  const [currentUser, setCurrentUser] = useState();
+
+  const authContext = useContext(AuthContext);
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
-    socket.on("chat message", (msg) => {
-      setMessages((prevMessages) => [...prevMessages, msg]);
-    });
-
-    return () => {
-      socket.off("chat message");
-    };
+    setCurrentUser(authContext.userInfos);
+    setMessages(authContext.userMessages);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (message.trim()) {
-      socket.emit("chat message", {
-        text: message,
-        sender: SENDER_NAME,
-      });
-      setMessage("");
-    }
-  };
-
   return (
-    <div className="Messages">
-      <div className="Messages__container">
-        Messages:
-        {messages.map((msg, index) => (
-          <div key={index} className="message">
-            <span className="message-time">{msg.time}</span>
-            <span className="message-sender">{msg.sender}:</span>
-            <span className="message-text">{msg.text}</span>
-          </div>
-        ))}
+    <div className="messages">
+      <div className="messages__container">
+        <div className="messages__left">
+          {messages &&
+            messages.map((item) => (
+              <div className="messages__propItem">{item[0]}</div>
+            ))}
+        </div>
+        <div className="messages__right">right part</div>
       </div>
-      <form onSubmit={handleSubmit} className="input-form">
-        <input
-          type="text"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder="Type a message..."
-        />
-        <button type="submit">Send</button>
-      </form>
     </div>
   );
 }

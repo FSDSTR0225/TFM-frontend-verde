@@ -69,12 +69,15 @@ export default function SearchProp() {
 
   return (
     <div className="SearchProps">
-      <TopMain />
-      <TopSearchFilter
-        propertyArr={propertyArr}
-        filteredArr={filteredArr}
-        setFilteredArr={setFilteredArr}
-      />
+      <div className="filters__wrapper">
+        <TopMain />
+        <TopSearchFilter
+          propertyArr={propertyArr}
+          filteredArr={filteredArr}
+          setFilteredArr={setFilteredArr}
+        />
+      </div>
+
       <div className="propertyCardWrapper">
         {filteredArr.length ? (
           filteredArr.map((item) => (

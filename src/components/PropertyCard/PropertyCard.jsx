@@ -54,6 +54,31 @@ export default function PropertyCard({
     });
   }
 
+  function sendMsgHandler(itemId, ownerId, itemTitle, itemImg) {
+    console.log(`itemId:${itemId}  ownerId:${ownerId}`);
+
+    Swal.fire({
+      title: "Conect with owner",
+      input: "textarea",
+      inputAttributes: {
+        autocapitalize: "off",
+      },
+      text: "Please write your message to send to property's owner",
+      showCancelButton: true,
+      confirmButtonColor: "#4fc074",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Send!",
+    }).then((result) => {
+      if (result.isConfirmed && result.value) {
+        authContext.sendMsgToOwner(itemId, ownerId, result.value ,itemTitle, itemImg);
+        Swal.fire({
+          title: "Sent!",
+          text: "Your Message has been sent",
+          icon: "success",
+        });
+      }
+    });
+  }
   return (
     <div className="UserProperties__item">
       <div className="UserProperties__imgContainer">
@@ -107,7 +132,12 @@ export default function PropertyCard({
                 <IoCallOutline className="UserProperties__footerIcon" />
                 View phone
               </span>
-              <span className="UserProperties__footerIconWrapper">
+              <span
+                className="UserProperties__footerIconWrapper"
+                onClick={() =>
+                  sendMsgHandler(item._id, item.owner, item.title, item.image)
+                }
+              >
                 <MdOutlineMessage className="UserProperties__footerIcon" />
                 Contact
               </span>

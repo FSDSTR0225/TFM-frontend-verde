@@ -35,6 +35,7 @@ export default function Profile() {
         })
         .then((data) => {
           authContext.login(data.user, userToken);
+          console.log("login done");
         })
         .catch((err) => {
           console.log(err);
@@ -109,6 +110,7 @@ export default function Profile() {
           {currentTab === "Dashboard" && (
             <Dashboard
               currentUser={authContext.userInfos}
+              updateUserInfos={authContext.updateUserInfos}
               setrefreshFlag={setrefreshFlag}
             />
           )}

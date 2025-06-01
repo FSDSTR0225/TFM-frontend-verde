@@ -5,7 +5,10 @@ import { HiCalendarDateRange } from "react-icons/hi2";
 import { FaEdit } from "react-icons/fa";
 import Swal from "sweetalert2";
 
-export default function Dashboard({ currentUser, setrefreshFlag }) {
+export default function Dashboard({
+  currentUser,
+  updateUserInfos,
+}) {
   useEffect(() => {
     setuserImg(currentUser.image);
   }, [currentUser.image]);
@@ -44,7 +47,7 @@ export default function Dashboard({ currentUser, setrefreshFlag }) {
     });
     sendImgUrlToBackend(data.url);
     setuserImg(data.url);
-    setrefreshFlag((prev) => !prev);
+    updateUserInfos({ image: data.url });
   }
   async function sendImgUrlToBackend(imageUrl) {
     await fetch("http://localhost:4000/users/fotoEdit", {

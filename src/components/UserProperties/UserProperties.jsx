@@ -11,7 +11,7 @@ export default function UserProperties({ currentUser }) {
 
   useEffect(() => {
     getUserProperties();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function getUserProperties() {
@@ -60,18 +60,21 @@ export default function UserProperties({ currentUser }) {
         console.log(err);
       });
   };
-
   return (
     <div className="UserProperties">
       <div className="UserProperties__container">
-        {allproperties.map((item) => (
-          <PropertyCard
-            key={item._id}
-            item={item}
-            deletePropertyHandler={deletePropertyHandler}
-            getUserProperties={getUserProperties}
-          />
-        ))}
+        {allproperties
+          ? allproperties.map((item) => (
+              <div key={item.title}>
+    
+                <PropertyCard
+                  item={item}
+                  deletePropertyHandler={deletePropertyHandler}
+                  getUserProperties={getUserProperties}
+                />
+              </div>
+            ))
+          : null}
       </div>
     </div>
   );

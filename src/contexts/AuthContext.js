@@ -5,8 +5,10 @@ const AuthContext = createContext({
   token: true,
   userInfos: {},
   userFavorites: [],
+  userMessages: [],
   login: () => {},
   logout: () => {},
+  sendMsgToOwner: () => {},
 });
 
 export default AuthContext;

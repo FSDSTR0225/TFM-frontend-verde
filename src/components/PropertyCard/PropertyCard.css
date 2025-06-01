@@ -71,6 +71,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .UserProperties__footerIcon {
   cursor: pointer;

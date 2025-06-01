@@ -45,7 +45,6 @@ export default function NewsBar() {
             name={cat}
             onClick={(event) => {
               setNewsCategory(event.target.getAttribute("name"));
-              console.log(newsCategory);
             }}
           >
             {cat}
@@ -58,7 +57,7 @@ export default function NewsBar() {
           .map((item) => (
             <NewsCart
               key={item._id}
-              img="./images/news/news1.jpg"
+              img={item.cover}
               text={item.mainTitle}
               link={`/news/${item._id}`}
             />
