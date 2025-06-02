@@ -11,7 +11,7 @@ import {
   FormControl,
 } from "@mui/material";
 import AuthContext from "../../contexts/AuthContext";
-import sideImg from "/images/sides/side123.jpg";
+import sideImg from "/images/backgrounds/top2.jpg";
 import { useNavigate } from "react-router";
 import { FileUploader } from "../../components/FileUploader/FileUploader";
 
@@ -119,11 +119,9 @@ export default function NewProperty() {
               })}
               aria-invalid={errors.title ? "true" : "false"}
               error={errors.title}
-              // id="standard-error-helper-text"
               label="Title"
               defaultValue=""
               helperText={errors.title ? "Please enter valid title!" : null}
-              // color=""
               variant="standard"
             />
             <TextField
@@ -137,7 +135,6 @@ export default function NewProperty() {
               id="standard-error-helper-text"
               label="Price"
               defaultValue=""
-              // color=""
               helperText={errors.price ? `Please enter correct price!  ` : null}
               variant="standard"
             />
@@ -170,13 +167,11 @@ export default function NewProperty() {
               })}
               aria-invalid={errors.location ? "true" : "false"}
               error={errors.location}
-              // id="standard-error-helper-text"
               label="Location"
               defaultValue=""
               helperText={
                 errors.location ? "Please enter valid location!" : null
               }
-              // color=""
               variant="standard"
             />
             <div className="inputHolder">
