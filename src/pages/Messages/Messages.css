@@ -12,16 +12,195 @@
   align-items: center;
 }
 .messages__left {
-  background-color: rgb(227, 171, 88);
-  width: 40%;
+  width: 70%;
+  height: 70vh;
+  background-color: rgb(211, 252, 198);
 }
-.messages__right {
-  width: 60%;
-  height: 60vh;
-  background-color: rgb(224, 224, 12);
+.messages__middle {
+  width: 30%;
+  height: 70vh;
+  background-color: aquamarine;
 }
 
 .messages__propItem {
   border: 3px solid gray;
   height: 30vh;
+}
+
+.formWrapper {
+  width: 100%;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.chat-display {
+  background-color: black;
+  color: aliceblue;
+}
+.formTitle {
+  font-size: 2rem;
+  font-family: aladin;
+  color: aliceblue;
+}
+.formInput {
+  font-size: 1.5rem;
+}
+.formBtn {
+  border: none;
+  padding: 0.4rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.btn {
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  background-color: black;
+  color: white;
+  margin-left: 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* Room Item Card Start*/
+.roomItem {
+  width: 100%;
+  background-color: pink;
+  border: 3px solid rgb(167, 33, 55);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--dark-Gray);
+  padding: 0.5rem;
+  cursor: pointer;
+}
+.roomItem:hover{
+  background-color: rgb(254, 133, 153);
+}
+
+.roomItem__ownerWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  gap: 1rem;
+}
+.roomItem__dataWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  gap: 2rem;
+}
+.roomItem__ownerIcon {
+  font-size: 2rem;
+  color: rgb(100, 100, 100);
+}
+.roomItem__ownerName {
+  font-size: 1rem;
+}
+.roomItem__imgWrapper {
+  width: 30%;
+}
+.roomItem__img {
+  border-radius: 10px;
+  width: 100%;
+}
+.roomItem__textWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  gap: 2rem;
+  width: 70%;
+}
+.roomItem__text {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+/* Room Item Card End*/
+
+
+.chat-display {
+    background-color: #333;
+    list-style-type: none;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    margin: 1rem auto;
+    padding: 0;
+    display: flex;
+    flex-flow: column;
+    justify-content: left;
+    overflow: auto;
+    flex-grow: 1;
+}
+
+.post {
+    background-color: #eee;
+    border-radius: 10px;
+    padding: 0 0 .25rem;
+    margin: .5rem;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.post--left {
+    width: 60%;
+    align-self: flex-start;
+}
+
+.post--right {
+    width: 60%;
+    align-self: flex-end;
+}
+
+.post__header {
+    color: #fff;
+    padding: .25rem .5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .5rem;
+}
+
+.post__header--user {
+    background-color: blue;
+}
+
+.post__header--reply {
+    background-color: purple;
+}
+
+.post__header--name {
+    font-weight: bold;
+}
+
+.post__header--time {
+    font-size: .8rem;
+}
+
+.post__text {
+    margin-top: 5px;
+    color: #333;
+    padding: .25rem .5rem;
+}
+
+.user-list,
+.room-list,
+.activity {
+    width: 100%;
+    min-height: 2.65rem;
+    margin: 0 auto;
+    max-width: 600px;
+    padding: .75rem .25rem;
+}
+
+.activity {
+    font-style: italic;
 }

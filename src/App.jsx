@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./reset.css";
 import "./App.css";
-import { io } from "socket.io-client";
 
 import { Routes, Route } from "react-router";
 import Home from "./pages/Home/Home";
@@ -68,30 +67,7 @@ export default function App() {
     localStorage.removeItem("user");
   };
 
-  const sendMsgToOwner = async (
-    itemId,
-    ownerId,
-    message,
-    itemTitle,
-    itemImg
-  ) => {
-    const socket = io(
-      import.meta.env.VITE_SERVER_URL || "http://localhost:4000"
-    );
 
-    console.log(itemId, ownerId, message, itemTitle, itemImg);
-    socket.emit("chat message", {
-      text: message,
-      sender: userInfos.username,
-      senderId: userInfos._id,
-      receiverId: ownerId,
-      propertyId: itemId,
-      propertyName: itemTitle,
-      propertyImg: itemImg,
-    });
-
-    socket.off("chat message");
-  };
   const updateUserInfos = (newUserInfo) => {
     setUserInfos((prevUserInfo) => ({ ...prevUserInfo, ...newUserInfo }));
   };
@@ -106,7 +82,6 @@ export default function App() {
         userMessages,
         login,
         logout,
-        sendMsgToOwner,
         updateUserInfos,
       }}
     >

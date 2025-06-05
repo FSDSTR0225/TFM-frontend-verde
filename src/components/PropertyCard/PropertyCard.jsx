@@ -20,6 +20,7 @@ export default function PropertyCard({
   addFavoriteHandler,
   deleteFavoriteHandler,
 }) {
+  const url = "http://localhost:4000/room";
   const [isShowEditModal, setIsShowEditModal] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const authContext = useContext(AuthContext);
@@ -54,9 +55,7 @@ export default function PropertyCard({
     });
   }
 
-  function sendMsgHandler(itemId, ownerId, itemTitle, itemImg) {
-    console.log(`itemId:${itemId}  ownerId:${ownerId}`);
-
+  function sendMsgHandler(itemId, ownerId) {
     Swal.fire({
       title: "Conect with owner",
       input: "textarea",
@@ -70,12 +69,33 @@ export default function PropertyCard({
       confirmButtonText: "Send!",
     }).then((result) => {
       if (result.isConfirmed && result.value) {
-        authContext.sendMsgToOwner(itemId, ownerId, result.value ,itemTitle, itemImg);
-        Swal.fire({
-          title: "Sent!",
-          text: "Your Message has been sent",
-          icon: "success",
-        });
+        console.log(itemId, ownerId, result.value);
+        let msgBody = {
+          users: [ownerId, authContext.userInfos._id],
+          property: itemId,
+        };
+        console.log(msgBody);
+        
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(msgBody),
+        })
+          .then((res) => {
+            if (res.ok === true) {
+              console.log(res.json());
+              Swal.fire({
+                title: "Sent!",
+                text: "Your Message has been sent",
+                icon: "success",
+              });
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
     });
   }
@@ -134,9 +154,7 @@ export default function PropertyCard({
               </span>
               <span
                 className="UserProperties__footerIconWrapper"
-                onClick={() =>
-                  sendMsgHandler(item._id, item.owner, item.title, item.image)
-                }
+                onClick={() => sendMsgHandler(item._id, item.owner)}
               >
                 <MdOutlineMessage className="UserProperties__footerIcon" />
                 Contact
