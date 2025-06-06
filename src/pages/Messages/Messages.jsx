@@ -4,17 +4,18 @@ import "./Messages.css";
 import AuthContext from "../../contexts/AuthContext";
 import { HiUsers } from "react-icons/hi";
 
-
 export default function Messages() {
   const authContext = useContext(AuthContext);
 
   const [currentUser, setCurrentUser] = useState("");
   const [socket, setSocket] = useState("");
   const [messagesArr, setMessagesArr] = useState([]);
+  const [oldmessagesArr, setOldMessagesArr] = useState([]);
   const [currentRoom, setCurrentRoom] = useState("");
 
   const [message, setMessage] = useState("");
   const [name, setName] = useState("");
+  const [reciever, setReciever] = useState("");
   const [serverRoomList, setServerRoomList] = useState("");
 
   // const [activity, setActivity] = useState("");
@@ -25,7 +26,6 @@ export default function Messages() {
     const newSocket = io(url);
     setSocket(newSocket);
     setCurrentUser(authContext.userInfos);
-
     return () => {
       newSocket.close();
     };
@@ -39,12 +39,9 @@ export default function Messages() {
   }, [currentUser]);
 
   useEffect(() => {
-    console.log("serverRoomList : ", serverRoomList);
-  }, [serverRoomList]);
-
-  useEffect(() => {
     if (currentRoom) {
       enterRoom();
+      setMessagesArr([]);
     }
     console.log("currentRoom : ", currentRoom);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -73,10 +70,74 @@ export default function Messages() {
         text: message,
       });
       setMessage("");
-      // chatDisplay.scrollTop = chatDisplay.scrollHeight//   need scroll
+      document.querySelector(".chat-display").scrollTop =
+        document.querySelector(".chat-display").scrollHeight; //   need scroll
+      postMsgToServer();
     }
   }
 
+  async function setRoomGetMsgFromServer(selectedRoomId, selectedRoomUsers) {
+    let currentReciever = selectedRoomUsers.find(
+      (user) => user._id !== currentUser._id
+    );
+    setReciever(currentReciever);
+    console.log("currentReciever : ", currentReciever);
+
+    setCurrentRoom(selectedRoomId);
+    await fetch(`${url}/message/room/${selectedRoomId}`)
+      .then((res) => {
+        console.log(res);
+        console.log(oldmessagesArr);
+
+        if (res.status == 200) {
+          return res.json();
+        }
+      })
+      .then((data) => setOldMessagesArr(data))
+      .catch((err) => console.log(err));
+  }
+  async function postMsgToServer() {
+    await fetch(`${url}/message`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        senderId: currentUser._id,
+        senderName: currentUser.username,
+        receiverId: reciever._id,
+        receiverName: reciever.username,
+        roomId: currentRoom,
+        message: message,
+      }),
+    })
+      .then((res) => {
+        if (res.ok === true) {
+          console.log("success : ", res);
+          console.log({
+            senderId: currentUser._id,
+            senderName: currentUser.username,
+            receiverId: reciever._id,
+            receiverName: reciever.username,
+            roomId: currentRoom,
+            message: message,
+          });
+        } else {
+          console.log("error : ", res);
+          console.log({
+            senderId: currentUser._id,
+            senderName: currentUser.username,
+            receiverId: reciever._id,
+            receiverName: reciever.username,
+            roomId: currentRoom,
+            message: message,
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   function enterRoom() {
     socket.emit("enterRoom", {
       name: name,
@@ -94,67 +155,22 @@ export default function Messages() {
   return (
     <div className="messages">
       <div className="messages__container">
-        <div className="messages__left chat-display">
-          {messagesArr.map((msg) => (
-            <div
-              key={msg._id}
-              className={
-                msg.name === name ? "post post--left" : "post post--right"
-              }
-            >
-              {msg.name !== "Admin" ? (
-                <>
-                  <div
-                    className={
-                      msg.name === name
-                        ? "post__header post__header--user"
-                        : "post__header post__header--reply"
-                    }
-                  >
-                    <span className="post__header--name">{msg.name}</span>
-                    <span className="post__header--time">{msg.time}</span>
-                  </div>
-                  <div className="post__text">{msg.text}</div>
-                </>
-              ) : (
-                <div className="post__text">{msg.text}</div>
-              )}
-            </div>
-          ))}
-
-          <form
-            onSubmit={(e) => sendMessage(e)}
-            className="form-message formWrapper"
-          >
-            <input
-              className="formInput"
-              type="text"
-              placeholder="your message"
-              id="message"
-              required
-              value={message}
-              onChange={(event) => setMessage(event.target.value)}
-            />
-            <button className="formBtn" type="submit">
-              send
-            </button>
-          </form>
-        </div>
-
         <div className="messages__middle">
           {serverRoomList &&
             serverRoomList.map((item) => (
               <div
                 key={item._id}
-                className="roomItem"
-                onClick={() => setCurrentRoom(item._id)}
+                className={
+                  currentRoom === item._id ? "roomItem activeRoom" : "roomItem"
+                }
+                onClick={() => setRoomGetMsgFromServer(item._id, item.users)}
               >
                 <div className="roomItem__ownerWrapper">
                   <span className="roomItem__ownerIcon">
                     <HiUsers />
                   </span>
                   <h3 className="roomItem__ownerName">
-                    {item.users[1].username}&{item.users[0].username}
+                    {reciever.username}
                   </h3>
                 </div>
 
@@ -172,6 +188,77 @@ export default function Messages() {
                 </div>
               </div>
             ))}
+        </div>
+
+        <div className="messages__left ">
+          <div className="chat-display">
+            {oldmessagesArr &&
+              oldmessagesArr.map((oldMsg) => (
+                <div
+                  key={oldMsg._id}
+                  className={
+                    oldMsg.senderName === name
+                      ? "post post--left"
+                      : "post post--right"
+                  }
+                >
+                  <div
+                    className={
+                      oldMsg.senderName === name
+                        ? "post__header post__header--user"
+                        : "post__header post__header--reply"
+                    }
+                  >
+                    <span className="post__header--name">{oldMsg.senderName}</span>
+                    <span className="post__header--time">{oldMsg.time}</span>
+                  </div>
+                  <div className="post__text">{oldMsg.message}</div>
+                </div>
+              ))}
+            {messagesArr.map((msg) => (
+              <div
+                key={msg._id}
+                className={
+                  msg.name === name ? "post post--left" : "post post--right"
+                }
+              >
+                {msg.name !== "admin" ? (
+                  <>
+                    <div
+                      className={
+                        msg.name === name
+                          ? "post__header post__header--user"
+                          : "post__header post__header--reply"
+                      }
+                    >
+                      <span className="post__header--name">{msg.name}</span>
+                      <span className="post__header--time">{msg.time}</span>
+                    </div>
+                    <div className="post__text">{msg.text}</div>
+                  </>
+                ) : (
+                  <div className="post__text">{msg.text}</div>
+                )}
+              </div>
+            ))}
+          </div>
+          <form
+            onSubmit={(e) => sendMessage(e)}
+            className="form-message formWrapper"
+          >
+            <input
+              className="formInput msginput"
+              type="text"
+              placeholder="your message"
+              id="message"
+              required
+              value={message}
+              onChange={(event) => setMessage(event.target.value)}
+            />
+            <button className="formBtn sendbutton" type="submit">
+              send
+            </button>
+          </form>
         </div>
       </div>
     </div>
