@@ -3,6 +3,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: linear-gradient(
+    to bottom right,
+    var(--Pine-Green),
+    var(--Light-Jade)
+  );
 }
 .messages__container {
   width: 100%;

@@ -170,7 +170,7 @@ export default function Messages() {
                     <HiUsers />
                   </span>
                   <h3 className="roomItem__ownerName">
-                    {reciever.username}
+                    {item.users[1].username} & {item.users[0].username}
                   </h3>
                 </div>
 
@@ -209,7 +209,9 @@ export default function Messages() {
                         : "post__header post__header--reply"
                     }
                   >
-                    <span className="post__header--name">{oldMsg.senderName}</span>
+                    <span className="post__header--name">
+                      {oldMsg.senderName}
+                    </span>
                     <span className="post__header--time">{oldMsg.time}</span>
                   </div>
                   <div className="post__text">{oldMsg.message}</div>

@@ -57,7 +57,7 @@ export default function MobileMenue() {
               >
                 <img
                   className="MobileMenue__profileFoto"
-                  src="./images/users/user3.jpg"
+                  src={authContext.userInfos.image}
                 />
                 <span className="MobileMenue__profileName">
                   {authContext.userInfos.username}

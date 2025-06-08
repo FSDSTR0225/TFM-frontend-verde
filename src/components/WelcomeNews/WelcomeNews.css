@@ -3,12 +3,17 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 80vh;
+
+  background-image: linear-gradient(
+    to bottom right,
+    var(--Pine-Green),
+    var(--Light-Jade)
+  );
 }
 .welcomeNews__container {
   background-color: var(--white);
   width: 100%;
-  margin: 0 5rem;
+
   position: relative;
 }
 @keyframes animeLtr {
@@ -33,44 +38,94 @@
   justify-content: center;
   align-items: start;
   gap: 2rem;
-  padding: 5rem;
-  z-index: 99;
-  width: 60%;
 }
 .welcomeNews__title {
   color: var(--Pine-Green);
-  z-index: 15;
   font-family: aladin;
-  font-size: 10rem;
   position: relative;
   transition: all ease;
   animation-name: animeLtr;
   animation-duration: 3s;
+  z-index: 1;
 }
 .welcomeNews__subtitle {
   color: var(--Light-Jade);
   background-color: var(--Pine-Green);
-  padding: 1rem;
-  z-index: 15;
-  font-size: 4rem;
   font-family: aladin;
   position: relative;
   transition: all ease;
   animation-name: animeLtr;
   animation-duration: 3s;
+  z-index: 1;
 }
 .welcomeNews__right {
-  position: absolute;
   transition: all ease;
   animation-name: animeRtl;
   animation-duration: 3s;
-  right: 30%;
-  top: -10%;
-  width: 40%;
-  z-index: 10;
 }
-.welcomeNews__image {
-  right: 30%;
-  top: -50%;
-  width: 50rem;
+
+/* Mobile Size */
+@media only screen and (max-width: 900px) {
+  .welcomeNews {
+    height: 60vh;
+    background-image: url(/images/news/feature/feature1.jpg);
+  }
+  .welcomeNews__container {
+    margin: 0;
+  }
+  .welcomeNews__left {
+    width: 100%;
+    height: 100%;
+    padding: 0rem;
+  }
+  .welcomeNews__title {
+    font-size: 6rem;
+  }
+  .welcomeNews__subtitle {
+    font-size: 2rem;
+      padding: 1rem 0.3rem;
+  }
+  .welcomeNews__right {
+    display: none;
+    position: static;
+    right: 5%;
+    top: 0;
+    width: 80%;
+  }
+  .welcomeNews__image {
+    width: 50rem;
+    right: 0%;
+    top: 0%;
+  }
+}
+/* Desktop Size */
+@media only screen and (min-width: 900px) {
+  .welcomeNews {
+    height: 80vh;
+  }
+  .welcomeNews__container {
+    margin: 0 5rem;
+  }
+  .welcomeNews__left {
+    width: 60%;
+    padding: 5rem;
+  }
+  .welcomeNews__title {
+    font-size: 8rem;
+  }
+  .welcomeNews__subtitle {
+    font-size: 3rem;
+      padding: 1rem;
+  }
+  .welcomeNews__right {
+    position: absolute;
+    right: 30%;
+    top: -10%;
+    width: 40%;
+  }
+  .welcomeNews__image {
+    width: 50rem;
+    right: 30%;
+    top: -50%;
+  }
 }

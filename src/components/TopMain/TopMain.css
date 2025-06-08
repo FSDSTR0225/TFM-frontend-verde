@@ -1,17 +1,18 @@
 .TopMain__container {
-  margin: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+}
+.TopMain__itemWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .TopMain__contractCatBtn,
 .TopMain__settypeCat {
   background-color: var(--white);
   color: gray;
   border: 2px solid var(--Pine-Green);
-  padding: 0.5rem 1.2rem;
-  font-size: 1.2rem;
   font-weight: bold;
   outline: none;
   cursor: pointer;
@@ -31,11 +32,12 @@ select:focus > option:checked {
   justify-content: center;
   align-items: center;
 }
+
 .TopMain__item {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 7rem;
+  /* min-width: 7rem; */
 }
 #citySelector {
   width: 15rem;
@@ -62,4 +64,37 @@ select:focus > option:checked {
   text-align: center;
   padding: 0;
   margin: 0;
+}
+
+@media only screen and (max-width: 900px) {
+  /* Mobile Size */
+  .TopMain__container {
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 0;
+  }
+  .TopMain__itemWrapper {
+    gap: 0.5rem;
+  }
+  .TopMain__contractCatBtn,
+  .TopMain__settypeCat {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+}
+/* Desktop Size */
+@media only screen and (min-width: 900px) {
+  .TopMain__container {
+    flex-direction: row;
+    gap: 1rem;
+    margin: 2rem;
+  }
+  .TopMain__itemWrapper {
+    gap: 1rem;
+  }
+  .TopMain__contractCatBtn,
+  .TopMain__settypeCat {
+    font-size: 1.2rem;
+    padding: 0.5rem 1.2rem;
+  }
 }

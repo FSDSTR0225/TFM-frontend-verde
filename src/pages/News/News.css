@@ -25,10 +25,10 @@
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
-  margin:4rem 5rem;
+  margin: 4rem 5rem;
   border: 3px solid var(--Pine-Green);
   padding: 4rem 8rem;
-    background-image: linear-gradient(to bottom right, #b7ded9, #eefaf4, #eefaf4);
+  background-image: linear-gradient(to bottom right, #b7ded9, #eefaf4, #eefaf4);
 }
 .News__textWrapper {
   display: flex;

@@ -95,74 +95,76 @@ export default function TopMain() {
   const handleSearch = async () => {
     !city || !contractCat || !typeCat
       ? console.log("there is some unselected item")
-      : navigate(
-          `/searchproperty/${city}/${typeCat}/${contractCat}`
-        );
+      : navigate(`/searchproperty/${city}/${typeCat}/${contractCat}`);
   };
 
   return (
-        <div className="TopMain__container">
-          <div className="TopMain__item">
-            {contractsCatItems.map((item) => (
-              <button
-                key={item._id}
-                className="TopMain__contractCatBtn"
-                value={item.name}
-                onClick={(e) => {
-                  setContractCatHandler(e);
-                }}
-              >
-                {item.name}
-              </button>
-            ))}
-          </div>
-          <div className="TopMain__item">
-            <select
-              className="TopMain__settypeCat"
-              onChange={(e) => setTypeCatHAndler(e)}
-            >
-              {typeCatItems.map((item) => (
-                <option key={item._id} value={item.name}>
-                  {item.name}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="TopMain__item">
-            <select
-              className="TopMain__settypeCat"
-              onChange={(e) => {
-                setProvince(e.target.value);
-                setCity("");
+    <div className="TopMain__container">
+      <div className="TopMain__itemWrapper">
+        <div className="TopMain__item">
+          {contractsCatItems.map((item) => (
+            <button
+              key={item._id}
+              className="TopMain__contractCatBtn"
+              value={item.name}
+              onClick={(e) => {
+                setContractCatHandler(e);
               }}
             >
-              {Proviences.map((item) => (
-                <option key={item.id} value={item.name}>
-                  {item.name}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="TopMain__item">
-            <select
-              id="citySelector"
-              className="TopMain__settypeCat"
-              onChange={(e) => setCity(e.target.value)}
-            >
-              <option value="">Poblacion</option>
-              {cityList.map((item) => (
-                <option key={item._id} value={item.name}>
-                  {item.name}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="TopMain__item">
-            <button className="Topmain__searchBtn" onClick={handleSearch}>
-              <FaSearch className="Topmain__searchIcon" />
-              Search
+              {item.name}
             </button>
-          </div>
+          ))}
         </div>
+        <div className="TopMain__item">
+          <select
+            className="TopMain__settypeCat"
+            onChange={(e) => setTypeCatHAndler(e)}
+          >
+            {typeCatItems.map((item) => (
+              <option key={item._id} value={item.name}>
+                {item.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+      <div className="TopMain__itemWrapper">
+        <div className="TopMain__item">
+          <select
+            className="TopMain__settypeCat"
+            onChange={(e) => {
+              setProvince(e.target.value);
+              setCity("");
+            }}
+          >
+            {Proviences.map((item) => (
+              <option key={item.id} value={item.name}>
+                {item.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div className="TopMain__item">
+          <select
+            id="citySelector"
+            className="TopMain__settypeCat"
+            onChange={(e) => setCity(e.target.value)}
+          >
+            <option value="">Poblacion</option>
+            {cityList.map((item) => (
+              <option key={item._id} value={item.name}>
+                {item.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+      <div className="TopMain__item">
+        <button className="Topmain__searchBtn" onClick={handleSearch}>
+          <FaSearch className="Topmain__searchIcon" />
+          Search
+        </button>
+      </div>
+    </div>
   );
 }
