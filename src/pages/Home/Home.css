@@ -10,17 +10,21 @@
   background-size: cover;
 }
 .TopMain__Wrapper {
-  background-color: rgba(0, 0, 0, 0.477);
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .TopMain__title {
-  color: aliceblue;
-
+  color: var(--Pine-Green);
+  font-family: aladin;
   text-align: center;
-  text-shadow: 0 3px 1px black;
+  text-shadow: var(--Light-Jade) 1px 1px 1px;
+  position: relative;
+  transition: all ease;
+  animation-name: opacityAnime;
+  animation-duration: 2s;
 }
 .LinkCart__container {
   display: flex;
@@ -42,6 +46,14 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+@keyframes opacityAnime {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @media only screen and (max-width: 900px) {
@@ -67,6 +79,6 @@
     padding: 4rem;
   }
   .TopMain__title {
-    font-size: 2rem;
+    font-size: 4rem;
   }
 }

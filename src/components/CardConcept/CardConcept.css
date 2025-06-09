@@ -1,12 +1,17 @@
 .cardConcept__container {
   display: flex;
-
   justify-content: center;
   align-items: center;
-
   background-color: var(--white);
   border: 1px solid gray;
   border-radius: 10px;
+}
+.cardConcept__container:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+
 }
 .cardConcept__iconWraper {
   margin-bottom: 1rem;

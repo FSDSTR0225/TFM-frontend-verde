@@ -6,7 +6,7 @@ import CardConceptCompo2 from "../../components/CardConceptCompo2/CardConceptCom
 export default function NewsMain() {
   return (
     <div>
-      <WelcomeNews />
+      <WelcomeNews title="Welcome" text="Welcome To Casa Verde News" wallpaperUrl="/images/backgrounds/5.png"/>
       <CardConceptCompo2 />
     </div>
   );

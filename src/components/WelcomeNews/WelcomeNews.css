@@ -3,15 +3,11 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-
-  background-image: linear-gradient(
-    to bottom right,
-    var(--Pine-Green),
-    var(--Light-Jade)
-  );
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .welcomeNews__container {
-  background-color: var(--white);
+  background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
 
   position: relative;
@@ -45,8 +41,9 @@
   position: relative;
   transition: all ease;
   animation-name: animeLtr;
-  animation-duration: 3s;
+  animation-duration: 2s;
   z-index: 1;
+  text-shadow: var(--Light-Jade) 1px 1px 1px;
 }
 .welcomeNews__subtitle {
   color: var(--Light-Jade);
@@ -54,21 +51,15 @@
   font-family: aladin;
   position: relative;
   transition: all ease;
-  animation-name: animeLtr;
-  animation-duration: 3s;
+  animation-name: opacityAnime;
+  animation-duration: 2s;
   z-index: 1;
-}
-.welcomeNews__right {
-  transition: all ease;
-  animation-name: animeRtl;
-  animation-duration: 3s;
 }
 
 /* Mobile Size */
 @media only screen and (max-width: 900px) {
   .welcomeNews {
     height: 60vh;
-    background-image: url(/images/news/feature/feature1.jpg);
   }
   .welcomeNews__container {
     margin: 0;
@@ -76,14 +67,14 @@
   .welcomeNews__left {
     width: 100%;
     height: 100%;
-    padding: 0rem;
+    padding-left: 2rem;
   }
   .welcomeNews__title {
     font-size: 6rem;
   }
   .welcomeNews__subtitle {
     font-size: 2rem;
-      padding: 1rem 0.3rem;
+    padding: 1rem 0.3rem;
   }
   .welcomeNews__right {
     display: none;
@@ -101,21 +92,22 @@
 /* Desktop Size */
 @media only screen and (min-width: 900px) {
   .welcomeNews {
-    height: 80vh;
+    height: 90vh;
+    padding: 0 9rem;
   }
   .welcomeNews__container {
     margin: 0 5rem;
   }
   .welcomeNews__left {
-    width: 60%;
-    padding: 5rem;
+    width: 80%;
+    padding: 4rem;
   }
   .welcomeNews__title {
-    font-size: 8rem;
+    font-size: 6rem;
   }
   .welcomeNews__subtitle {
-    font-size: 3rem;
-      padding: 1rem;
+    font-size: 2.5rem;
+    padding: 1rem;
   }
   .welcomeNews__right {
     position: absolute;

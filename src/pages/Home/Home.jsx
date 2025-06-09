@@ -16,7 +16,7 @@ export default function Home() {
       <div className="TopMain">
         <div className="TopMain__Wrapper">
           <h1 className="TopMain__title">
-            Find your property when ever you like !
+            Find your property wherever you like !
           </h1>
           <TopMain />
         </div>
