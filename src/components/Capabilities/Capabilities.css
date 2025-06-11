@@ -11,8 +11,8 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 80vh;
-  background-image: url(./images/backgrounds/top1.png);
+  height: 90vh;
+  background-image: url(./images/backgrounds/top11.png);
   background-attachment: fixed;
   position: static;
   background-size: cover;
@@ -45,7 +45,9 @@
 }
 .capabilities__item__count {
   color: var(--Lemon-Lime);
-  font-size: 1.3rem;
+  font-family: aladin;
+  font-size: 2rem;
+  font-weight: 600;
 }
 .capabilities__item__title {
   font-weight: 700;

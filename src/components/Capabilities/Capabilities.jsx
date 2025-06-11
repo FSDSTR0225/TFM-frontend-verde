@@ -3,7 +3,6 @@ import "./Capabilities.css";
 import { GiShadowFollower } from "react-icons/gi";
 import { HiMiniUserGroup } from "react-icons/hi2";
 import { FaProjectDiagram } from "react-icons/fa";
-import CounterNumber from "../CounterNumber/CounterNumber";
 import { FaUserFriends } from "react-icons/fa";
 import CountUp from "react-countup";
 
@@ -18,8 +17,7 @@ export default function Capabilities() {
               <FaProjectDiagram />
             </div>
             <div className="capabilities__item__count">
-              <CountUp end={1203} duration={5} />
-              {/* <CounterNumber countLimit={90} speedTime={30} /> */}
+              <CountUp end={1203} duration={5} enableScrollSpy />
             </div>
             <div className="capabilities__item__title">Total Projects</div>
           </div>
@@ -28,8 +26,7 @@ export default function Capabilities() {
               <HiMiniUserGroup />
             </div>
             <div className="capabilities__item__count">
-              <CountUp end={742} duration={5} />
-              {/* <CounterNumber countLimit={90} speedTime={30} /> */}
+              <CountUp end={742} duration={5} enableScrollSpy />
             </div>
             <div className="capabilities__item__title">Customers</div>
           </div>
@@ -38,8 +35,7 @@ export default function Capabilities() {
               <GiShadowFollower />
             </div>
             <div className="capabilities__item__count">
-              <CountUp end={3890} duration={5} />
-              {/* <CounterNumber countLimit={90} speedTime={30} /> */}
+              <CountUp end={3890} duration={5} enableScrollSpy />
             </div>
             <div className="capabilities__item__title">Followers</div>
           </div>
@@ -48,8 +44,7 @@ export default function Capabilities() {
               <FaUserFriends />
             </div>
             <div className="capabilities__item__count">
-              <CountUp end={2100} duration={5}/>
-              {/* <CounterNumber countLimit={90} speedTime={30} /> */}
+              <CountUp end={2100} duration={5} enableScrollSpy />
             </div>
             <div className="capabilities__item__title">Members</div>
           </div>
