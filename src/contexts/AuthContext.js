@@ -9,6 +9,7 @@ const AuthContext = createContext({
   login: () => {},
   logout: () => {},
   sendMsgToOwner: () => {},
+  updateUserInfos: () => {},
 });
 
 export default AuthContext;

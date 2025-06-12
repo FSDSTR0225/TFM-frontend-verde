@@ -25,7 +25,7 @@
   );
 }
 .profile__sidebar {
-  width: 17%;
+  width: 15%;
 }
 .profile__sidebarLogo {
   font-family: Fascinate;
@@ -75,7 +75,7 @@
   box-shadow: 0 0 20px -5px rgba(0, 0, 0, 0.7);
 }
 .profile__mainbar__wrapper {
-  width: 83%;
+  width: 85%;
 }
 
 .profile__mainbar {

@@ -15,7 +15,6 @@ import UserFavorites from "../../components/UserFavorites/UserFavorites";
 import SettingProfile from "../../components/SettingProfile/SettingProfile";
 
 export default function Profile() {
-  const [refreshFlag, setrefreshFlag] = useState(false);
   const authContext = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -46,7 +45,7 @@ export default function Profile() {
   useEffect(() => {
     getUserData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [refreshFlag]);
+  }, []);
 
   function logoutHandler() {
     Swal.fire({
@@ -111,7 +110,6 @@ export default function Profile() {
             <Dashboard
               currentUser={authContext.userInfos}
               updateUserInfos={authContext.updateUserInfos}
-              setrefreshFlag={setrefreshFlag}
             />
           )}
           {currentTab === "Properties" && (

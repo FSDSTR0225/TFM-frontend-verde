@@ -21,6 +21,7 @@ export default function PropertyCard({
   deleteFavoriteHandler,
 }) {
   const url = "http://localhost:4000/room";
+  
   const [isShowEditModal, setIsShowEditModal] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const authContext = useContext(AuthContext);
@@ -75,7 +76,7 @@ export default function PropertyCard({
           property: itemId,
         };
         console.log(msgBody);
-        
+
         fetch(url, {
           method: "POST",
           headers: {
@@ -121,24 +122,29 @@ export default function PropertyCard({
             {item.duration !== "forever" ? " $/month" : " $"}
           </div>
           <div className="UserProperties__details">
-            <span className="UserProperties__detailItem">
-              Bedrooms: {item.bedrooms}
-            </span>
-            <span className="UserProperties__detailItem">
-              Bathrooms: {item.bathrooms}
-            </span>
-            <span className="UserProperties__detailItem">
-              Couples: {item.couples === "true" ? "Yes" : "No"}
-            </span>
-            <span className="UserProperties__detailItem">
-              Pets: {item.pets === "true" ? "Yes" : "No"}
-            </span>
-            <span className="UserProperties__detailItem">
-              Minors: {item.minors === "true" ? "Yes" : "No"}
-            </span>
-            <span className="UserProperties__detailItem">
-              Duration: {item.duration}
-            </span>
+            <div className="UserProperties__detailsTop">
+              <span className="UserProperties__detailItem">
+                Bedrooms: {item.bedrooms}
+              </span>
+              <span className="UserProperties__detailItem">
+                Bathrooms: {item.bathrooms}
+              </span>
+              <span className="UserProperties__detailItem">
+                Couples: {item.couples === "true" ? "Yes" : "No"}
+              </span>
+              <span className="UserProperties__detailItem">
+                Pets: {item.pets === "true" ? "Yes" : "No"}
+              </span>
+            </div>
+
+            <div className="UserProperties__detailsBottom">
+              <span className="UserProperties__detailItem">
+                Minors: {item.minors === "true" ? "Yes" : "No"}
+              </span>
+              <span className="UserProperties__detailItem">
+                Duration: {item.duration}
+              </span>
+            </div>
           </div>
           <div className="UserProperties__desc">
             Location : {item.city} , {item.location}

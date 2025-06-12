@@ -239,8 +239,11 @@ export default function NewProperty() {
                 >
                   <MenuItem value="Apartment">Apartment</MenuItem>
                   <MenuItem value="Villa">Villa</MenuItem>
-                  <MenuItem value="Garage">Garage</MenuItem>
+                  <MenuItem value="Flat">Flat</MenuItem>
+                  <MenuItem value="Room">Room</MenuItem>
                   <MenuItem value="Office">Office</MenuItem>
+                  <MenuItem value="Garage">Garage</MenuItem>
+                  <MenuItem value="Storage">Storage</MenuItem>
                 </Select>
               </FormControl>
             </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./UserProperties.css";
 import Swal from "sweetalert2";
+import Grid from "@mui/material/Grid";
 
 import PropertyCard from "../PropertyCard/PropertyCard";
 
@@ -62,20 +63,19 @@ export default function UserProperties({ currentUser }) {
   };
   return (
     <div className="UserProperties">
-      <div className="UserProperties__container">
+      <Grid container spacing={0}>
         {allproperties
           ? allproperties.map((item) => (
-              <div key={item.title}>
-    
+              <Grid size={6} key={item._id}>
                 <PropertyCard
                   item={item}
                   deletePropertyHandler={deletePropertyHandler}
                   getUserProperties={getUserProperties}
                 />
-              </div>
+              </Grid>
             ))
           : null}
-      </div>
+      </Grid>
     </div>
   );
 }

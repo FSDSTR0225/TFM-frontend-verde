@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import "./UserFavorites.css";
 import AuthContext from "../../contexts/AuthContext";
-// import swal from "sweetalert";
+import Grid from "@mui/material/Grid";
 
 import PropertyCard from "../PropertyCard/PropertyCard";
 
@@ -22,6 +22,7 @@ export default function UserFavorites() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        authContext.updateUserInfos({ userFavorites: data.favorites });
       });
   }
   function deleteFavoriteHandler(itemId) {
@@ -35,21 +36,25 @@ export default function UserFavorites() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+         authContext.updateUserInfos({ userFavorites: data.favorites });
       });
   }
 
   return (
     <div className="UserProperties">
       <div className="UserProperties__container">
-        {authContext.userFavorites.map((item) => (
-          <PropertyCard
-            key={item._id}
-            item={item}
-            addNoteHandler={addNoteHandler}
-            addFavoriteHandler={addFavoriteHandler}
-            deleteFavoriteHandler={deleteFavoriteHandler}
-          />
-        ))}
+        <Grid container spacing={0}>
+          {authContext.userFavorites.map((item) => (
+            <Grid size={6} key={item._id}>
+              <PropertyCard
+                item={item}
+                addNoteHandler={addNoteHandler}
+                addFavoriteHandler={addFavoriteHandler}
+                deleteFavoriteHandler={deleteFavoriteHandler}
+              />
+            </Grid>
+          ))}
+        </Grid>
       </div>
     </div>
   );
