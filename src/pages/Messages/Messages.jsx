@@ -156,7 +156,7 @@ export default function Messages() {
     <div className="messages">
       <div className="messages__container">
         <div className="messages__middle">
-          {serverRoomList &&
+          {serverRoomList ? (
             serverRoomList.map((item) => (
               <div
                 key={item._id}
@@ -187,7 +187,10 @@ export default function Messages() {
                   </div>
                 </div>
               </div>
-            ))}
+            ))
+          ) : (
+            <div>There is no list and contact ... </div>
+          )}
         </div>
 
         <div className="messages__left ">

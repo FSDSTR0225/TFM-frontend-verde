@@ -6,6 +6,7 @@ import PropertyCard from "../../components/PropertyCard/PropertyCard";
 import AuthContext from "../../contexts/AuthContext";
 import NotFoundItem from "../../components/NotFoundItem/NotFoundItem";
 import TopMain from "../../components/TopMain/TopMain";
+import Grid from "@mui/material/Grid";
 
 export default function SearchProp() {
   const authContext = useContext(AuthContext);
@@ -79,22 +80,25 @@ export default function SearchProp() {
       </div>
 
       <div className="propertyCardWrapper">
-        {filteredArr.length ? (
-          filteredArr.map((item) => (
-            <PropertyCard
-              item={item}
-              key={item._id}
-              addNoteHandler={addNoteHandler}
-              addFavoriteHandler={addFavoriteHandler}
-              deleteFavoriteHandler={deleteFavoriteHandler}
+        <Grid container spacing={2}>
+          {filteredArr.length ? (
+            filteredArr.map((item) => (
+              <Grid size={{ xs: 12, md: 12, lg: 6 }} key={item._id}>
+                <PropertyCard
+                  item={item}
+                  addNoteHandler={addNoteHandler}
+                  addFavoriteHandler={addFavoriteHandler}
+                  deleteFavoriteHandler={deleteFavoriteHandler}
+                />
+              </Grid>
+            ))
+          ) : (
+            <NotFoundItem
+              errorTitle={"Could Not Find Any Item ! "}
+              errorText={"Sorry we did not find your selected property"}
             />
-          ))
-        ) : (
-          <NotFoundItem
-            errorTitle={"Could Not Find Any Item ! "}
-            errorText={"Sorry we did not find your selected property"}
-          />
-        )}
+          )}
+        </Grid>
       </div>
     </div>
   );

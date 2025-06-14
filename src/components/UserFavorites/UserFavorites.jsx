@@ -36,16 +36,16 @@ export default function UserFavorites() {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-         authContext.updateUserInfos({ userFavorites: data.favorites });
+        authContext.updateUserInfos({ userFavorites: data.favorites });
       });
   }
 
   return (
     <div className="UserProperties">
       <div className="UserProperties__container">
-        <Grid container spacing={0}>
+        <Grid container spacing={2}>
           {authContext.userFavorites.map((item) => (
-            <Grid size={6} key={item._id}>
+            <Grid size={{ xs: 12, md: 12, lg: 6 }} key={item._id}>
               <PropertyCard
                 item={item}
                 addNoteHandler={addNoteHandler}

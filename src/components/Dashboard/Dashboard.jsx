@@ -5,10 +5,16 @@ import { HiCalendarDateRange } from "react-icons/hi2";
 import { FaEdit } from "react-icons/fa";
 import Swal from "sweetalert2";
 
-export default function Dashboard({
-  currentUser,
-  updateUserInfos,
-}) {
+export default function Dashboard({ currentUser, updateUserInfos }) {
+  const date = new Date(currentUser.createdAt);
+  const year = date.getUTCFullYear();
+  const month = date.toLocaleString("default", { month: "long" }); // Get month name
+  const day = date.getUTCDate();
+  const hours = date.getUTCHours().toString().padStart(2, "0");
+  const minutes = date.getUTCMinutes().toString().padStart(2, "0");
+  const seconds = date.getUTCSeconds().toString().padStart(2, "0");
+  let RegisterDate = `${day} ${month} ${year} ${hours}:${minutes}:${seconds}`;
+
   useEffect(() => {
     setuserImg(currentUser.image);
   }, [currentUser.image]);
@@ -29,7 +35,6 @@ export default function Dashboard({
     formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
 
     const response = await fetch(
-      // https://api.cloudinary.com/v1_1/<cloud name>/<resource_type>/upload
       `${CLOUDINARY_ROOT_URL}${CLOUDINARY_CLOUD_NAME}/upload`,
       {
         method: "POST",
@@ -106,9 +111,18 @@ export default function Dashboard({
           </div>
 
           <div className="mainbar__leftbody__text">
-            <div>Username : {currentUser.username}</div>
-            <div>Email : {currentUser.email}</div>
-            <div>Joined Date : {currentUser.createdAt}</div>
+            <div>
+              <span className="leftbody__text__bold">Username : </span>
+              {" " + currentUser.username}
+            </div>
+            <div>
+              <span className="leftbody__text__bold">Email : </span>
+              {" " + currentUser.email}
+            </div>
+            <div>
+              <span className="leftbody__text__bold">Joined Date :</span>
+              {" " + RegisterDate}
+            </div>
           </div>
         </div>
         <div className="mainbar__rightbody">
@@ -120,7 +134,7 @@ export default function Dashboard({
             />
           </div>
           <div className="mainbar__rightbody__text">
-            <h3 className="mainbar__rightbody__title">
+            <h3 className="mainbar__rightbody__title mainTitle">
               Hello {currentUser.username}!
             </h3>
             <p>

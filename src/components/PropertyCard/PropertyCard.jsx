@@ -5,7 +5,7 @@ import { MdOutlineMessage } from "react-icons/md";
 import { MdDeleteOutline } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
 import ModalEditDelete from "../ModalEditDelete/ModalEditDelete";
-import { MdNoteAdd } from "react-icons/md";
+import { MdOutlineNoteAdd } from "react-icons/md";
 import { MdFavorite } from "react-icons/md";
 import { MdFavoriteBorder } from "react-icons/md";
 import AuthContext from "../../contexts/AuthContext";
@@ -169,11 +169,11 @@ export default function PropertyCard({
             {deletePropertyHandler ? (
               <div className="UserProperties__footerRight">
                 <MdDeleteOutline
-                  className="UserProperties__footerIcon"
+                  className="UserProperties__footerIcon deleteIcon"
                   onClick={() => deletePropertyHandler(item._id)}
                 />
                 <FaRegEdit
-                  className="UserProperties__footerIcon"
+                  className="UserProperties__footerIcon editIcon"
                   onClick={() => {
                     setIsShowEditModal(true);
                   }}
@@ -182,7 +182,7 @@ export default function PropertyCard({
               </div>
             ) : (
               <div className="UserProperties__footerRight">
-                <MdNoteAdd
+                <MdOutlineNoteAdd
                   className="UserProperties__footerIcon noteIcon"
                   onClick={() => addNoteHandler(item._id)}
                 />

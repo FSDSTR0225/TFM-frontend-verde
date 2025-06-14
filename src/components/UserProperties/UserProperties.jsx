@@ -63,10 +63,10 @@ export default function UserProperties({ currentUser }) {
   };
   return (
     <div className="UserProperties">
-      <Grid container spacing={0}>
+      <Grid container spacing={2}>
         {allproperties
           ? allproperties.map((item) => (
-              <Grid size={6} key={item._id}>
+              <Grid size={{ xs: 12, md: 12, lg: 6 }} key={item._id}>
                 <PropertyCard
                   item={item}
                   deletePropertyHandler={deletePropertyHandler}

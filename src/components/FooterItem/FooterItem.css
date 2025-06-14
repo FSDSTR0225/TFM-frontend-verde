@@ -1,45 +1,63 @@
 .FooterItem {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: start;
+  align-items: center;
   background-color: var(--Pine-Green);
   color: var(--white);
   width: 100%;
-
   border-top: 3px solid white;
+  padding: 3rem;
 }
 .Footer__container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
 }
-.Footer__left {
-  width: 70%;
+.Footer__col {
   display: flex;
-
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
   align-items: start;
+  height: 100%;
+  gap: 1rem;
 }
-.footer__logo {
+
+.Footer__logoWrapper {
   font-family: Fascinate;
-  color: var(--white);
-  font-size: 2.2rem;
+  font-size: 1.9rem;
   cursor: pointer;
-  margin-bottom: 3rem;
+}
+.Footer__logoWrapper:hover {
+  color: var(--Lemon-Lime);
+  text-decoration: underline;
 }
 .Footer__colTitle {
-  font-weight: 800;
+  font-family: aladin;
+  font-weight: 600;
+  font-size: 2rem;
+}
+.Footer__colList {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  height: 100%;
+  gap: 0.7rem;
 }
 .Footer__colspan {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  text-decoration: underline;
-  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 0.5rem;
+  font-weight: 600;
 }
 .Footer__colspan:hover {
   color: var(--Lemon-Lime);
+  cursor: pointer;
+  padding-left: 0.15rem;
+  transition: all 0.3s ease-in-out;
+  text-decoration: underline;
+}
+.Footer__infoIcon{
+  font-size: 1.1rem;
 }
 
 .socialContainer {
@@ -54,55 +72,9 @@
   align-items: center;
   gap: 1rem;
   cursor: pointer;
+  margin-top: 1rem;
 }
-@media only screen and (max-width: 900px) {
-  /* Mobile Size */
-  .FooterItem {
-    padding: 0.5rem;
-  }
-  .Footer__container {
-    flex-direction: column;
-    padding: 0;
-    gap: 1rem;
-  }
-  .Footer__left {
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .Footer__right {
-    width: 100%;
-  }
-  .Footer__colTitle {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-  .copyRight {
-    text-align: center;
-  }
-  .socialContainer {
-    gap: 0.5rem;
-  }
-}
-/* Desktop Size */
-@media only screen and (min-width: 900px) {
-  .FooterItem {
-    padding: 2rem;
-  }
-  .Footer__container {
-    flex-direction: row;
-    padding: 0 5rem;
-  }
-  .Footer__left {
-    flex-direction: row;
-  }
-  .Footer__right {
-    width: 30%;
-  }
-  .Footer__colTitle {
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
-  }
-  .socialContainer {
-    gap: 2rem;
-  }
+.socialItems :hover {
+  color: var(--Lemon-Lime);
+  transition: all 0.3s ease-in-out;
 }
