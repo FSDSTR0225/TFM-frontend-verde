@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./PropertyCard.css";
-import { IoCallOutline } from "react-icons/io5";
 import { MdOutlineMessage } from "react-icons/md";
 import { MdDeleteOutline } from "react-icons/md";
 import { FaRegEdit } from "react-icons/fa";
@@ -9,6 +8,7 @@ import { MdOutlineNoteAdd } from "react-icons/md";
 import { MdFavorite } from "react-icons/md";
 import { MdFavoriteBorder } from "react-icons/md";
 import AuthContext from "../../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import nofoto from "/images/properties/noimage.png";
 
@@ -20,8 +20,9 @@ export default function PropertyCard({
   addFavoriteHandler,
   deleteFavoriteHandler,
 }) {
-  const url = "http://localhost:4000/room";
-  
+  const navigate = useNavigate();
+  const url = "http://localhost:4000";
+
   const [isShowEditModal, setIsShowEditModal] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const authContext = useContext(AuthContext);
@@ -70,14 +71,14 @@ export default function PropertyCard({
       confirmButtonText: "Send!",
     }).then((result) => {
       if (result.isConfirmed && result.value) {
-        console.log(itemId, ownerId, result.value);
+        // console.log(itemId, ownerId, result.value);
         let msgBody = {
           users: [ownerId, authContext.userInfos._id],
           property: itemId,
         };
-        console.log(msgBody);
+        // console.log(msgBody);
 
-        fetch(url, {
+        fetch(`${url}/room`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -86,13 +87,32 @@ export default function PropertyCard({
         })
           .then((res) => {
             if (res.ok === true) {
-              console.log(res.json());
               Swal.fire({
                 title: "Sent!",
                 text: "Your Message has been sent",
                 icon: "success",
               });
+              return res.json();
+            } else {
+              console.log("error please check room duplicate");
+              return res.json();
             }
+            //
+          })
+          .then((response) => {
+            postMsgToServer(
+              authContext.userInfos._id,
+              ownerId,
+              response.createdRoom._id,
+              result.value
+            );
+            console.log(response);
+            console.log(
+              authContext.userInfos._id,
+              ownerId,
+              response.createdRoom._id,
+              result.value
+            );
           })
           .catch((err) => {
             console.log(err);
@@ -100,9 +120,42 @@ export default function PropertyCard({
       }
     });
   }
+
+  async function postMsgToServer(senderId, receiverId, roomId, message) {
+    await fetch("http://localhost:4000/message", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        senderId,
+        receiverId,
+        roomId,
+        message,
+      }),
+    })
+      .then((res) => {
+        if (res.ok === true) {
+          console.log("success : ", res);
+        } else {
+          console.log("error : ", res);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  const cardClickHandler = (propId) => {
+    navigate(`/property/${propId}`);
+  };
+
   return (
     <div className="UserProperties__item">
-      <div className="UserProperties__imgContainer">
+      <div
+        className="UserProperties__imgContainer"
+        onClick={() => cardClickHandler(item._id)}
+      >
         {item.image ? (
           <img
             className="UserProperties__img"
@@ -115,7 +168,10 @@ export default function PropertyCard({
       </div>
       <div className="UserProperties__bodyContainer">
         <div className="UserProperties__title">{item.title}</div>
-        <div className="UserProperties__bodyInfoContainer">
+        <div
+          className="UserProperties__bodyInfoContainer"
+          onClick={() => cardClickHandler(item._id)}
+        >
           <div className="UserProperties__price">
             Price:
             {item.price}
@@ -151,20 +207,18 @@ export default function PropertyCard({
           </div>
           <div className="UserProperties__desc">{item.desc}</div>
         </div>
-        {authContext.isLoggedIn ? (
+        {authContext.isLoggedIn && item.owner !== authContext.userInfos._id ? (
           <div className="UserProperties__footer">
             <div className="UserProperties__footerLeft">
-              <span className="UserProperties__footerIconWrapper">
-                <IoCallOutline className="UserProperties__footerIcon" />
-                View phone
-              </span>
-              <span
-                className="UserProperties__footerIconWrapper"
-                onClick={() => sendMsgHandler(item._id, item.owner)}
-              >
-                <MdOutlineMessage className="UserProperties__footerIcon" />
-                Contact
-              </span>
+              {!deletePropertyHandler ? (
+                <span
+                  className="UserProperties__footerIconWrapper"
+                  onClick={() => sendMsgHandler(item._id, item.owner)}
+                >
+                  <MdOutlineMessage className="UserProperties__footerIcon" />
+                  Contact owner
+                </span>
+              ) : null}
             </div>
             {deletePropertyHandler ? (
               <div className="UserProperties__footerRight">

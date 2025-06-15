@@ -8,6 +8,7 @@
 }
 .UserProperties__imgContainer {
   width: 30%;
+  cursor: pointer;
 }
 .UserProperties__img {
   width: 100%;
@@ -32,6 +33,9 @@
   font-family: aladin;
   font-size: 1.5rem;
   color: var(--Pine-Green);
+}
+.UserProperties__bodyInfoContainer {
+  cursor: pointer;
 }
 
 .UserProperties__price {

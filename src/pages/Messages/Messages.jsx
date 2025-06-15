@@ -38,15 +38,6 @@ export default function Messages() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);
 
-  useEffect(() => {
-    if (currentRoom) {
-      enterRoom();
-      setMessagesArr([]);
-    }
-    console.log("currentRoom : ", currentRoom);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentRoom]);
-
   function getRoomsFromServer() {
     if (currentUser) {
       fetch(`${url}/room/all/${currentUser._id}`).then((res) => {
@@ -61,6 +52,15 @@ export default function Messages() {
       });
     }
   }
+
+  useEffect(() => {
+    if (currentRoom) {
+      enterRoom();
+      setMessagesArr([]);
+    }
+    console.log("currentRoom : ", currentRoom);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentRoom]);
 
   function sendMessage(e) {
     e.preventDefault();
@@ -104,9 +104,7 @@ export default function Messages() {
       },
       body: JSON.stringify({
         senderId: currentUser._id,
-        senderName: currentUser.username,
         receiverId: reciever._id,
-        receiverName: reciever.username,
         roomId: currentRoom,
         message: message,
       }),
@@ -116,9 +114,7 @@ export default function Messages() {
           console.log("success : ", res);
           console.log({
             senderId: currentUser._id,
-            senderName: currentUser.username,
             receiverId: reciever._id,
-            receiverName: reciever.username,
             roomId: currentRoom,
             message: message,
           });
@@ -126,9 +122,7 @@ export default function Messages() {
           console.log("error : ", res);
           console.log({
             senderId: currentUser._id,
-            senderName: currentUser.username,
             receiverId: reciever._id,
-            receiverName: reciever.username,
             roomId: currentRoom,
             message: message,
           });

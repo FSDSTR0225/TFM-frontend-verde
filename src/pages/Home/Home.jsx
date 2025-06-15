@@ -4,7 +4,6 @@ import TopMain from "../../components/TopMain/TopMain";
 import BlogCart from "../../components/BlogCart/BlogCart";
 import NewsBar from "../../components/NewsBar/NewsBar";
 import SwiperReact from "../../components/SwiperReact/SwiperReact";
-import CarouselTop from "../../components/CarouselTop/CarouselTop";
 import TypeWriter from "../../components/TypeWriter/TypeWriter";
 import Capabilities from "../../components/Capabilities/Capabilities";
 import CardConceptCompo from "../../components/CardConceptCompo/CardConceptCompo";
@@ -22,7 +21,6 @@ export default function Home() {
       </div>
 
       <SwiperReact />
-      {/* <CarouselTop /> */}
       {/* <TypeWriter /> */}
 
       <Capabilities />

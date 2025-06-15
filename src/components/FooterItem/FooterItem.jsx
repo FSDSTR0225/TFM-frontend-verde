@@ -34,7 +34,7 @@ export default function FooterItem() {
         </Grid>
 
         <Grid size={{ xs: 12, md: 6, lg: 3 }} className="Footer__col">
-          <h4 className="Footer__colTitle">Important Links : </h4>
+          <h4 className="Footer__colTitle">Important Links:</h4>
           <ul className="Footer__colList">
             <li
               className="Footer__colspan"
@@ -67,27 +67,27 @@ export default function FooterItem() {
           <ul className="Footer__colList">
             <li className="Footer__colspan">
               <IoLocationSharp className="Footer__infoIcon" />
-              Address: Plaza Mayor,21
+              Plaza Mayor,21
             </li>
             <li className="Footer__colspan">
               <MdOutlineLocalPhone className="Footer__infoIcon" />
-              Phone: +34 123 456 789
+              +34 123 456 789
             </li>
             <li className="Footer__colspan">
               <MdOutlineFax className="Footer__infoIcon" />
-              Fax: +34 987 654 321
+              +34 987 654 321
             </li>
             <li className="Footer__colspan">
               <IoMailOpenOutline className="Footer__infoIcon" />
-              Email:in@casa.v.com
+              in@casa.v.com
             </li>
           </ul>
         </Grid>
 
         <Grid size={{ xs: 12, md: 6, lg: 3 }} className="Footer__col">
-          <h4 className="Footer__colTitle">Help :  </h4>
+          <h4 className="Footer__colTitle">Help: </h4>
           <ul className="Footer__colList">
-            <li className="Footer__colspan">Frequently asked questions</li>
+            <li className="Footer__colspan">Frequently questions</li>
             <li className="Footer__colspan">your acount</li>
             <li className="Footer__colspan">Privacy</li>
             <li className="Footer__colspan">Cookies policy</li>

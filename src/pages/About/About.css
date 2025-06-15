@@ -1,0 +1,44 @@
+.about__missions {
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+}
+.about__missions__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: start;
+  padding: 1rem;
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(103, 103, 103),
+    #d2eadc,
+    rgba(182, 197, 194, 0.8),
+    #d2eadc,
+    rgba(113, 113, 113, 0.8)
+  );
+  border-radius: 5rem 15rem 25rem 5rem;
+}
+.about__missions__leftContainer {
+  color: var(--dark-Gray);
+  width: 50%;
+  padding: 3rem;
+
+  border-radius: 10px;
+}
+.about__missions__rightContainer {
+  width: 50%;
+  padding: 2rem 0;
+}
+.about__missions__header {
+  font-size: 2rem;
+}
+.about__missions__text {
+  line-height: 1.5rem;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  text-align: justify;
+}

@@ -16,6 +16,7 @@ import News from "./pages/News/News";
 import NewsMain from "./pages/NewsMain/NewsMain";
 import About from "./pages/About/About";
 import Messages from "./pages/Messages/Messages";
+import PropPage from "./pages/propPage/propPage";
 
 export default function App() {
   const url = "http://localhost:4000/users/me";
@@ -93,14 +94,12 @@ export default function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/newproperty" element={<NewProperty />} />
-          <Route
-            path="/searchproperty/:city/:type/:contract"
-            element={<SearchProp />}
-          />
+          <Route path="/searchproperty/:city/:type/:contract" element={<SearchProp />}/>
           <Route path="/news" element={<NewsMain />} />
           <Route path="/news/:newsId" element={<News />} />
           <Route path="/about" element={<About />} />
           <Route path="/messages" element={<Messages />} />
+          <Route path="/property/:propId" element={<PropPage />} />
         </Routes>
         <FooterItem />
       </div>
