@@ -26,13 +26,8 @@
   animation-name: opacityAnime;
   animation-duration: 2s;
 }
-.LinkCart__container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem;
-  margin: 5rem 3rem;
-}
+
+
 .BlogCart__container {
   /* background-image: linear-gradient(to bottom right, #01796f, #eefaf4, #01796fa8,#eefaf4,#01796f); */
   background-image: linear-gradient(
@@ -66,7 +61,7 @@
     padding: 1rem 0.5rem;
   }
   .TopMain__title {
-    font-size: 1.7rem;
+    font-size: 2.8rem;
   }
 }
 /* Desktop Size */

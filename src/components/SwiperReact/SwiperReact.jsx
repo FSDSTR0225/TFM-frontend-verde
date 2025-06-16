@@ -27,8 +27,22 @@ export default function SwiperReact() {
       <h3 className="swiper__subtitle mainsubtitle">Please check our latest updates</h3>
       <Swiper
         spaceBetween={50}
+        breakpoints={{
+        // when window width is >= 640px
+        640: {
+          slidesPerView: 1,
+        },
+        // when window width is >= 768px
+        768: {
+          slidesPerView: 2,
+        },
+        // when window width is >= 1024px
+        1024: {
+          slidesPerView: 3,
+        },
+      }}
         loop={true}
-        slidesPerView={3}
+        // slidesPerView={3}
         freeMode={true}
         scrollbar={false}
         navigation={true}

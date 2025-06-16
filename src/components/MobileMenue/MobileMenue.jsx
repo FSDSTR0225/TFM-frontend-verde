@@ -52,6 +52,7 @@ export default function MobileMenue() {
           {authContext.isLoggedIn ? (
             <>
               <NavLink
+                onClick={() => setIsShowMenue(false)}
                 to="/profile"
                 className="MobileMenue__profileInfoWrapper"
               >
@@ -64,12 +65,14 @@ export default function MobileMenue() {
                 </span>
               </NavLink>
               <NavLink
+                onClick={() => setIsShowMenue(false)}
                 to="/newproperty"
                 className="MobileMenue__menuItem hover-underline-animation left"
               >
                 New props
               </NavLink>
               <NavLink
+                onClick={() => setIsShowMenue(false)}
                 to="/messages"
                 className="MobileMenue__menuItem hover-underline-animation left"
               >
@@ -79,12 +82,14 @@ export default function MobileMenue() {
           ) : (
             <div className="loginBtn__wrapper">
               <NavLink
+                onClick={() => setIsShowMenue(false)}
                 to="/login"
                 className="MobileMenue__menuItem hover-underline-animation left"
               >
                 Log in
               </NavLink>
               <NavLink
+                onClick={() => setIsShowMenue(false)}
                 to="/register"
                 className="MobileMenue__menuItem"
                 id="registerBtn"
@@ -98,6 +103,7 @@ export default function MobileMenue() {
               key={item.id}
               to={item.link}
               className="MobileMenue__menuItem hover-underline-animation left"
+              onClick={() => setIsShowMenue(false)}
             >
               {item.title}
             </NavLink>

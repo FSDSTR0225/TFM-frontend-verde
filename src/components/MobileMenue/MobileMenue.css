@@ -3,6 +3,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: 100%;
   position: relative;
   z-index: 99;
 }
@@ -51,10 +52,11 @@
   display: flex;
   flex-direction: column;
   animation: moveIn 1s;
-  gap: 2rem;
+  gap: 1.5rem;
   padding: 2rem;
 }
 .MobileMenue__menuItem {
+  font-size: 1.3rem;
   font-weight: 800;
   color: var(--white);
   padding: 1rem;

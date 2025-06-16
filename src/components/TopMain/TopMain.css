@@ -45,7 +45,7 @@ select:focus > option:checked {
 .Topmain__searchBtn {
   padding: 0.7rem 1.5rem;
   background-color: rgb(79, 192, 116);
-  font-size: larger;
+
   font-weight: bolder;
   color: aliceblue;
   border: none;
@@ -66,8 +66,8 @@ select:focus > option:checked {
   margin: 0;
 }
 
+/* Mobile Size */
 @media only screen and (max-width: 900px) {
-  /* Mobile Size */
   .TopMain__container {
     flex-direction: column;
     gap: 1.5rem;
@@ -80,6 +80,9 @@ select:focus > option:checked {
   .TopMain__settypeCat {
     font-size: 1rem;
     padding: 0.5rem 1rem;
+  }
+  .Topmain__searchBtn {
+    font-size: medium;
   }
 }
 /* Desktop Size */
@@ -96,5 +99,8 @@ select:focus > option:checked {
   .TopMain__settypeCat {
     font-size: 1.2rem;
     padding: 0.5rem 1.2rem;
+  }
+  .Topmain__searchBtn {
+    font-size: larger;
   }
 }
