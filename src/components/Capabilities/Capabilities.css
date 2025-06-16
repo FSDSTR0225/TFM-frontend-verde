@@ -27,7 +27,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 4rem;
+  gap: 8rem;
   background-color: rgba(0, 0, 0, 0.662);
   padding: 4rem;
 }
@@ -51,6 +51,6 @@
 }
 .capabilities__item__title {
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 1.7rem;
   color: var(--white);
 }

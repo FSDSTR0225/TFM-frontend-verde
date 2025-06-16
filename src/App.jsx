@@ -16,7 +16,7 @@ import News from "./pages/News/News";
 import NewsMain from "./pages/NewsMain/NewsMain";
 import About from "./pages/About/About";
 import Messages from "./pages/Messages/Messages";
-import PropPage from "./pages/propPage/propPage";
+import PropPage from "./pages/PropPage/PropPage";
 
 export default function App() {
   const url = "http://localhost:4000/users/me";

@@ -2,10 +2,15 @@ import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
 import designImg from "/images/sides/3.jpg";
 import { HiCalendarDateRange } from "react-icons/hi2";
+import { Button } from "@mui/material";
 import { FaEdit } from "react-icons/fa";
 import Swal from "sweetalert2";
+import ModalEditUser from "../ModalEditUser/ModalEditUser";
 
 export default function Dashboard({ currentUser, updateUserInfos }) {
+  const [isShowModal, setIsShowModal] = useState(false);
+
+
   const date = new Date(currentUser.createdAt);
   const year = date.getUTCFullYear();
   const month = date.toLocaleString("default", { month: "long" }); // Get month name
@@ -123,6 +128,16 @@ export default function Dashboard({ currentUser, updateUserInfos }) {
               <span className="leftbody__text__bold">Joined Date :</span>
               {" " + RegisterDate}
             </div>
+            <Button
+              className="editUser__btn"
+              onClick={() => {
+                setIsShowModal(true);
+              }}
+              variant="contained"
+              size="small"
+            >
+              Edit
+            </Button>
           </div>
         </div>
         <div className="mainbar__rightbody">
@@ -145,6 +160,18 @@ export default function Dashboard({ currentUser, updateUserInfos }) {
         </div>
       </div>
       <div className="profile__mainbar__footer"></div>
+      <div>
+        {isShowModal && (
+          <ModalEditUser
+            isShowModal={isShowModal}
+            setIsShowModal={setIsShowModal}
+            username={currentUser.username}
+            email={currentUser.email}
+            password={currentUser.password}
+            userId={currentUser._id}
+          />
+        )}
+      </div>
     </>
   );
 }

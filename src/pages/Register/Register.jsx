@@ -86,7 +86,6 @@ export default function Register() {
               helperText={
                 errors.username ? "Please enter valid username!" : null
               }
-              // color=""
               variant="standard"
             />
             <TextField
@@ -100,10 +99,8 @@ export default function Register() {
               })}
               aria-invalid={errors.email ? "true" : "false"}
               error={errors.email}
-              // id="standard-error-helper-text"
               label="Email"
               defaultValue=""
-              // color=""
               helperText={errors.email ? "Please enter valid email!" : null}
               variant="standard"
             />
@@ -121,7 +118,6 @@ export default function Register() {
               id="standard-error-helper-text"
               label="Password"
               defaultValue=""
-              // color=""
               helperText={
                 errors.password
                   ? `Please enter correct password! (Password must be 6 and include capitals and numbers) `

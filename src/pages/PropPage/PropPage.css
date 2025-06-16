@@ -1,0 +1,32 @@
+.PropPage {
+  width: 100%;
+  color: var(--white);
+  background-color: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.PropPage__container {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 9vh;
+}
+.PropPage__imgWrapper {
+  width: 40%;
+  padding: 3rem;
+}
+.PropPage__image {
+  border-radius: 2rem 6rem 10rem 2rem;
+  width: 100%;
+}
+.PropPage__body {
+  width: 60%;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 1rem;
+}

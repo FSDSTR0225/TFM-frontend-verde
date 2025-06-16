@@ -13,6 +13,7 @@ import {
 import { green, indigo } from "@mui/material/colors";
 import { useForm } from "react-hook-form";
 import TextField from "@mui/material/TextField";
+import Swal from "sweetalert2";
 
 export default function ModalEditUser({
   isShowModal,
@@ -24,21 +25,37 @@ export default function ModalEditUser({
 }) {
   const submitForm = async (data) => {
     setIsShowModal(false);
-    console.log(data);
-    await fetch(`http://localhost:4000/users/${userId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((resposnse) => resposnse.json())
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Updating new data!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, Update!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Edited!",
+          text: "Your info has been edited.",
+          icon: "success",
+        });
+        fetch(`http://localhost:4000/users/${userId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((resposnse) => {
+            return resposnse.json();
+          })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    });
   };
 
   const {

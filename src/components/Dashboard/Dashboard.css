@@ -49,6 +49,12 @@
   flex-direction: column;
   gap: 0.7rem;
 }
+.editUser__btn{
+  max-width: 3rem;
+  margin-top: 1rem !important;
+  background-color: var(--Light-Jade) !important;
+  color: var(--Pine-Green) !important;
+}
 .mainbar__rightbody {
   width: 60%;
   box-shadow: 0 0 10px -5px rgba(0, 0, 0, 0.463);
