@@ -110,8 +110,9 @@ export default function NewProperty() {
           </div>
           <form className="PropertyForm" onSubmit={handleSubmit(onSubmit)}>
             <TextField
-              type="text"
               className="PropertyForm__input"
+              size="small"
+              type="text"
               {...register("title", {
                 required: true,
                 // maxLength: 20,
@@ -127,6 +128,7 @@ export default function NewProperty() {
             <TextField
               className="PropertyForm__input halfInput"
               type="number"
+              size="small"
               {...register("price", {
                 required: true,
               })}
@@ -158,8 +160,9 @@ export default function NewProperty() {
               </FormControl>
             </div>
             <TextField
-              type="text"
               className="PropertyForm__input"
+              type="text"
+              size="small"
               {...register("location", {
                 required: true,
                 // maxLength: 20,
@@ -307,6 +310,7 @@ export default function NewProperty() {
               className="descInput PropertyForm__input"
               id="descInput"
               type="text"
+              size="small"
               {...register("desc", {
                 required: true,
                 minLength: 10,

@@ -209,7 +209,10 @@ export default function Messages() {
                     <span className="post__header--name">
                       {oldMsg.senderName}
                     </span>
-                    <span className="post__header--time">{oldMsg.time}</span>
+                    <span className="post__header--time">
+                      <span>{oldMsg.date}__</span>
+                      <span>{oldMsg.time}</span>
+                    </span>
                   </div>
                   <div className="post__text">{oldMsg.message}</div>
                 </div>
@@ -236,7 +239,7 @@ export default function Messages() {
                     <div className="post__text">{msg.text}</div>
                   </>
                 ) : (
-                  <div className="post__text">{msg.text}</div>
+                  <div className="post__text adminMsg">{msg.text}</div>
                 )}
               </div>
             ))}
