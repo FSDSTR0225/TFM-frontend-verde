@@ -18,8 +18,6 @@ export default function Messages() {
   const [reciever, setReciever] = useState("");
   const [serverRoomList, setServerRoomList] = useState("");
 
-  // const [activity, setActivity] = useState("");
-
   const url = "http://localhost:4000";
 
   useEffect(() => {

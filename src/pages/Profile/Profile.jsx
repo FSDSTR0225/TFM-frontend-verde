@@ -3,7 +3,6 @@ import "./Profile.css";
 import { MdSpaceDashboard } from "react-icons/md";
 import { MdFavorite } from "react-icons/md";
 import { FaBuilding } from "react-icons/fa";
-import { IoMdSettings } from "react-icons/io";
 import { TbHelpHexagonFilled } from "react-icons/tb";
 import { LuLogOut } from "react-icons/lu";
 import AuthContext from "../../contexts/AuthContext";
@@ -12,6 +11,13 @@ import UserProperties from "../../components/UserProperties/UserProperties";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import UserFavorites from "../../components/UserFavorites/UserFavorites";
+
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormHelperText from "@mui/material/FormHelperText";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import { grey } from "@mui/material/colors";
 
 export default function Profile() {
   const authContext = useContext(AuthContext);
@@ -80,7 +86,7 @@ export default function Profile() {
   return (
     <div className="profile">
       <div className="profile__sidebar">
-        <div className="profile__sidebarLogo">Welcome</div>
+        <div className="profile__sidebarLogo">Select Menu</div>
         <ul className="profile__sidebarWrapper">
           {menuItems.map((item) => (
             <li
@@ -100,6 +106,24 @@ export default function Profile() {
             Log out
           </li>
         </ul>
+        <div className="profile__sidebarMobileWrapper">
+          <FormControl sx={{ m: 1, minWidth: 120 }} >
+            <InputLabel id="sidebarMobile">Menu</InputLabel>
+            <Select
+              labelId="sidebarMobile"
+              id="sidebarMobile"
+              value={currentTab}
+              label="Age"
+              onChange={(event) => setCurrentTab(event.target.value)}
+              color={grey[50]}
+            >
+              <MenuItem value="Dashboard">Dashboard</MenuItem>
+              <MenuItem value="Favorites">Favorites</MenuItem>
+              <MenuItem value="Properties">Properties</MenuItem>
+              <MenuItem value="Help">Help</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
       </div>
 
       <div className="profile__mainbar__wrapper">

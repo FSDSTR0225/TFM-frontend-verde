@@ -53,8 +53,9 @@
   color: var(--Light-Jade) !important;
   background-color: var(--Pine-Green) !important;
 }
+
+/* Mobile Size */
 @media only screen and (max-width: 900px) {
-  /* Mobile Size */
   .Register__wrapper {
     flex-direction: column;
   }

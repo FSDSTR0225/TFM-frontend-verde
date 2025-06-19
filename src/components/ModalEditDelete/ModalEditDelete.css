@@ -9,12 +9,11 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 70%;
-  padding-top: 3rem;
+
   background-color: var(--white);
   box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.463);
 }
-.editModalBody{
+.editModalBody {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,17 +21,14 @@
   width: 100%;
 }
 .editModal__mainWraper {
-  padding: 2rem 5rem;
   width: 100%;
-  display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
-  gap: 2rem 0rem;
 }
-.editModal__item__input{
+.editModal__item__input {
   max-width: 10rem;
 }
 .descInput {
   grid-row: 4 / span 2 !important;
+  padding: 0.5rem !important;
 }
 .modal__Title {
   font-family: Aladin !important;
@@ -93,4 +89,38 @@
 .modalFooter__btn.fail {
   color: rgb(199, 63, 63) !important;
   background-color: rgb(255, 191, 191) !important;
+}
+
+/* Mobile Size */
+@media only screen and (max-width: 900px) {
+  .modal__Box {
+    width: 95%;
+    padding-top: 1rem;
+  }
+  .editModal__itemwraper {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .editModal__mainWraper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1rem;
+  }
+}
+/* Desktop Size */
+@media only screen and (min-width: 900px) {
+  .modal__Box {
+    width: 70%;
+    padding-top: 3rem;
+  }
+  .editModal__itemwraper {
+    flex-direction: row;
+    gap: 1rem;
+  }
+  .editModal__mainWraper {
+    padding: 2rem 5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem 0rem;
+  }
 }
