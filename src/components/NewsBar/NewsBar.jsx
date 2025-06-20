@@ -3,6 +3,8 @@ import "./NewsBar.css";
 import NewsCart from "../NewsCart/NewsCart";
 
 export default function NewsBar() {
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const [newsCategory, setNewsCategory] = useState("Featured News");
   const [allNewsCat, setAllNewsCat] = useState([]);
   const [allNews, setAllNews] = useState([]);
@@ -13,14 +15,14 @@ export default function NewsBar() {
   }, []);
 
   const getAllCategory = async () => {
-    fetch("http://localhost:4000/news/allCat")
+    fetch(`${apiUrl}/news/allCat`)
       .then((res) => res.json())
       .then((data) => {
         setAllNewsCat(data);
       });
   };
   const getAllNews = async () => {
-    fetch("http://localhost:4000/news/all")
+    fetch(`${apiUrl}/news/all`)
       .then((res) => res.json())
       .then((data) => {
         setAllNews(data);

@@ -23,6 +23,8 @@ export default function ModalEditUser({
   password,
   userId,
 }) {
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const submitForm = async (data) => {
     setIsShowModal(false);
     Swal.fire({
@@ -38,7 +40,7 @@ export default function ModalEditUser({
           text: "Your info has been edited.",
           icon: "success",
         });
-        fetch(`http://localhost:4000/users/${userId}`, {
+        fetch(`${apiUrl}/users/${userId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",

@@ -5,6 +5,8 @@ import AuthContext from "../../contexts/AuthContext";
 import { HiUsers } from "react-icons/hi";
 
 export default function Messages() {
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const authContext = useContext(AuthContext);
 
   const [currentUser, setCurrentUser] = useState("");
@@ -18,10 +20,8 @@ export default function Messages() {
   const [reciever, setReciever] = useState("");
   const [serverRoomList, setServerRoomList] = useState("");
 
-  const url = "http://localhost:4000";
-
   useEffect(() => {
-    const newSocket = io(url);
+    const newSocket = io(apiUrl);
     setSocket(newSocket);
     setCurrentUser(authContext.userInfos);
     return () => {
@@ -38,7 +38,7 @@ export default function Messages() {
 
   function getRoomsFromServer() {
     if (currentUser) {
-      fetch(`${url}/room/all/${currentUser._id}`).then((res) => {
+      fetch(`${apiUrl}/room/all/${currentUser._id}`).then((res) => {
         if (res.ok) {
           res
             .json()
@@ -56,7 +56,6 @@ export default function Messages() {
       enterRoom();
       setMessagesArr([]);
     }
-    console.log("currentRoom : ", currentRoom);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentRoom]);
 
@@ -79,14 +78,10 @@ export default function Messages() {
       (user) => user._id !== currentUser._id
     );
     setReciever(currentReciever);
-    console.log("currentReciever : ", currentReciever);
 
     setCurrentRoom(selectedRoomId);
-    await fetch(`${url}/message/room/${selectedRoomId}`)
+    await fetch(`${apiUrl}/message/room/${selectedRoomId}`)
       .then((res) => {
-        console.log(res);
-        console.log(oldmessagesArr);
-
         if (res.status == 200) {
           return res.json();
         }
@@ -95,7 +90,7 @@ export default function Messages() {
       .catch((err) => console.log(err));
   }
   async function postMsgToServer() {
-    await fetch(`${url}/message`, {
+    await fetch(`${apiUrl}/message`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -110,20 +105,8 @@ export default function Messages() {
       .then((res) => {
         if (res.ok === true) {
           console.log("success : ", res);
-          console.log({
-            senderId: currentUser._id,
-            receiverId: reciever._id,
-            roomId: currentRoom,
-            message: message,
-          });
         } else {
           console.log("error : ", res);
-          console.log({
-            senderId: currentUser._id,
-            receiverId: reciever._id,
-            roomId: currentRoom,
-            message: message,
-          });
         }
       })
       .catch((err) => {

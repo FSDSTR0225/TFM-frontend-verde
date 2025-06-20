@@ -4,6 +4,8 @@ import { useParams } from "react-router";
 import newImg from "/images/properties/noimage.png";
 
 export default function News() {
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const params = useParams();
 
   const [newsID, setNewsID] = useState("");
@@ -15,11 +17,12 @@ export default function News() {
 
   useEffect(() => {
     newsID &&
-      fetch(`http://localhost:4000/news/allnews/${newsID}`)
+      fetch(`${apiUrl}/news/allnews/${newsID}`)
         .then((res) => res.json())
         .then((data) => {
           setNewsInfo(data);
         });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [newsID]);
 
   return (

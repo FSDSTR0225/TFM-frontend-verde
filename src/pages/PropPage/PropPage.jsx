@@ -3,9 +3,10 @@ import "./PropPage.css";
 import { useParams } from "react-router";
 
 export default function PropPage() {
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const params = useParams();
 
-  const url = "http://localhost:4000/";
   const [propData, setPropData] = useState("");
   const [propId, setPropId] = useState("");
 
@@ -15,13 +16,14 @@ export default function PropPage() {
 
   useEffect(() => {
     if (propId) {
-      fetch(`${url}properties/${propId}`)
+      fetch(`${apiUrl}/properties/${propId}`)
         .then((res) => res.json())
         .then((data) => {
           setPropData(data);
           console.log(data);
         });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [propId]);
 
   return (

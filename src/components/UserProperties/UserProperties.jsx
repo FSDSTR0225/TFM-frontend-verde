@@ -6,7 +6,7 @@ import Grid from "@mui/material/Grid";
 import PropertyCard from "../PropertyCard/PropertyCard";
 
 export default function UserProperties({ currentUser }) {
-  const url = `http://localhost:4000/properties/owner/${currentUser._id}`;
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   const [allproperties, setAllproperties] = useState([]);
 
@@ -16,7 +16,7 @@ export default function UserProperties({ currentUser }) {
   }, []);
 
   async function getUserProperties() {
-    await fetch(url)
+    await fetch(`${apiUrl}/properties/owner/${currentUser._id}`)
       .then((response) => response.json())
       .then((data) => {
         setAllproperties(data);
@@ -44,8 +44,7 @@ export default function UserProperties({ currentUser }) {
     });
   }
   const sendDeleteToServer = async (propId) => {
-    const url = `http://localhost:4000/properties/${propId}`;
-    await fetch(url, {
+    await fetch(`${apiUrl}/properties/${propId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

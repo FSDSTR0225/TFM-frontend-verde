@@ -20,8 +20,9 @@ export default function PropertyCard({
   addFavoriteHandler,
   deleteFavoriteHandler,
 }) {
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const navigate = useNavigate();
-  const url = "http://localhost:4000";
 
   const [isShowEditModal, setIsShowEditModal] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
@@ -78,7 +79,7 @@ export default function PropertyCard({
         };
         // console.log(msgBody);
 
-        fetch(`${url}/room`, {
+        fetch(`${apiUrl}/room`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -122,7 +123,7 @@ export default function PropertyCard({
   }
 
   async function postMsgToServer(senderId, receiverId, roomId, message) {
-    await fetch("http://localhost:4000/message", {
+    await fetch(`${apiUrl}/message`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

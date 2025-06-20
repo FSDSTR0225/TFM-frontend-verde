@@ -19,7 +19,7 @@ import Messages from "./pages/Messages/Messages";
 import PropPage from "./pages/PropPage/PropPage";
 
 export default function App() {
-  const url = "http://localhost:4000/users/me";
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [token, setToken] = useState(null);
@@ -31,7 +31,7 @@ export default function App() {
     let userLocal = localStorage.getItem("user");
     if (userLocal) {
       let userToken = JSON.parse(userLocal).token;
-      fetch(url, {
+      fetch(`${apiUrl}/users/me`, {
         method: "GET",
         headers: { authorization: `Bearer ${userToken}` },
       })
@@ -47,6 +47,7 @@ export default function App() {
           console.log(err);
         });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const login = (user, token) => {

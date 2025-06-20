@@ -8,8 +8,9 @@ import Swal from "sweetalert2";
 import ModalEditUser from "../ModalEditUser/ModalEditUser";
 
 export default function Dashboard({ currentUser, updateUserInfos }) {
-  const [isShowModal, setIsShowModal] = useState(false);
+  const apiUrl = import.meta.env.VITE_API_URL;
 
+  const [isShowModal, setIsShowModal] = useState(false);
 
   const date = new Date(currentUser.createdAt);
   const year = date.getUTCFullYear();
@@ -60,7 +61,7 @@ export default function Dashboard({ currentUser, updateUserInfos }) {
     updateUserInfos({ image: data.url });
   }
   async function sendImgUrlToBackend(imageUrl) {
-    await fetch("http://localhost:4000/users/fotoEdit", {
+    await fetch(`${apiUrl}/users/fotoEdit`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

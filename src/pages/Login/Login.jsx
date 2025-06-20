@@ -8,6 +8,8 @@ import ModalMaterial from "./../../components/ModalMaterial/ModalMaterial";
 import AuthContext from "../../contexts/AuthContext";
 
 export default function Login() {
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const navigate = useNavigate();
   const authContext = useContext(AuthContext);
 
@@ -18,7 +20,7 @@ export default function Login() {
     success: "Login succes! You can find your favorites",
     fail: "Login Fail. Please try again Later",
   };
-  const url = "http://localhost:4000/users/login";
+
   const {
     register,
     handleSubmit,
@@ -27,7 +29,7 @@ export default function Login() {
   } = useForm();
 
   const onSubmit = async (formDatas) => {
-    await fetch(url, {
+    await fetch(`${apiUrl}/users/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

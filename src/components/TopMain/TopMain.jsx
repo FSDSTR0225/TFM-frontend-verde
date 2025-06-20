@@ -4,6 +4,8 @@ import { FaSearch } from "react-icons/fa";
 import { useNavigate } from "react-router";
 
 export default function TopMain() {
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const navigate = useNavigate();
   const [contractCat, setContractCat] = useState("");
   const [contractsCatItems, setContractsCatItems] = useState([]);
@@ -54,26 +56,28 @@ export default function TopMain() {
   useEffect(() => {
     getcontractCatItems();
     getTypeCatItems();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     getCityList(province);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [province]);
 
   const getcontractCatItems = async () => {
-    await fetch("http://localhost:4000/contractCategory")
+    await fetch(`${apiUrl}/contractCategory`)
       .then((res) => res.json())
       .then((data) => setContractsCatItems(data));
   };
 
   const getTypeCatItems = async () => {
-    await fetch("http://localhost:4000/typeCategory")
+    await fetch(`${apiUrl}/typeCategory`)
       .then((res) => res.json())
       .then((data) => setTypeCatItems(data));
   };
 
   const getCityList = async (province) => {
-    await fetch(`http://localhost:4000/cities/province/${province}`)
+    await fetch(`${apiUrl}/cities/province/${province}`)
       .then((res) => res.json())
       .then((data) => setCityList(data));
   };

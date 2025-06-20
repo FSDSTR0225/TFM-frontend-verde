@@ -22,9 +22,10 @@ export default function ModalEditDelete({
   getUserProperties,
 }) {
   const onSubmit = async (data) => {
-    console.log(data);
+    const apiUrl = import.meta.env.VITE_API_URL;
 
-    await fetch(`http://localhost:4000/properties/${currentProperty._id}`, {
+
+    await fetch(`${apiUrl}/properties/${currentProperty._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -16,6 +16,8 @@ import { useNavigate } from "react-router";
 import { FileUploader } from "../../components/FileUploader/FileUploader";
 
 export default function NewProperty() {
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const navigate = useNavigate();
   const authContext = useContext(AuthContext);
 
@@ -48,7 +50,6 @@ export default function NewProperty() {
     success: "Now your property is registered!",
     fail: "Property register Fail. Please try again Later",
   };
-  const url = "http://localhost:4000/properties";
   const {
     register,
     handleSubmit,
@@ -73,7 +74,7 @@ export default function NewProperty() {
       image: uploadedFile,
       city: formDatas.city,
     };
-    await fetch(url, {
+    await fetch(`${apiUrl}/properties`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

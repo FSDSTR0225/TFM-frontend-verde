@@ -20,15 +20,16 @@ import Select from "@mui/material/Select";
 import { grey } from "@mui/material/colors";
 
 export default function Profile() {
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const authContext = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const url = "http://localhost:4000/users/me";
   function getUserData() {
     let userLocal = localStorage.getItem("user");
     if (userLocal) {
       let userToken = JSON.parse(userLocal).token;
-      fetch(url, {
+      fetch(`${apiUrl}/users/me`, {
         method: "GET",
         headers: { authorization: `Bearer ${userToken}` },
       })
@@ -107,7 +108,7 @@ export default function Profile() {
           </li>
         </ul>
         <div className="profile__sidebarMobileWrapper">
-          <FormControl sx={{ m: 1, minWidth: 120 }} >
+          <FormControl sx={{ m: 1, minWidth: 120 }}>
             <InputLabel id="sidebarMobile">Menu</InputLabel>
             <Select
               labelId="sidebarMobile"

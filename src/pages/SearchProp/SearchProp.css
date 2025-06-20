@@ -4,7 +4,7 @@
     var(--Pine-Green),
     var(--Light-Jade)
   );
-  padding-top: 9vh;
+
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -20,4 +20,20 @@
   width: 100%;
   margin: 0;
   padding: 2rem;
+}
+
+/* Mobile Size */
+@media only screen and (max-width: 900px) {
+  .SearchProps {
+    padding-top: 0vh;
+  }
+  .filters__wrapper {
+    padding-top: 1rem;
+  }
+}
+/* Desktop Size */
+@media only screen and (min-width: 900px) {
+  .SearchProps {
+    padding-top: 9vh;
+  }
 }

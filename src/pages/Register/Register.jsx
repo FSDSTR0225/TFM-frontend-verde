@@ -9,6 +9,8 @@ import { Button } from "@mui/material";
 import AuthContext from "../../contexts/AuthContext";
 
 export default function Register() {
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const navigate = useNavigate();
   const authContext = useContext(AuthContext);
 
@@ -19,7 +21,7 @@ export default function Register() {
     success: "Now your are ready to play our games!",
     fail: "Register Fail. Please try again Later",
   };
-  const url = "http://localhost:4000/users";
+
   const {
     register,
     handleSubmit,
@@ -27,7 +29,7 @@ export default function Register() {
   } = useForm();
 
   const onSubmit = async (formDatas) => {
-    await fetch(url, {
+    await fetch(`${apiUrl}/users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

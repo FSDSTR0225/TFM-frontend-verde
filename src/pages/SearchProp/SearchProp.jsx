@@ -9,6 +9,8 @@ import TopMain from "../../components/TopMain/TopMain";
 import Grid from "@mui/material/Grid";
 
 export default function SearchProp() {
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const authContext = useContext(AuthContext);
   const params = useParams();
   const [propertyArr, setPropertyArr] = useState([]);
@@ -28,13 +30,14 @@ export default function SearchProp() {
       selectedType &&
       selectedContract &&
       fetch(
-        `http://localhost:4000/properties/search/${selectedCity}/${selectedContract}/${selectedType}`
+        `${apiUrl}/properties/search/${selectedCity}/${selectedContract}/${selectedType}`
       )
         .then((res) => res.json())
         .then((data) => {
           setPropertyArr(data.properties);
           setFilteredArr(data.properties);
         });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCity, selectedContract, selectedType]);
 
   function addNoteHandler(itemId) {
@@ -42,7 +45,7 @@ export default function SearchProp() {
   }
 
   function addFavoriteHandler(itemId) {
-    fetch(`http://localhost:4000/users/favorite/${authContext.userInfos._id}`, {
+    fetch(`${apiUrl}/users/favorite/${authContext.userInfos._id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -55,7 +58,7 @@ export default function SearchProp() {
       });
   }
   function deleteFavoriteHandler(itemId) {
-    fetch(`http://localhost:4000/users/favorite/${authContext.userInfos._id}`, {
+    fetch(`${apiUrl}/users/favorite/${authContext.userInfos._id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

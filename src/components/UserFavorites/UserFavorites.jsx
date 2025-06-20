@@ -6,13 +6,15 @@ import Grid from "@mui/material/Grid";
 import PropertyCard from "../PropertyCard/PropertyCard";
 
 export default function UserFavorites() {
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const authContext = useContext(AuthContext);
 
   function addNoteHandler() {
     console.log("hi");
   }
   function addFavoriteHandler(itemId) {
-    fetch(`http://localhost:4000/users/favorite/${authContext.userInfos._id}`, {
+    fetch(`${apiUrl}/users/favorite/${authContext.userInfos._id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,7 +28,7 @@ export default function UserFavorites() {
       });
   }
   function deleteFavoriteHandler(itemId) {
-    fetch(`http://localhost:4000/users/favorite/${authContext.userInfos._id}`, {
+    fetch(`${apiUrl}/users/favorite/${authContext.userInfos._id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

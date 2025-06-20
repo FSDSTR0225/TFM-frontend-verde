@@ -3,8 +3,34 @@
 }
 .TopSearchFilter__container {
   width: 100%;
-  padding: 0 3rem;
+
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* Mobile Size */
+@media only screen and (max-width: 900px) {
+  .TopSearchFilter {
+    margin-top: 1rem;
+  }
+  .TopSearchFilter__container {
+    flex-direction: column;
+    padding: 0;
+    gap: 0;
+  }
+  .TopSearchFilter__Wrapper {
+    display: flex;
+    gap: 0;
+  }
+}
+/* Desktop Size */
+@media only screen and (min-width: 900px) {
+  .TopSearchFilter__container {
+    flex-direction: row;
+    padding: 0 3rem;
+  }
+  .TopSearchFilter__Wrapper {
+    display: flex;
+  }
 }
