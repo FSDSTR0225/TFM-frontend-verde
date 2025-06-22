@@ -29,7 +29,7 @@ export default function Register() {
   } = useForm();
 
   const onSubmit = async (formDatas) => {
-    await fetch(`${apiUrl}/users`, {
+    await fetch(`${apiUrl}/users/newUser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -51,6 +51,7 @@ export default function Register() {
         return res.json();
       })
       .then((result) => {
+        sendEmailToUser(result.user._id);
         authContext.login(result.user, result.access_token);
         setTimeout(() => {
           navigate("/");
@@ -62,6 +63,21 @@ export default function Register() {
         setIsShowModal(true);
       });
   };
+
+  function sendEmailToUser(userId) {
+    console.log("sendingEmail...", userId);
+    fetch(`${apiUrl}/users/sendMail`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId: userId,
+        type: "Welcome",
+        subject: "Welcome from Casa Verde",
+      }),
+    });
+  }
 
   return (
     <div className="Register">
