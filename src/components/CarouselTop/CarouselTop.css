@@ -1,5 +1,16 @@
-.CarouselTop {
-  width: 26rem !important;
-  height: 39rem !important;
+/* Mobile Size */
+@media only screen and (max-width: 900px) {
+  .CarouselTop {
+    width: 18rem !important;
+    height: 27rem !important;
+    margin: 0 auto;
+    padding: 0;
+  }
 }
-
+/* Desktop Size */
+@media only screen and (min-width: 900px) {
+  .CarouselTop {
+    width: 26rem !important;
+    height: 39rem !important;
+  }
+}

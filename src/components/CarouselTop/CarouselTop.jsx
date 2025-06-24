@@ -14,6 +14,7 @@ import testImg10 from "/images/carousel/10.jpg";
 import testImg11 from "/images/carousel/11.jpg";
 import testImg12 from "/images/carousel/12.jpg";
 import testImg13 from "/images/carousel/13.jpg";
+import testImg14 from "/images/carousel/14.jpg";
 
 // Import Swiper styles
 import "swiper/css";
@@ -73,6 +74,9 @@ export default function CarouselTop() {
         </SwiperSlide>
         <SwiperSlide>
           <img src={testImg13} />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={testImg14} />
         </SwiperSlide>
       </Swiper>
     </>

@@ -2,6 +2,7 @@ import React from "react";
 import "./About.css";
 import WelcomeNews from "../../components/WelcomeNews/WelcomeNews";
 import CarouselTop from "../../components/CarouselTop/CarouselTop";
+import ContactForm from "../../components/ContactForm/ContactForm";
 
 export default function About() {
   return (
@@ -54,6 +55,7 @@ export default function About() {
           </div>
         </div>
       </div>
+        <ContactForm />
     </div>
   );
 }

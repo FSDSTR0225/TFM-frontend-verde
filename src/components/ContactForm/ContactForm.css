@@ -1,4 +1,10 @@
-.Register {
+.ContactForm__Top {
+  color: var(--white);
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 100;
+}
+.ContactForm {
   width: 100%;
   background-image: linear-gradient(
     to bottom right,
@@ -9,33 +15,32 @@
   justify-content: center;
   align-items: center;
 }
-.Register__wrapper {
+.ContactForm__wrapper {
   display: flex;
 }
-.RegisterForm__Container {
+.Contact_Form__Container {
   background-color: var(--white);
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
 }
-.RegisterForm__Title {
+.Contact_Form__Title {
   font-family: aladin;
   text-align: center;
   font-size: 2.5rem;
   font-weight: 800;
   color: var(--Pine-Green);
 }
-.RegisterForm {
+.Contact_Form {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
-.RegisterForm__input {
+.Contact_Form__input {
   width: 20rem;
 }
-.RegisterForm__button {
+.Contact_Form__button {
   font-size: larger;
   border: none;
   background-color: var(--Light-Jade) !important;
@@ -46,53 +51,58 @@
   border-radius: 5px;
   font-weight: 800 !important;
 }
-.RegisterForm__button:hover {
+.Contact_Form__button:hover {
   color: var(--Light-Jade) !important;
   background-color: var(--Pine-Green) !important;
 }
 
 /* Mobile Size */
 @media only screen and (max-width: 900px) {
-  .Register__wrapper {
+  .ContactForm__Top {
+    font-size: 1.8rem;
+  }
+  .ContactForm__wrapper {
     flex-direction: column;
     margin: 3rem 0.5rem;
   }
-  .Register__fotoContainer {
+  .ContactForm__fotoContainer {
     overflow: hidden;
     height: 14rem;
   }
-  .Register__foto {
-    /* max-height: 5rem; */
+  .ContactForm__foto {
     width: 100%;
     border-radius: 20px 20px 0 0;
   }
-  .RegisterForm__Container {
+  .Contact_Form__Container {
     border-radius: 0 0 20px 20px;
     padding-bottom: 2rem;
   }
-  .RegisterForm__Title {
+  .Contact_Form__Title {
     padding: 1rem;
   }
 }
 /* Desktop Size */
 @media only screen and (min-width: 900px) {
-  .Register {
-    height: 91vh;
+  .ContactForm {
   }
-  .Register__wrapper {
-    margin-top: 9vh;
+  .ContactForm__wrapper {
+    margin: 2rem 0;
     flex-direction: row;
   }
-  .Register__foto {
+  .ContactForm__fotoContainer {
     height: 100%;
     max-width: 30rem;
     border-radius: 90px 0 0 90px;
   }
-  .RegisterForm__Container {
+  .ContactForm__foto {
+    max-height: 40rem;
+    border-radius: 90px 0 0 90px;
+  }
+  .Contact_Form__Container {
     border-radius: 0 40px 40px 0;
     padding: 3rem;
   }
-  .RegisterForm__Title {
+  .Contact_Form__Title {
     padding: 2rem;
     margin-bottom: 2rem;
   }
