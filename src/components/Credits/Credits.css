@@ -1,0 +1,59 @@
+.Help {
+  display: flex;
+
+  justify-content: center;
+  align-items: start;
+
+  gap: 1rem;
+}
+
+.HelpWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+
+  background-image: linear-gradient(to bottom right, #b7ded9, #eefaf4, #ebfdf4);
+  gap: 1rem;
+  border-radius: 10px;
+}
+
+.Help__MainTitle {
+}
+
+.Help__container {
+}
+
+.Help__title {
+  font-size: 1.3rem;
+  font-family: aladin;
+}
+
+.Help__text {
+  color: rgb(123, 123, 123);
+  text-align: justify;
+}
+
+/* Mobile Size */
+@media only screen and (max-width: 900px) {
+  .Help {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .HelpWrapper {
+    width: 100%;
+    border-radius: 0 5rem 0 5rem;
+    padding: 1rem 1rem 2.5rem 1rem;
+  }
+}
+/* Desktop Size */
+@media only screen and (min-width: 900px) {
+  .Help {
+    flex-direction: row;
+    padding: 2rem;
+  }
+  .HelpWrapper {
+    width: 50%;
+    padding: 1rem;
+  }
+}

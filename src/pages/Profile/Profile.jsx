@@ -14,10 +14,11 @@ import UserFavorites from "../../components/UserFavorites/UserFavorites";
 
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import FormHelperText from "@mui/material/FormHelperText";
+import { SiCmake } from "react-icons/si";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { grey } from "@mui/material/colors";
+import Credits from "../../components/Credits/Credits";
 
 export default function Profile() {
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -79,7 +80,7 @@ export default function Profile() {
     { id: 1, name: "Dashboard", icon: <MdSpaceDashboard /> },
     { id: 2, name: "Favorites", icon: <MdFavorite /> },
     { id: 3, name: "Properties", icon: <FaBuilding /> },
-    { id: 4, name: "Help", icon: <TbHelpHexagonFilled /> },
+    { id: 4, name: "Credits", icon: <SiCmake /> },
   ];
 
   const [currentTab, setCurrentTab] = useState("Dashboard");
@@ -121,7 +122,7 @@ export default function Profile() {
               <MenuItem value="Dashboard">Dashboard</MenuItem>
               <MenuItem value="Favorites">Favorites</MenuItem>
               <MenuItem value="Properties">Properties</MenuItem>
-              <MenuItem value="Help">Help</MenuItem>
+              <MenuItem value="Credits">Credits</MenuItem>
             </Select>
           </FormControl>
         </div>
@@ -139,6 +140,7 @@ export default function Profile() {
             <UserProperties currentUser={authContext.userInfos} />
           )}
           {currentTab === "Favorites" && <UserFavorites />}
+          {currentTab === "Credits" && <Credits />}
         </div>
       </div>
     </div>
