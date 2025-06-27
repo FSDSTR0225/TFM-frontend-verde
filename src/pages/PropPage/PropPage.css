@@ -1,10 +1,14 @@
 .PropPage {
   width: 100%;
   color: var(--white);
-  background-color: gray;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: linear-gradient(
+    to bottom right,
+    var(--Pine-Green),
+    var(--Light-Jade)
+  );
 }
 .PropPage__container {
   width: 100%;
@@ -12,21 +16,70 @@
   justify-content: space-around;
   align-items: center;
   margin-top: 9vh;
+  padding: 3rem;
+  background-color: var(--white);
 }
 .PropPage__imgWrapper {
-  width: 40%;
-  padding: 3rem;
+  width: 25%;
 }
 .PropPage__image {
   border-radius: 2rem 6rem 10rem 2rem;
   width: 100%;
 }
 .PropPage__body {
-  width: 60%;
-  padding: 3rem;
+  width: 50%;
+  padding: 1rem 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: start;
-  gap: 1rem;
+  gap: 0.5rem;
+}
+.PropPage__Title {
+  font-size: 2rem;
+  color: var(--Pine-Green);
+  font-family: aladin;
+  text-decoration: underline;
+  margin-bottom: 0.5rem;
+}
+.PropPage__Sub {
+  font-size: 1.1rem;
+  color: gray;
+  margin-bottom: 1rem;
+}
+.PropPage__body__Wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: start;
+  gap: 2rem;
+}
+.PropPage__body__left,
+.PropPage__body__right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.propPage__text {
+  color: gray;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.propPage__icon {
+  background-color: var(--Pine-Green);
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 1.8rem;
+  margin-right: 0.5rem;
+  color: var(--white);
+}
+.propPage__text:hover {
+  text-decoration: underline;
+  color: rgb(27, 27, 27);
+  cursor: pointer;
+}
+.propPage__icon:hover {
+  color: var(--Lemon-Lime);
+  cursor: pointer;
 }
