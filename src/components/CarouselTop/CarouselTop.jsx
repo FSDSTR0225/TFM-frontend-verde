@@ -1,20 +1,20 @@
 import "./CarouselTop.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import testImg1 from "/images/carousel/1.jpg";
-import testImg2 from "/images/carousel/2.jpg";
-import testImg3 from "/images/carousel/3.jpg";
-import testImg4 from "/images/carousel/4.jpg";
-import testImg5 from "/images/carousel/5.jpg";
-import testImg6 from "/images/carousel/6.jpg";
-import testImg7 from "/images/carousel/7.jpg";
-import testImg8 from "/images/carousel/8.jpg";
-import testImg9 from "/images/carousel/9.jpg";
-import testImg10 from "/images/carousel/10.jpg";
-import testImg11 from "/images/carousel/11.jpg";
-import testImg12 from "/images/carousel/12.jpg";
-import testImg13 from "/images/carousel/13.jpg";
-import testImg14 from "/images/carousel/14.jpg";
+// import testImg1 from "/images/carousel/1.jpg";
+// import testImg2 from "/images/carousel/2.jpg";
+// import testImg3 from "/images/carousel/3.jpg";
+// import testImg4 from "/images/carousel/4.jpg";
+// import testImg5 from "/images/carousel/5.jpg";
+// import testImg6 from "/images/carousel/6.jpg";
+// import testImg7 from "/images/carousel/7.jpg";
+// import testImg8 from "/images/carousel/8.jpg";
+// import testImg9 from "/images/carousel/9.jpg";
+// import testImg10 from "/images/carousel/10.jpg";
+// import testImg11 from "/images/carousel/11.jpg";
+// import testImg12 from "/images/carousel/12.jpg";
+// import testImg13 from "/images/carousel/13.jpg";
+// import testImg14 from "/images/carousel/14.jpg";
 
 // Import Swiper styles
 import "swiper/css";
@@ -37,46 +37,46 @@ export default function CarouselTop() {
         id="CarouselTop"
       >
         <SwiperSlide>
-          <img src={testImg5} />
+          <img src="/images/carousel/5.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={testImg2} />
+          <img src="/images/carousel/2.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={testImg3} />
+          <img src="/images/carousel/3.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={testImg4} />
+          <img src="/images/carousel/4.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={testImg1} />
+          <img src="/images/carousel/1.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={testImg6} />
+          <img src="/images/carousel/6.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={testImg7} />
+          <img src="/images/carousel/7.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={testImg8} />
+          <img src="/images/carousel/8.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={testImg9} />
+          <img src="/images/carousel/9.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={testImg10} />
+          <img src="/images/carousel/10.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={testImg11} />
+          <img src="/images/carousel/11.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={testImg12} />
+          <img src="/images/carousel/12.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={testImg13} />
+          <img src="/images/carousel/13.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={testImg14} />
+          <img src="/images/carousel/14.jpg" />
         </SwiperSlide>
       </Swiper>
     </>

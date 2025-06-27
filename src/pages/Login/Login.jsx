@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import "./Login.css";
-import sideImg from "/images/sides/1.jpg";
+// import sideImg from "/images/sides/1.jpg";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { Button, TextField } from "@mui/material";
@@ -68,7 +68,7 @@ export default function Login() {
     <div className="Register">
       <div className="Register__wrapper">
         <div className="Register__fotoContainer">
-          <img className="Register__foto" src={sideImg} />
+          <img className="Register__foto" src="/images/sides/1.jpg" />
         </div>
         <div className="RegisterForm__Container">
           <div className="RegisterForm__Title">Login Now</div>

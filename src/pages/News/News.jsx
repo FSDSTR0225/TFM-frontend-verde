@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./News.css";
 import { useParams } from "react-router";
-import newImg from "/images/properties/noimage.png";
+// import newImg from "/images/properties/noimage.png";
 
 export default function News() {
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -39,7 +39,7 @@ export default function News() {
               <div className="News__imageWrapper">
                 <img
                   className="News__image"
-                  src={item.img ? item.img : newImg}
+                  src={item.img ? item.img : "/images/properties/noimage.png"}
                   alt="item-image"
                 />
               </div>

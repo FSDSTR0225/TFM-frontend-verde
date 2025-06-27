@@ -10,7 +10,7 @@ import { MdFavoriteBorder } from "react-icons/md";
 import AuthContext from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import nofoto from "/images/properties/noimage.png";
+// import nofoto from "/images/properties/noimage.png";
 
 export default function PropertyCard({
   item,
@@ -164,7 +164,7 @@ export default function PropertyCard({
             alt="prop-img"
           />
         ) : (
-          <img className="UserProperties__noimg" src={nofoto} alt="prop-img" />
+          <img className="UserProperties__noimg" src="/images/properties/noimage.png" alt="prop-img" />
         )}
       </div>
       <div className="UserProperties__bodyContainer">

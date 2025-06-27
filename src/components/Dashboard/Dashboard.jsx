@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
-import designImg from "/images/sides/3.jpg";
+// import designImg from "/images/sides/3.jpg";
 import { HiCalendarDateRange } from "react-icons/hi2";
 import { Button } from "@mui/material";
 import { FaEdit } from "react-icons/fa";
@@ -145,7 +145,7 @@ export default function Dashboard({ currentUser, updateUserInfos }) {
           <div className="mainbar__rightbody__img">
             <img
               className="rightbody__img"
-              src={designImg}
+              src="/images/sides/3.jpg"
               alt="rightbody__img"
             />
           </div>

@@ -12,7 +12,7 @@ import {
   FormControl,
 } from "@mui/material";
 import AuthContext from "../../contexts/AuthContext";
-import sideImg from "/images/backgrounds/top2.jpg";
+// import sideImg from "/images/backgrounds/top2.jpg";
 import { useNavigate } from "react-router";
 import { FileUploader } from "../../components/FileUploader/FileUploader";
 import MapSearch from "../../components/MapSearch/MapSearch";
@@ -119,7 +119,7 @@ export default function NewProperty() {
       <div className="NewProperty">
         <div className="Property__wrapper">
           <div className="PropertyForm__imageWrapper">
-            <img className="PropertyForm__image" src={sideImg} />
+            <img className="PropertyForm__image" src="/images/backgrounds/top2.jpg" />
           </div>
 
           <div className="PropertyForm__Container">

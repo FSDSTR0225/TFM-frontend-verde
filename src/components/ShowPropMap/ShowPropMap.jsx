@@ -2,12 +2,12 @@ import { React } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "../../plugins/leaflet/leaflet.css"; // Ensure you have the correct path to your Leaflet CSS
 import L from "leaflet"; // Import Leaflet icons
-import markerIconPng from "leaflet/dist/images/marker-icon.png";
+// import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import "./ShowPropMap.css";
 
 export default function ShowPropMap({ mapCenter }) {
   const customIcon = new L.Icon({
-    iconUrl: markerIconPng,
+    iconUrl: "leaflet/dist/images/marker-icon.png",
     iconSize: [18, 30],
   });
 

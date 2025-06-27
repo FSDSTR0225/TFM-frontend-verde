@@ -3,7 +3,7 @@ import "./ContactForm.css";
 import { useForm } from "react-hook-form";
 import { Button, TextField } from "@mui/material";
 import ModalMaterial from "./../../components/ModalMaterial/ModalMaterial";
-import sideImg from "/images/sides/1.jpg";
+// import sideImg from "/images/sides/1.jpg";
 
 export default function ContactForm() {
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -65,7 +65,7 @@ export default function ContactForm() {
       <div className="ContactForm">
         <div className="ContactForm__wrapper">
           <div className="ContactForm__fotoContainer">
-            <img className="ContactForm__foto" src={sideImg} alt="sideImg" />
+            <img className="ContactForm__foto" src="/images/sides/1.jpg" alt="sideImg" />
           </div>
           <div className="Contact_Form__Container">
             <div className="Contact_Form__Title">Contact Us</div>
