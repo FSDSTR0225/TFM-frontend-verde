@@ -7,6 +7,7 @@ import SwiperReact from "../../components/SwiperReact/SwiperReact";
 import TypeWriter from "../../components/TypeWriter/TypeWriter";
 import Capabilities from "../../components/Capabilities/Capabilities";
 import CardConceptCompo from "../../components/CardConceptCompo/CardConceptCompo";
+import MapSearch from "../../components/MapSearch/MapSearch";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
             Find your property wherever you like !
           </h1>
           <TopMain />
+          <MapSearch mapCenter={[40.4168, -3.7038]}/>
         </div>
       </div>
 

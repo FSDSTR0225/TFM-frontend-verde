@@ -56,7 +56,24 @@
   cursor: pointer;
   border-radius: 5px;
 }
+
 .PropertyForm__button:hover {
+  color: var(--Light-Jade) !important;
+  background-color: var(--Pine-Green) !important;
+}
+.Map__button {
+  width: 5rem;
+  font-weight: 500 !important;
+  font-size: small;
+  border: none;
+  background-color: var(--Light-Jade) !important;
+  color: var(--Pine-Green) !important;
+  padding: 0.3rem !important;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: 2rem !important;
+}
+.Map__button:hover {
   color: var(--Light-Jade) !important;
   background-color: var(--Pine-Green) !important;
 }
@@ -100,7 +117,7 @@
   #imgUpload {
     max-width: 5rem;
   }
-  .FileUploader{
+  .FileUploader {
     margin-left: 3rem;
   }
   .PropertyForm__button__wraper {
@@ -118,7 +135,7 @@
 /* Desktop Size */
 @media only screen and (min-width: 900px) {
   .NewProperty {
-    height: 110vh;
+    height: 120vh;
   }
   .Property__wrapper {
     flex-direction: row;
@@ -162,6 +179,11 @@
   .PropertyForm__button__wraper {
     grid-column: 1 / span 3;
     margin-top: 2rem;
+  }
+  .inputHolder {
+    display: flex;
+    align-items: center;
+    justify-content:start;
   }
   .PropertyForm__button {
     width: 30%;

@@ -19,7 +19,6 @@
   background-color: var(--white);
   width: 100%;
   margin: 0;
-  padding: 2rem;
 }
 
 /* Mobile Size */
@@ -30,10 +29,16 @@
   .filters__wrapper {
     padding-top: 1rem;
   }
+  .propertyCardWrapper {
+    padding: 0.5rem;
+  }
 }
 /* Desktop Size */
 @media only screen and (min-width: 900px) {
   .SearchProps {
     padding-top: 9vh;
+  }
+  .propertyCardWrapper {
+    padding: 2rem;
   }
 }

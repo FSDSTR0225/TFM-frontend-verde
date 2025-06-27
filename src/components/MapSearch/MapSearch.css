@@ -1,0 +1,24 @@
+.MapContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 25%;
+  left: 2rem;
+}
+.mapBtn {
+  position: absolute;
+  top: 80%;
+  left: 2rem;
+  padding: 1rem;
+  background-color: var(--Pine-Green);
+  border: none;
+  border-radius: 10px;
+  color: aliceblue;
+  cursor: pointer;
+  font-weight: 600;
+}
+.mapBtn:hover{
+  background-color: greenyellow;
+  color: var(--Pine-Green);
+}

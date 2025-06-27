@@ -38,7 +38,7 @@
 @media only screen and (max-width: 900px) {
   .Help {
     flex-direction: column;
-    padding: 1rem;
+    padding: 0.5rem;
   }
   .HelpWrapper {
     width: 100%;

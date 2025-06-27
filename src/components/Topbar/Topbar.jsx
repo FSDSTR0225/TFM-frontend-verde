@@ -50,7 +50,7 @@ export default function Topbar() {
                   to="/newproperty"
                   className="Topbar__menuItem  hover-underline-animation left"
                 >
-                  New props
+                  New property
                 </NavLink>
                 <NavLink
                   to="/messages"

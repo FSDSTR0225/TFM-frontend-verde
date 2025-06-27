@@ -1,5 +1,15 @@
 .UserProperties {
   width: 100%;
-  padding: 1rem;
 }
-
+/* Mobile Size */
+@media only screen and (max-width: 900px) {
+  .UserProperties {
+    padding: 0.5rem;
+  }
+}
+/* Desktop Size */
+@media only screen and (min-width: 900px) {
+  .UserProperties {
+    padding: 1rem;
+  }
+}
