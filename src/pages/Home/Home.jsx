@@ -12,7 +12,7 @@ import MapSearch from "../../components/MapSearch/MapSearch";
 export default function Home() {
   return (
     <div className="Home">
-      <div className="TopMain" style={{ backgroundImage: "url(/images/backgrounds/2.png)" }}>
+      <div className="TopMain" >
         <div className="TopMain__Wrapper">
           <h1 className="TopMain__title">
             Find your property wherever you like !
