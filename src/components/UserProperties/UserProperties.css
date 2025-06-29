@@ -1,15 +1,31 @@
 .UserProperties {
   width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Mobile Size */
 @media only screen and (max-width: 900px) {
   .UserProperties {
     padding: 0.5rem;
+  }
+  .paginationContainer {
+    margin-top: 1rem;
   }
 }
 /* Desktop Size */
 @media only screen and (min-width: 900px) {
   .UserProperties {
     padding: 1rem;
+    min-height: 78vh;
+  }
+  .paginationContainer {
   }
 }

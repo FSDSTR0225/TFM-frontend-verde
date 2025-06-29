@@ -10,14 +10,14 @@
   flex-direction: row;
   justify-content: center;
   align-items: start;
-
   background-image: linear-gradient(
     to bottom right,
-    rgb(205, 205, 205),
+    rgb(239, 255, 247),
+    rgb(188, 208, 154),
     #edfff7,
-    rgb(240, 253, 252),
-    #f0fffb,
-    rgba(223, 223, 223)
+    rgb(210, 232, 230),
+    #237957,
+    rgb(190, 234, 212)
   );
 }
 .about__missions__leftContainer {
@@ -63,7 +63,7 @@
   }
   .about__missions__container {
     flex-direction: row;
-    border-radius: 5rem 15rem 25rem 5rem;
+    border-radius: 10rem 5rem 15rem 5rem;
     padding: 1rem;
   }
   .about__missions__leftContainer {

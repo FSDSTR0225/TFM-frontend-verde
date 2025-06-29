@@ -7,6 +7,7 @@ import AuthContext from "../../contexts/AuthContext";
 import NotFoundItem from "../../components/NotFoundItem/NotFoundItem";
 import TopMain from "../../components/TopMain/TopMain";
 import Grid from "@mui/material/Grid";
+import PaginatioinUI from "../../components/PaginatioinUI/PaginatioinUI";
 
 export default function SearchProp() {
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -18,6 +19,10 @@ export default function SearchProp() {
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedType, setSelectedType] = useState("");
   const [selectedContract, setSelectedContract] = useState("");
+
+  const [paginatedCart, setPaginatedCart] = useState([]);
+
+  const PropNumberInEachPage = 6;
 
   useEffect(() => {
     setSelectedCity(params.city);
@@ -37,7 +42,7 @@ export default function SearchProp() {
           setPropertyArr(data.properties);
           setFilteredArr(data.properties);
         });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCity, selectedContract, selectedType]);
 
   function addNoteHandler(itemId) {
@@ -85,7 +90,7 @@ export default function SearchProp() {
       <div className="propertyCardWrapper">
         <Grid container spacing={2}>
           {filteredArr.length ? (
-            filteredArr.map((item) => (
+            paginatedCart.map((item) => (
               <Grid size={{ xs: 12, md: 12, lg: 6 }} key={item._id}>
                 <PropertyCard
                   item={item}
@@ -102,6 +107,11 @@ export default function SearchProp() {
             />
           )}
         </Grid>
+        <PaginatioinUI
+          allproperties={filteredArr}
+          setPaginatedCart={setPaginatedCart}
+          PropNumberInEachPage={4}
+        />
       </div>
     </div>
   );

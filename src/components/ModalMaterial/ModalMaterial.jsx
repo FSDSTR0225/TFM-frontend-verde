@@ -55,7 +55,7 @@ export default function ModalMaterial({
                 }
                 variant="contained"
               >
-                {isModalSuccess ? "Enjoy now" : "OK try again"}
+                {isModalSuccess ? "OK " : "OK try again"}
               </Button>
             </Typography>
           </Box>

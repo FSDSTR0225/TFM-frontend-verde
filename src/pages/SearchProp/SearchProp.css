@@ -4,7 +4,6 @@
     var(--Pine-Green),
     var(--Light-Jade)
   );
-
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -19,6 +18,7 @@
   background-color: var(--white);
   width: 100%;
   margin: 0;
+  position: relative;
 }
 
 /* Mobile Size */
@@ -39,6 +39,11 @@
     padding-top: 9vh;
   }
   .propertyCardWrapper {
+    min-height: 72vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     padding: 2rem;
   }
 }

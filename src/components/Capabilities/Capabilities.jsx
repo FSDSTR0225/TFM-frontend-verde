@@ -9,10 +9,7 @@ import CountUp from "react-countup";
 export default function Capabilities() {
   return (
     <div className="capabilities">
-      <div
-        className="capabilities__container"
-        style={{ backgroundImage: "url(/images/backgrounds/top11.png)" }}
-      >
+      <div className="capabilities__container">
         <div className="capabilities__title">Our Capabilities</div>
         <div className="capabilities__itemWrapper">
           <div className="capability__itemRow">

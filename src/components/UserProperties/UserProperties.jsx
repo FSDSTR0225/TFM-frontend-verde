@@ -4,11 +4,15 @@ import Swal from "sweetalert2";
 import Grid from "@mui/material/Grid";
 
 import PropertyCard from "../PropertyCard/PropertyCard";
+import PaginatioinUI from "../PaginatioinUI/PaginatioinUI";
 
 export default function UserProperties({ currentUser }) {
   const apiUrl = import.meta.env.VITE_API_URL;
 
   const [allproperties, setAllproperties] = useState([]);
+  const [paginatedCart, setPaginatedCart] = useState([]);
+
+  const PropNumberInEachPage = 6;
 
   useEffect(() => {
     getUserProperties();
@@ -60,11 +64,12 @@ export default function UserProperties({ currentUser }) {
         console.log(err);
       });
   };
+
   return (
     <div className="UserProperties">
       <Grid container spacing={2}>
-        {allproperties
-          ? allproperties.map((item) => (
+        {paginatedCart
+          ? paginatedCart.map((item) => (
               <Grid size={{ xs: 12, md: 12, lg: 6 }} key={item._id}>
                 <PropertyCard
                   item={item}
@@ -75,6 +80,12 @@ export default function UserProperties({ currentUser }) {
             ))
           : null}
       </Grid>
+
+      <PaginatioinUI
+        allproperties={allproperties}
+        setPaginatedCart={setPaginatedCart}
+        PropNumberInEachPage={PropNumberInEachPage}
+      />
     </div>
   );
 }

@@ -13,7 +13,7 @@ export default function About() {
         wallpaperUrl="/images/backgrounds/1.png"
       />
       <div className="about__missions">
-        <div className="about__missions__container">
+        <div className="about__missions__container glass-background">
           <div className="about__missions__leftContainer">
             <h2 className="about__missions__header mainTitle">Our Missions:</h2>
             <p className="about__missions__text">
