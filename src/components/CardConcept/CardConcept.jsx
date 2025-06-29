@@ -5,7 +5,7 @@ export default function CardConcept({ icon, title, text }) {
   return (
     <div className="cardConcept__container">
       <div className="cardConcept__iconWraper">
-        <img className="cardConcept__icon" src={icon} />
+        <img className="cardConcept__icon" src={icon} alt="cardConcept__icon"/>
       </div>
       <div className="cardConcept__TitleWrapper">
         <h3 className="cardConcept__Title">{title}</h3>
