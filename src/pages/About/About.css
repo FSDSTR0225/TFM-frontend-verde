@@ -1,3 +1,20 @@
+:root {
+  --Forest-Green: #228b22;
+  --Pine-Green: #01796f;
+  --Mint-Green: #98ff98;
+  --Normal-Green: #4fc074;
+  --Lemon-Lime: #b2ff66;
+  --Soft-Seafoam: #a3d9d1;
+  --Sky-Blue: #87cefa;
+  --medium-Blue: #2375a8;
+  --Light-Jade: #b3e2d9;
+  --veryLight-Jade: #d9f3ed;
+  --Off-White: #e6e6fa;
+  --white: #f9f9f9;
+  --light-Gray: #d3d3d3;
+  --dark-Gray: #464646;
+  --red: #ff5a5a;
+}
 .about__missions {
   background-color: var(--white);
   display: flex;
@@ -9,20 +26,20 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: start;
+  align-items: center;
+  align-items: center;
   background-image: linear-gradient(
-    to bottom right,
-    rgb(239, 255, 247),
-    rgb(188, 208, 154),
-    #edfff7,
-    rgb(210, 232, 230),
-    #237957,
-    rgb(190, 234, 212)
+    to top right,
+    #66bfa1,
+    #bdffe5
   );
 }
 .about__missions__leftContainer {
   color: var(--dark-Gray);
   border-radius: 10px;
+}
+.about__missions__subheader {
+  color: var(--dark-Gray);
 }
 .about__missions__rightContainer {
 }

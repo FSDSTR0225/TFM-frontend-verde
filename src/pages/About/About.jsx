@@ -27,22 +27,22 @@ export default function About() {
               Our Commitment:
             </h2>
             <div className="commitment__Wrapper">
-              <h4 className="about__missions__header ">Client-Focused:</h4>
+              <h4 className="about__missions__subheader ">Client-Focused:</h4>
               <p className="about__missions__text">
                 We prioritize understanding your unique needs and goals,
                 ensuring a seamless and rewarding experience.
               </p>
-              <h4 className="about__missions__header ">Expertise:</h4>
+              <h4 className="about__missions__subheader ">Expertise:</h4>
               <p className="about__missions__text">
                 Our team possesses in-depth local market knowledge and a proven
                 track record of success.
               </p>
-              <h4 className="about__missions__header ">Integrity:</h4>
+              <h4 className="about__missions__subheader ">Integrity:</h4>
               <p className="about__missions__text">
                 We operate with honesty, transparency, and a commitment to
                 ethical practices.
               </p>
-              <h4 className="about__missions__header ">Results-Oriented:</h4>
+              <h4 className="about__missions__subheader ">Results-Oriented:</h4>
               <p className="about__missions__text">
                 We are dedicated to achieving your real estate objectives,
                 whether it's finding your dream home, maximizing your sale
