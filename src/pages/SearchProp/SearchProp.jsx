@@ -12,6 +12,7 @@ import PaginatioinUI from "../../components/PaginatioinUI/PaginatioinUI";
 import { MoonLoader } from "react-spinners";
 
 export default function SearchProp() {
+  const [loading, setLoading] = useState(true);
   const apiUrl = import.meta.env.VITE_API_URL;
 
   const authContext = useContext(AuthContext);
@@ -21,8 +22,6 @@ export default function SearchProp() {
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedType, setSelectedType] = useState("");
   const [selectedContract, setSelectedContract] = useState("");
-
-  const [loading, setLoading] = useState(true);
 
   const [paginatedCart, setPaginatedCart] = useState([]);
 
@@ -46,7 +45,11 @@ export default function SearchProp() {
           setPropertyArr(data.properties);
           setFilteredArr(data.properties);
         })
-        .then(setLoading(false));
+        .then(
+          setTimeout(() => {
+            setLoading(false);
+          }, 1000)
+        );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCity, selectedContract, selectedType]);
 
@@ -95,8 +98,8 @@ export default function SearchProp() {
       <div className="propertyCardWrapper">
         {loading ? (
           <div className="loadingWrapper">
-            <MoonLoader size="90px" color="#01796f" loading={loading} /> Is
-            Loading...
+            <MoonLoader size="90px" color="#01796f" loading={loading} />
+            Is Loading...
           </div>
         ) : (
           <>
