@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import "./UserFavorites.css";
 import AuthContext from "../../contexts/AuthContext";
 import Grid from "@mui/material/Grid";
@@ -6,7 +6,11 @@ import Grid from "@mui/material/Grid";
 import PropertyCard from "../PropertyCard/PropertyCard";
 import PaginatioinUI from "../PaginatioinUI/PaginatioinUI";
 
+import { MoonLoader } from "react-spinners";
+
 export default function UserFavorites() {
+  const [loading, setLoading] = useState(true);
+
   const apiUrl = import.meta.env.VITE_API_URL;
   const [paginatedCart, setPaginatedCart] = useState([]);
 
@@ -44,25 +48,32 @@ export default function UserFavorites() {
       });
   }
 
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
   return (
     <div className="UserProperties">
       <div className="UserProperties__container">
-        <Grid container spacing={2}>
-          {paginatedCart.map((item) => (
-            <Grid
-              size={{ xs: 12, md: 12, lg: 6 }}
-              key={item._id}
-              
-            >
-              <PropertyCard
-                item={item}
-                addNoteHandler={addNoteHandler}
-                addFavoriteHandler={addFavoriteHandler}
-                deleteFavoriteHandler={deleteFavoriteHandler}
-              />
-            </Grid>
-          ))}
-        </Grid>
+        {loading ? (
+          <div className="loadingWrapper">
+            <MoonLoader size="90px" color="#01796f" loading={loading} /> Is
+            Loading...
+          </div>
+        ) : (
+          <Grid container spacing={2}>
+            {paginatedCart.map((item) => (
+              <Grid size={{ xs: 12, md: 12, lg: 6 }} key={item._id}>
+                <PropertyCard
+                  item={item}
+                  addNoteHandler={addNoteHandler}
+                  addFavoriteHandler={addFavoriteHandler}
+                  deleteFavoriteHandler={deleteFavoriteHandler}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        )}
 
         <PaginatioinUI
           allproperties={authContext.userFavorites}

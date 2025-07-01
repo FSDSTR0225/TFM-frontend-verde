@@ -6,7 +6,11 @@ import Grid from "@mui/material/Grid";
 import PropertyCard from "../PropertyCard/PropertyCard";
 import PaginatioinUI from "../PaginatioinUI/PaginatioinUI";
 
+import { MoonLoader } from "react-spinners";
+
 export default function UserProperties({ currentUser }) {
+  const [loading, setLoading] = useState(true);
+
   const apiUrl = import.meta.env.VITE_API_URL;
 
   const [allproperties, setAllproperties] = useState([]);
@@ -24,7 +28,8 @@ export default function UserProperties({ currentUser }) {
       .then((response) => response.json())
       .then((data) => {
         setAllproperties(data);
-      });
+      })
+      .then(setLoading(false));
   }
 
   function deletePropertyHandler(propId) {
@@ -67,25 +72,33 @@ export default function UserProperties({ currentUser }) {
 
   return (
     <div className="UserProperties">
-      <Grid container spacing={2}>
-        {paginatedCart
-          ? paginatedCart.map((item) => (
-              <Grid size={{ xs: 12, md: 12, lg: 6 }} key={item._id}>
-                <PropertyCard
-                  item={item}
-                  deletePropertyHandler={deletePropertyHandler}
-                  getUserProperties={getUserProperties}
-                />
-              </Grid>
-            ))
-          : null}
-      </Grid>
-
-      <PaginatioinUI
-        allproperties={allproperties}
-        setPaginatedCart={setPaginatedCart}
-        PropNumberInEachPage={PropNumberInEachPage}
-      />
+      {loading ? (
+        <div className="loadingWrapper">
+          <MoonLoader size="90px" color="#01796f" loading={loading} /> Is
+          Loading...
+        </div>
+      ) : (
+        <>
+          <Grid container spacing={2}>
+            {paginatedCart
+              ? paginatedCart.map((item) => (
+                  <Grid size={{ xs: 12, md: 12, lg: 6 }} key={item._id}>
+                    <PropertyCard
+                      item={item}
+                      deletePropertyHandler={deletePropertyHandler}
+                      getUserProperties={getUserProperties}
+                    />
+                  </Grid>
+                ))
+              : null}
+          </Grid>
+          <PaginatioinUI
+            allproperties={allproperties}
+            setPaginatedCart={setPaginatedCart}
+            PropNumberInEachPage={PropNumberInEachPage}
+          />
+        </>
+      )}
     </div>
   );
 }

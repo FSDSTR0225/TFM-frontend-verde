@@ -48,7 +48,7 @@ export default function SearchProp() {
         .then(
           setTimeout(() => {
             setLoading(false);
-          }, 1000)
+          }, 500)
         );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCity, selectedContract, selectedType]);
