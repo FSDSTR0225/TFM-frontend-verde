@@ -23,8 +23,8 @@ export default function Home() {
     <>
       {loading ? (
         <div className="loadingWrapper">
-          <MoonLoader size="90px" color="#fff" loading={loading} /> Is Loading
-          ...
+          <MoonLoader size="90px" color="#01796f" loading={loading} /> Is
+          Loading...
         </div>
       ) : (
         <div className="Home">

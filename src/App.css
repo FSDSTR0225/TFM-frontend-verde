@@ -104,7 +104,8 @@ body {
 
 .loadingWrapper {
   font-size: 2rem;
-  color: var(--white);
+  background-color: var(--white);
+  color: var(--Pine-Green);
   font-family: aladin;
   display: flex;
   justify-content: center;

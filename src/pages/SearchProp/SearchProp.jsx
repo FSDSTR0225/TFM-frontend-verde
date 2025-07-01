@@ -20,6 +20,8 @@ export default function SearchProp() {
   const [selectedType, setSelectedType] = useState("");
   const [selectedContract, setSelectedContract] = useState("");
 
+  const [loading, setLoading] = useState(true);
+
   const [paginatedCart, setPaginatedCart] = useState([]);
 
   const PropNumberInEachPage = 6;
@@ -41,7 +43,8 @@ export default function SearchProp() {
         .then((data) => {
           setPropertyArr(data.properties);
           setFilteredArr(data.properties);
-        });
+        })
+        .then(setLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCity, selectedContract, selectedType]);
 
@@ -88,30 +91,39 @@ export default function SearchProp() {
       </div>
 
       <div className="propertyCardWrapper">
-        <Grid container spacing={2}>
-          {filteredArr.length ? (
-            paginatedCart.map((item) => (
-              <Grid size={{ xs: 12, md: 12, lg: 6 }} key={item._id}>
-                <PropertyCard
-                  item={item}
-                  addNoteHandler={addNoteHandler}
-                  addFavoriteHandler={addFavoriteHandler}
-                  deleteFavoriteHandler={deleteFavoriteHandler}
+        {loading ? (
+          <div className="loadingWrapper">
+            <MoonLoader size="90px" color="#01796f" loading={loading} /> Is
+            Loading...
+          </div>
+        ) : (
+          <>
+            <Grid container spacing={2}>
+              {filteredArr.length ? (
+                paginatedCart.map((item) => (
+                  <Grid size={{ xs: 12, md: 12, lg: 6 }} key={item._id}>
+                    <PropertyCard
+                      item={item}
+                      addNoteHandler={addNoteHandler}
+                      addFavoriteHandler={addFavoriteHandler}
+                      deleteFavoriteHandler={deleteFavoriteHandler}
+                    />
+                  </Grid>
+                ))
+              ) : (
+                <NotFoundItem
+                  errorTitle={"Could Not Find Any Item ! "}
+                  errorText={"Sorry we did not find your selected property"}
                 />
-              </Grid>
-            ))
-          ) : (
-            <NotFoundItem
-              errorTitle={"Could Not Find Any Item ! "}
-              errorText={"Sorry we did not find your selected property"}
+              )}
+            </Grid>
+            <PaginatioinUI
+              allproperties={filteredArr}
+              setPaginatedCart={setPaginatedCart}
+              PropNumberInEachPage={4}
             />
-          )}
-        </Grid>
-        <PaginatioinUI
-          allproperties={filteredArr}
-          setPaginatedCart={setPaginatedCart}
-          PropNumberInEachPage={4}
-        />
+          </>
+        )}
       </div>
     </div>
   );
