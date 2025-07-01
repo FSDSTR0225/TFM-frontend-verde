@@ -79,7 +79,7 @@ export default function TopMain() {
   const getCityList = async (province) => {
     await fetch(`${apiUrl}/cities/province/${province}`)
       .then((res) => res.json())
-      .then((data) => setCityList(data));
+      .then((data) => setCityList(data))
   };
 
   function setContractCatHandler(event) {
@@ -103,6 +103,7 @@ export default function TopMain() {
   };
 
   return (
+    // <MoonLoader size="90" color="#01796f" loading={loading} />
     <div className="TopMain__container">
       <div className="TopMain__itemWrapper">
         <div className="TopMain__item">
