@@ -29,19 +29,21 @@
   align-items: center;
   align-items: center;
   background-image: linear-gradient(
-    to top right,
-    #66bfa1,
-    #bdffe5
+  to bottom right,
+    var(--Pine-Green),
+    var(--Light-Jade)
   );
 }
 .about__missions__leftContainer {
-  color: var(--dark-Gray);
+  color: var(--white);
   border-radius: 10px;
 }
-.about__missions__subheader {
-  color: var(--dark-Gray);
+.about__missions__header{
+  font-family: aladin;
+  color: var(--white);
 }
-.about__missions__rightContainer {
+.about__missions__subheader {
+  color: var(--white);
 }
 .about__missions__text {
   line-height: 1.5rem;
@@ -93,6 +95,7 @@
   }
   .about__missions__header {
     font-size: 2rem;
+    text-decoration: underline;
   }
   .about__missions__text {
     margin-bottom: 2rem;

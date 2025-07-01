@@ -15,7 +15,7 @@ export default function About() {
       <div className="about__missions">
         <div className="about__missions__container glass-background">
           <div className="about__missions__leftContainer">
-            <h2 className="about__missions__header mainTitle">Our Missions:</h2>
+            <h2 className="about__missions__header ">Our Missions:</h2>
             <p className="about__missions__text">
               At Casa Verde, our mission is to empower individuals and families
               to achieve their real estate dreams. We are dedicated to providing
@@ -23,7 +23,7 @@ export default function About() {
               throughout every step of the buying, selling, or investment
               process.
             </p>
-            <h2 className="about__missions__header mainTitle">
+            <h2 className="about__missions__header ">
               Our Commitment:
             </h2>
             <div className="commitment__Wrapper">
