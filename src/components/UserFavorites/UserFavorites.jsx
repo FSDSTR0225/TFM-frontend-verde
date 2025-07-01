@@ -7,6 +7,7 @@ import PropertyCard from "../PropertyCard/PropertyCard";
 import PaginatioinUI from "../PaginatioinUI/PaginatioinUI";
 
 import { MoonLoader } from "react-spinners";
+import NotFoundItem from "../../components/NotFoundItem/NotFoundItem";
 
 export default function UserFavorites() {
   const [loading, setLoading] = useState(true);
@@ -49,7 +50,9 @@ export default function UserFavorites() {
   }
 
   useEffect(() => {
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
   }, []);
 
   return (
@@ -62,16 +65,23 @@ export default function UserFavorites() {
           </div>
         ) : (
           <Grid container spacing={2}>
-            {paginatedCart.map((item) => (
-              <Grid size={{ xs: 12, md: 12, lg: 6 }} key={item._id}>
-                <PropertyCard
-                  item={item}
-                  addNoteHandler={addNoteHandler}
-                  addFavoriteHandler={addFavoriteHandler}
-                  deleteFavoriteHandler={deleteFavoriteHandler}
-                />
-              </Grid>
-            ))}
+            {paginatedCart.length ? (
+              paginatedCart.map((item) => (
+                <Grid size={{ xs: 12, md: 12, lg: 6 }} key={item._id}>
+                  <PropertyCard
+                    item={item}
+                    addNoteHandler={addNoteHandler}
+                    addFavoriteHandler={addFavoriteHandler}
+                    deleteFavoriteHandler={deleteFavoriteHandler}
+                  />
+                </Grid>
+              ))
+            ) : (
+              <NotFoundItem
+                errorTitle={"Could Not Find Any Item ! "}
+                errorText={"Sorry we did not find your selected property"}
+              />
+            )}
           </Grid>
         )}
 

@@ -29,7 +29,11 @@ export default function UserProperties({ currentUser }) {
       .then((data) => {
         setAllproperties(data);
       })
-      .then(setLoading(false));
+      .then(
+        setTimeout(() => {
+          setLoading(false);
+        }, 500)
+      );
   }
 
   function deletePropertyHandler(propId) {
