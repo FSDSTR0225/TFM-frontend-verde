@@ -56,6 +56,19 @@
   justify-content: center;
   align-items: center;
 }
+.roomItem__error__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  gap: 1rem;
+}
+.roomItem__error {
+  color: var(--white);
+  font-size: 1.5rem;
+}
 
 /* Room Item Card End*/
 
@@ -93,22 +106,22 @@
 }
 .messages__left {
   width: 100%;
-
   margin: 0 auto;
   padding: 0;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
+  height: 100%;
 }
 .chat-display {
-  padding-bottom: 6rem;
+  padding-bottom: 1rem;
   list-style-type: none;
   width: 100%;
+  max-height: 80vh;
   border-radius: 10px;
   display: flex;
   flex-flow: column;
   overflow: auto;
-  flex-grow: 1;
 }
 
 .post {
@@ -284,7 +297,8 @@
     margin-top: 9vh;
   }
   .messages__left {
-    height: 81vh;
+    margin-top: 9vh;
+    height: 88vh;
   }
   .roomItem {
     width: 100%;

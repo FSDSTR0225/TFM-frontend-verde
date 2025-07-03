@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { io } from "socket.io-client";
 import "./Messages.css";
 import AuthContext from "../../contexts/AuthContext";
@@ -8,6 +8,7 @@ export default function Messages() {
   const apiUrl = import.meta.env.VITE_API_URL;
 
   const authContext = useContext(AuthContext);
+  const endRef = useRef(null); //end ref to create scroll
 
   const [currentUser, setCurrentUser] = useState("");
   const [socket, setSocket] = useState("");
@@ -19,6 +20,15 @@ export default function Messages() {
   const [name, setName] = useState("");
   const [reciever, setReciever] = useState("");
   const [serverRoomList, setServerRoomList] = useState("");
+
+  useEffect(() => {
+    endRef.current?.scrollIntoView({
+      //make a scroll when new message add to array
+      behavior: "smooth",
+      block: "end",
+      inline: "nearest",
+    });
+  }, [messagesArr]);
 
   useEffect(() => {
     const newSocket = io(apiUrl);
@@ -67,8 +77,6 @@ export default function Messages() {
         text: message,
       });
       setMessage("");
-      document.querySelector(".chat-display").scrollTop =
-        document.querySelector(".chat-display").scrollHeight; //   need scroll
       postMsgToServer();
     }
   }
@@ -164,7 +172,13 @@ export default function Messages() {
               </div>
             ))
           ) : (
-            <div>There is no list and contact ... </div>
+            <div className="roomItem__error__wrapper">
+              <div className="roomItem__error">There is no Chat Item ... </div>
+              <div>
+                First Find a property and send a message then you can follow
+                your chat here!
+              </div>
+            </div>
           )}
         </div>
 
@@ -224,6 +238,7 @@ export default function Messages() {
                 )}
               </div>
             ))}
+            <div ref={endRef} />
           </div>
           <form
             onSubmit={(e) => sendMessage(e)}

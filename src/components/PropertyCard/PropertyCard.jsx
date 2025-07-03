@@ -88,11 +88,6 @@ export default function PropertyCard({
         })
           .then((res) => {
             if (res.ok === true) {
-              Swal.fire({
-                title: "Sent!",
-                text: "Your Message has been sent",
-                icon: "success",
-              });
               return res.json();
             } else {
               console.log("error please check room duplicate");
@@ -101,21 +96,27 @@ export default function PropertyCard({
             //
           })
           .then((response) => {
-            postMsgToServer(
-              authContext.userInfos._id,
-              ownerId,
-              response.createdRoom._id,
-              result.value
-            );
-            console.log(response);
-            console.log(
-              authContext.userInfos._id,
-              ownerId,
-              response.createdRoom._id,
-              result.value
-            );
+            if (response.createdRoom) {
+              postMsgToServer(
+                authContext.userInfos._id,
+                ownerId,
+                response.createdRoom._id,
+                result.value
+              );
+            } else {
+              Swal.fire({
+                title: "Not Sent!",
+                text: "An error has been occured !",
+                icon: "error",
+              });
+            }
           })
           .catch((err) => {
+            Swal.fire({
+              title: "Not Sent!",
+              text: "An error has been occured !",
+              icon: "error",
+            });
             console.log(err);
           });
       }
@@ -138,7 +139,17 @@ export default function PropertyCard({
       .then((res) => {
         if (res.ok === true) {
           console.log("success : ", res);
+          Swal.fire({
+            title: "Sent!",
+            text: "Your Message has been sent",
+            icon: "success",
+          });
         } else {
+          Swal.fire({
+            title: "Not Sent!",
+            text: "Error in sending message",
+            icon: "error",
+          });
           console.log("error : ", res);
         }
       })
@@ -164,7 +175,11 @@ export default function PropertyCard({
             alt="prop-img"
           />
         ) : (
-          <img className="UserProperties__noimg" src="/images/properties/noimage.png" alt="prop-img" />
+          <img
+            className="UserProperties__noimg"
+            src="/images/properties/noimage.png"
+            alt="prop-img"
+          />
         )}
       </div>
       <div className="UserProperties__bodyContainer">
