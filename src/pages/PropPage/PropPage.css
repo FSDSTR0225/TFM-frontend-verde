@@ -15,20 +15,14 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-top: 9vh;
-  padding: 3rem;
   background-color: var(--white);
 }
-.PropPage__imgWrapper {
-  width: 25%;
-}
+
 .PropPage__image {
   border-radius: 2rem 6rem 2rem 6rem;
   width: 100%;
 }
 .PropPage__body {
-  width: 50%;
-  padding: 1rem 3rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -49,7 +43,7 @@
 }
 .PropPage__body__Wrapper {
   display: flex;
-  flex-direction: row;
+
   justify-content: center;
   align-items: start;
   gap: 2rem;
@@ -82,4 +76,42 @@
 .propPage__icon:hover {
   color: var(--Lemon-Lime);
   cursor: pointer;
+}
+
+/* Mobile Size */
+@media only screen and (max-width: 900px) {
+  .PropPage__container {
+    flex-direction: column;
+    padding: 1rem;
+    margin-top: 0;
+  }
+  .PropPage__body {
+    padding: 1rem;
+    width: 100%;
+  }
+  .PropPage__body__Wrapper {
+    flex-direction: column;
+  }
+  .PropPage__imgWrapper {
+    width: 100%;
+  }
+}
+
+/* Desktop Size */
+@media only screen and (min-width: 900px) {
+  .PropPage__container {
+    flex-direction: row;
+    padding: 3rem;
+    margin-top: 9vh;
+  }
+  .PropPage__body {
+    padding: 1rem 3rem;
+    width: 50%;
+  }
+  .PropPage__body__Wrapper {
+    flex-direction: row;
+  }
+  .PropPage__imgWrapper {
+    width: 25%;
+  }
 }

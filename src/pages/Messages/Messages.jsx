@@ -3,9 +3,11 @@ import { io } from "socket.io-client";
 import "./Messages.css";
 import AuthContext from "../../contexts/AuthContext";
 import { HiUsers } from "react-icons/hi";
+import { MoonLoader } from "react-spinners";
 
 export default function Messages() {
   const apiUrl = import.meta.env.VITE_API_URL;
+  const [loading, setLoading] = useState(true);
 
   const authContext = useContext(AuthContext);
   const endRef = useRef(null); //end ref to create scroll
@@ -31,6 +33,10 @@ export default function Messages() {
   }, [messagesArr]);
 
   useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+
     const newSocket = io(apiUrl);
     setSocket(newSocket);
     setCurrentUser(authContext.userInfos);
@@ -138,126 +144,147 @@ export default function Messages() {
   return (
     <div className="messages">
       <div className="messages__container">
-        <div className="messages__middle">
-          {serverRoomList ? (
-            serverRoomList.map((item) => (
-              <div
-                key={item._id}
-                className={
-                  currentRoom === item._id ? "roomItem activeRoom" : "roomItem"
-                }
-                onClick={() => setRoomGetMsgFromServer(item._id, item.users)}
-              >
-                <div className="roomItem__ownerWrapper">
-                  <span className="roomItem__ownerIcon">
-                    <HiUsers />
-                  </span>
-                  <h3 className="roomItem__ownerName">
-                    {item.users[1].username} & {item.users[0].username}
-                  </h3>
-                </div>
-
-                <div className="roomItem__dataWrapper">
-                  <div className="roomItem__imgWrapper">
-                    <img className="roomItem__img" src={item.property.image} />
-                  </div>
-                  <div className="roomItem__textWrapper">
-                    <div className="roomItem__text"> {item.property.title}</div>
-                    <div className="roomItem__text__desc">
-                      Price:{item.property.price} / Address:
-                      {item.property.location}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))
-          ) : (
-            <div className="roomItem__error__wrapper">
-              <div className="roomItem__error">There is no Chat Item ... </div>
-              <div>
-                First Find a property and send a message then you can follow
-                your chat here!
-              </div>
-            </div>
-          )}
-        </div>
-
-        <div className="messages__left ">
-          <div className="chat-display">
-            {oldmessagesArr &&
-              oldmessagesArr.map((oldMsg) => (
-                <div
-                  key={oldMsg._id}
-                  className={
-                    oldMsg.senderName === name
-                      ? "post post--left"
-                      : "post post--right"
-                  }
-                >
+        {loading ? (
+          <div className="loadingWrapper">
+            <MoonLoader size="90px" color="#01796f" loading={loading} /> Is
+            Loading...
+          </div>
+        ) : (
+          <>
+            <div className="messages__middle">
+              {serverRoomList ? (
+                serverRoomList.map((item) => (
                   <div
+                    key={item._id}
                     className={
-                      oldMsg.senderName === name
-                        ? "post__header post__header--user"
-                        : "post__header post__header--reply"
+                      currentRoom === item._id
+                        ? "roomItem activeRoom"
+                        : "roomItem"
+                    }
+                    onClick={() =>
+                      setRoomGetMsgFromServer(item._id, item.users)
                     }
                   >
-                    <span className="post__header--name">
-                      {oldMsg.senderName}
-                    </span>
-                    <span className="post__header--time">
-                      <span>{oldMsg.date}__</span>
-                      <span>{oldMsg.time}</span>
-                    </span>
+                    <div className="roomItem__ownerWrapper">
+                      <span className="roomItem__ownerIcon">
+                        <HiUsers />
+                      </span>
+                      <h3 className="roomItem__ownerName">
+                        {item.users[1].username} & {item.users[0].username}
+                      </h3>
+                    </div>
+
+                    <div className="roomItem__dataWrapper">
+                      <div className="roomItem__imgWrapper">
+                        <img
+                          className="roomItem__img"
+                          src={item.property.image}
+                        />
+                      </div>
+                      <div className="roomItem__textWrapper">
+                        <div className="roomItem__text">
+                          {" "}
+                          {item.property.title}
+                        </div>
+                        <div className="roomItem__text__desc">
+                          Price:{item.property.price} / Address:
+                          {item.property.location}
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="post__text">{oldMsg.message}</div>
+                ))
+              ) : (
+                <div className="roomItem__error__wrapper">
+                  <div className="roomItem__error">
+                    There is no Chat Item ...{" "}
+                  </div>
+                  <div>
+                    First Find a property and send a message then you can follow
+                    your chat here!
+                  </div>
                 </div>
-              ))}
-            {messagesArr.map((msg) => (
-              <div
-                key={msg._id}
-                className={
-                  msg.name === name ? "post post--left" : "post post--right"
-                }
-              >
-                {msg.name !== "admin" ? (
-                  <>
+              )}
+            </div>
+
+            <div className="messages__left ">
+              <div className="chat-display">
+                {oldmessagesArr &&
+                  oldmessagesArr.map((oldMsg) => (
                     <div
+                      key={oldMsg._id}
                       className={
-                        msg.name === name
-                          ? "post__header post__header--user"
-                          : "post__header post__header--reply"
+                        oldMsg.senderName === name
+                          ? "post post--left"
+                          : "post post--right"
                       }
                     >
-                      <span className="post__header--name">{msg.name}</span>
-                      <span className="post__header--time">{msg.time}</span>
+                      <div
+                        className={
+                          oldMsg.senderName === name
+                            ? "post__header post__header--user"
+                            : "post__header post__header--reply"
+                        }
+                      >
+                        <span className="post__header--name">
+                          {oldMsg.senderName}
+                        </span>
+                        <span className="post__header--time">
+                          <span>{oldMsg.date}__</span>
+                          <span>{oldMsg.time}</span>
+                        </span>
+                      </div>
+                      <div className="post__text">{oldMsg.message}</div>
                     </div>
-                    <div className="post__text">{msg.text}</div>
-                  </>
-                ) : (
-                  <div className="post__text adminMsg">{msg.text}</div>
-                )}
+                  ))}
+                {messagesArr.map((msg) => (
+                  <div
+                    key={msg._id}
+                    className={
+                      msg.name === name ? "post post--left" : "post post--right"
+                    }
+                  >
+                    {msg.name !== "admin" ? (
+                      <>
+                        <div
+                          className={
+                            msg.name === name
+                              ? "post__header post__header--user"
+                              : "post__header post__header--reply"
+                          }
+                        >
+                          <span className="post__header--name">{msg.name}</span>
+                          <span className="post__header--time">{msg.time}</span>
+                        </div>
+                        <div className="post__text">{msg.text}</div>
+                      </>
+                    ) : (
+                      <div className="post__text adminMsg">{msg.text}</div>
+                    )}
+                  </div>
+                ))}
+                <div ref={endRef} />
               </div>
-            ))}
-            <div ref={endRef} />
-          </div>
-          <form
-            onSubmit={(e) => sendMessage(e)}
-            className="form-message formWrapper"
-          >
-            <input
-              className="formInput msginput"
-              type="text"
-              placeholder="your message"
-              id="message"
-              required
-              value={message}
-              onChange={(event) => setMessage(event.target.value)}
-            />
-            <button className="formBtn sendbutton" type="submit">
-              send
-            </button>
-          </form>
-        </div>
+              <form
+                onSubmit={(e) => sendMessage(e)}
+                className="form-message formWrapper"
+              >
+                <input
+                  className="formInput msginput"
+                  type="text"
+                  placeholder="your message"
+                  id="message"
+                  required
+                  value={message}
+                  onChange={(event) => setMessage(event.target.value)}
+                />
+                <button className="formBtn sendbutton" type="submit">
+                  send
+                </button>
+              </form>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

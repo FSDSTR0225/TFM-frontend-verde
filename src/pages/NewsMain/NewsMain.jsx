@@ -33,7 +33,7 @@ export default function NewsMain() {
               </div>
             </div>
           </div>
-          <div className="main__body__row">
+          <div className="main__body__row row__revers">
             <div className="main__body__col">
               <div className="main__body__col__title">
                 Brokerage Beat: Expansions at RE/MAX, Christie’s; New England
@@ -53,7 +53,7 @@ export default function NewsMain() {
               />
             </div>
           </div>
-          <div className="main__body__row">
+          <div className="main__body__row ">
             <div className="main__body__col">
               <img
                 className="main__body__col__image"

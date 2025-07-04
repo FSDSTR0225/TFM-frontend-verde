@@ -68,7 +68,11 @@
     padding-bottom: 1rem;
     width: 100%;
   }
+  .ContactForm__Top{
+    padding: 0 !important;
+  }
   .about__missions__header {
+    margin-top: 2rem;
     font-size: 1.9rem;
   }
   .about__missions__text {

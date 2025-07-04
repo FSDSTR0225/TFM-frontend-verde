@@ -57,3 +57,9 @@
   border-radius: 10px;
   width: 30rem;
 }
+
+/* Mobile Size */
+@media only screen and (max-width: 900px) {}
+
+/* Desktop Size */
+@media only screen and (min-width: 900px) {}

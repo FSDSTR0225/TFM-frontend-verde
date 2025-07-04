@@ -5,9 +5,6 @@ const CLOUDINARY_ROOT_URL = "https://api.cloudinary.com/v1_1/";
 const CLOUDINARY_CLOUD_NAME = "dvblykeav";
 const CLOUDINARY_UPLOAD_PRESET = "casa_verde";
 
-// const getImageInLowRes = (url) => {
-//   return url.replace("upload", "upload/w_300,h_300,c_fill");
-// };
 
 export const FileUploader = ({
   setUploadedFile,
