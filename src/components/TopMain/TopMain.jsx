@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./TopMain.css";
 import { FaSearch } from "react-icons/fa";
+import { LuMapPinned } from "react-icons/lu";
 import { useNavigate } from "react-router";
+import PolyDrawer from "../MapSearch/PolyDrawer/PolyDrawer";
+import Swal from "sweetalert2";
 
 export default function TopMain() {
   const apiUrl = import.meta.env.VITE_API_URL;
@@ -15,41 +18,43 @@ export default function TopMain() {
 
   const [cityList, setCityList] = useState([]);
   const [city, setCity] = useState("");
-  const [province, setProvince] = useState("A Coruña");
+  const [province, setProvince] = useState("Madrid");
+
+  const [isShowMap, setIsShowMap] = useState(false);
 
   const Proviences = [
-    { id: 1, name: "A Coruña" },
-    { id: 2, name: "Álava" },
-    { id: 3, name: "Alicante" },
-    { id: 4, name: "Almería" },
-    { id: 5, name: "Asturias" },
-    { id: 6, name: "Ávila" },
-    { id: 7, name: "Baleares" },
-    { id: 8, name: "Barcelona" },
-    { id: 9, name: "Burgos" },
+    { id: 1, name: "Madrid" },
+    { id: 2, name: "Barcelona" },
+    { id: 31, name: "Valencia" },
+    // { id: 4, name: "Almería" },
+    // { id: 5, name: "Asturias" },
+    // { id: 6, name: "Ávila" },
+    // { id: 7, name: "Baleares" },
+    // { id: 8, name: "Álava" },
+    // { id: 9, name: "Burgos" },
     { id: 10, name: "Cádiz" },
-    { id: 11, name: "Cantabria" },
+    // { id: 11, name: "Cantabria" },
     { id: 12, name: "Castellón" },
-    { id: 13, name: "Ciudad Real" },
+    // { id: 13, name: "Ciudad Real" },
     { id: 15, name: "Granada" },
-    { id: 16, name: "Guadalajara" },
-    { id: 17, name: "Huelva" },
-    { id: 18, name: "La Rioja" },
+    // { id: 16, name: "Guadalajara" },
+    // { id: 17, name: "Huelva" },
+    // { id: 18, name: "La Rioja" },
     { id: 19, name: "Las Palmas" },
     { id: 20, name: "León" },
-    { id: 21, name: "Madrid" },
+    // { id: 21, name: "A Coruña" },
     { id: 22, name: "Málaga" },
-    { id: 23, name: "Murcia" },
-    { id: 24, name: "Palencia" },
-    { id: 25, name: "Pontevedra" },
+    // { id: 23, name: "Murcia" },
+    // { id: 24, name: "Palencia" },
+    // { id: 25, name: "Pontevedra" },
     { id: 26, name: "Salamanca" },
-    { id: 27, name: "Segovia" },
+    // { id: 27, name: "Segovia" },
     { id: 28, name: "Sevilla" },
-    { id: 29, name: "Soria" },
-    { id: 30, name: "Toledo" },
-    { id: 31, name: "Valencia" },
+    // { id: 29, name: "Soria" },
+    // { id: 30, name: "Toledo" },
+    // { id: 31, name: "Alicante" },
     { id: 32, name: "Valladolid" },
-    { id: 33, name: "Vizcaya" },
+    // { id: 33, name: "Vizcaya" },
     { id: 34, name: "Zaragoza" },
   ];
 
@@ -79,7 +84,7 @@ export default function TopMain() {
   const getCityList = async (province) => {
     await fetch(`${apiUrl}/cities/province/${province}`)
       .then((res) => res.json())
-      .then((data) => setCityList(data))
+      .then((data) => setCityList(data));
   };
 
   function setContractCatHandler(event) {
@@ -98,12 +103,24 @@ export default function TopMain() {
 
   const handleSearch = async () => {
     !city || !contractCat || !typeCat
-      ? console.log("there is some unselected item")
+      ? Swal.fire({
+          icon: "error",
+          title: "Please, Select All Items",
+          text: "there is some unselected item!",
+        })
       : navigate(`/searchproperty/${city}/${typeCat}/${contractCat}`);
+  };
+  const handleMap = async () => {
+    !city || !contractCat || !typeCat
+      ? Swal.fire({
+          icon: "error",
+          title: "Please, Select All Items",
+          text: "there is some unselected item!",
+        })
+      : setIsShowMap(true);
   };
 
   return (
-    // <MoonLoader size="90" color="#01796f" loading={loading} />
     <div className="TopMain__container">
       <div className="TopMain__itemWrapper">
         <div className="TopMain__item">
@@ -169,7 +186,12 @@ export default function TopMain() {
           <FaSearch className="Topmain__searchIcon" />
           Search
         </button>
+        <button className="Topmain__searchBtn" onClick={handleMap}>
+          <LuMapPinned className="Topmain__searchIcon" />
+          Map
+        </button>
       </div>
+      {isShowMap && <PolyDrawer setIsShowMap={setIsShowMap} handleSearch={handleSearch}/>}
     </div>
   );
 }

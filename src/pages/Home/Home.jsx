@@ -5,10 +5,8 @@ import TopMain from "../../components/TopMain/TopMain";
 import BlogCart from "../../components/BlogCart/BlogCart";
 import NewsBar from "../../components/NewsBar/NewsBar";
 import SwiperReact from "../../components/SwiperReact/SwiperReact";
-// import TypeWriter from "../../components/TypeWriter/TypeWriter";
 import Capabilities from "../../components/Capabilities/Capabilities";
 import CardConceptCompo from "../../components/CardConceptCompo/CardConceptCompo";
-// import MapSearch from "../../components/MapSearch/MapSearch";
 
 import { MoonLoader } from "react-spinners";
 
@@ -23,8 +21,8 @@ export default function Home() {
     <>
       {loading ? (
         <div className="loadingWrapper">
-          <MoonLoader size="90px" color="#01796f" loading={loading} /> Is
-          Loading...
+          <MoonLoader size="90px" color="#01796f" loading={loading} />
+          Is Loading...
         </div>
       ) : (
         <div className="Home">
@@ -34,15 +32,15 @@ export default function Home() {
                 Find your property wherever you like !
               </h1>
               <TopMain />
-              {/* <MapSearch mapCenter={[40.4168, -3.7038]}/> */}
             </div>
           </div>
 
           <SwiperReact />
-          {/* <TypeWriter /> */}
 
           <Capabilities />
+
           <CardConceptCompo />
+
           <div className="BlogCart__container">
             <BlogCart
               title=" How much is your house worth?"

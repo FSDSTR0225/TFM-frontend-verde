@@ -1,4 +1,7 @@
 .TopMain__container {
+  width: 100%;
+  max-width: 100%;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -90,7 +93,7 @@ select:focus > option:checked {
   .TopMain__container {
     flex-direction: row;
     gap: 1rem;
-    margin: 2rem;
+    margin: 2rem 0;
   }
   .TopMain__itemWrapper {
     gap: 1rem;

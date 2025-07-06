@@ -103,7 +103,7 @@ export default function SearchProp() {
           </div>
         ) : (
           <>
-            <Grid container spacing={2}>
+            <Grid container spacing={4}>
               {filteredArr.length ? (
                 paginatedCart.map((item) => (
                   <Grid size={{ xs: 12, md: 12, lg: 6 }} key={item._id}>
