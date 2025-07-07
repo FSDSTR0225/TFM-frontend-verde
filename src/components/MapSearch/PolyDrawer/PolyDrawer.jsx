@@ -30,7 +30,15 @@ const PolygonDrawer = ({ isDrawing, addPoint }) => {
   return null;
 };
 
-export default function PolyDrawer({ setIsShowMap, handleSearch }) {
+export default function PolyDrawer({
+  setIsShowMap,
+  handleSearch,
+  setPolyArray,
+  mapCenter,
+  city,
+  typeCat,
+  contractCat,
+}) {
   const apiUrl = import.meta.env.VITE_API_URL;
   const customIcon = new L.Icon({
     iconUrl: iconImage,
@@ -50,11 +58,12 @@ export default function PolyDrawer({ setIsShowMap, handleSearch }) {
 
   const finishDrawing = () => {
     setIsDrawing(false);
+    setPolyArray(polygonCoords);
 
     fetch(`${apiUrl}/properties/search/locations`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(polygonCoords),
+      body: JSON.stringify({ polygonCoords, city, typeCat, contractCat }),
     })
       .then((res) => {
         console.log(res);
@@ -73,7 +82,7 @@ export default function PolyDrawer({ setIsShowMap, handleSearch }) {
     <div className="mapContainer__wrapper">
       <MapContainer
         className="mapContainer"
-        center={[40.416775, -3.70379]}
+        center={mapCenter}
         zoom={13}
         scrollWheelZoom={false}
       >
@@ -84,7 +93,7 @@ export default function PolyDrawer({ setIsShowMap, handleSearch }) {
 
         {allLocations.length &&
           allLocations.map((item) => (
-            <Marker position={item.latlng} icon={customIcon}>
+            <Marker position={item.latlng} icon={customIcon} key={item._id}>
               <Popup>
                 {item.title}__ {item.price} $
               </Popup>
@@ -104,37 +113,21 @@ export default function PolyDrawer({ setIsShowMap, handleSearch }) {
           />
         }
       </MapContainer>
-      <button
-        className="drawBtn drawBtn1"
-        onClick={startDrawing}
-        style={{ margin: "10px" }}
-      >
+      <button className="drawBtn drawBtn1" onClick={startDrawing}>
         <FaDrawPolygon className="drawBtn__icon" />
         Draw Your Area
       </button>
 
-      <button
-        className="drawBtn drawBtn2"
-        onClick={finishDrawing}
-        style={{ margin: "10px" }}
-      >
+      <button className="drawBtn drawBtn2" onClick={finishDrawing}>
         <IoLockClosed className="drawBtn__icon" />
         Finish Drawing
       </button>
 
-      <button
-        className="drawBtn drawBtn3"
-        onClick={() => handleSearch()}
-        style={{ margin: "10px" }}
-      >
+      <button className="drawBtn drawBtn3" onClick={() => handleSearch()}>
         <CiBoxList className="drawBtn__icon" />
         Show List
       </button>
-      <button
-        className="drawBtn drawBtn4"
-        onClick={() => setIsShowMap(false)}
-        style={{ margin: "10px" }}
-      >
+      <button className="drawBtn drawBtn4" onClick={() => setIsShowMap(false)}>
         <span>Close</span>
         <IoMdCloseCircle className="drawBtn__icon" />
       </button>

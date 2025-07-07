@@ -21,6 +21,8 @@ export default function TopMain() {
   const [province, setProvince] = useState("Madrid");
 
   const [isShowMap, setIsShowMap] = useState(false);
+  const [polyArray, setPolyArray] = useState([]);
+  const [mapCenter, setMapCenter] = useState([40.416775, -3.70379]);
 
   const Proviences = [
     { id: 1, name: "Madrid" },
@@ -93,7 +95,6 @@ export default function TopMain() {
       item.classList.remove("active");
     });
     event.target.classList.add("active");
-    console.log(contractCat);
   }
 
   function setTypeCatHAndler(event) {
@@ -108,7 +109,9 @@ export default function TopMain() {
           title: "Please, Select All Items",
           text: "there is some unselected item!",
         })
-      : navigate(`/searchproperty/${city}/${typeCat}/${contractCat}`);
+      : navigate(`/searchproperty/${city}/${typeCat}/${contractCat}`, {
+          state: { data: polyArray },
+        });
   };
   const handleMap = async () => {
     !city || !contractCat || !typeCat
@@ -170,7 +173,16 @@ export default function TopMain() {
           <select
             id="citySelector"
             className="TopMain__settypeCat"
-            onChange={(e) => setCity(e.target.value)}
+            onChange={(e) => {
+              setCity(e.target.value);
+              cityList.map((city) => {
+                if (city.name === e.target.value) {
+                  if (city.location[0]) {
+                    setMapCenter(JSON.parse(city.location[0]));
+                  }
+                }
+              });
+            }}
           >
             <option value="">Poblacion</option>
             {cityList.map((item) => (
@@ -191,7 +203,17 @@ export default function TopMain() {
           Map
         </button>
       </div>
-      {isShowMap && <PolyDrawer setIsShowMap={setIsShowMap} handleSearch={handleSearch}/>}
+      {isShowMap && (
+        <PolyDrawer
+          setIsShowMap={setIsShowMap}
+          handleSearch={handleSearch}
+          setPolyArray={setPolyArray}
+          mapCenter={mapCenter}
+          city={city}
+          typeCat={typeCat}
+          contractCat={contractCat}
+        />
+      )}
     </div>
   );
 }

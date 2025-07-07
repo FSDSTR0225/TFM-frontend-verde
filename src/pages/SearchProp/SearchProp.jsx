@@ -8,6 +8,7 @@ import NotFoundItem from "../../components/NotFoundItem/NotFoundItem";
 import TopMain from "../../components/TopMain/TopMain";
 import Grid from "@mui/material/Grid";
 import PaginatioinUI from "../../components/PaginatioinUI/PaginatioinUI";
+import { useLocation } from "react-router-dom";
 
 import { MoonLoader } from "react-spinners";
 
@@ -21,24 +22,34 @@ export default function SearchProp() {
   const [filteredArr, setFilteredArr] = useState([]);
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedType, setSelectedType] = useState("");
+  const [polyArray, setPolyArray] = useState([]);
   const [selectedContract, setSelectedContract] = useState("");
 
   const [paginatedCart, setPaginatedCart] = useState([]);
-
-  const PropNumberInEachPage = 6;
+  const location = useLocation();
+  // const myArray = location.state?.data || [];
 
   useEffect(() => {
     setSelectedCity(params.city);
     setSelectedType(params.type);
     setSelectedContract(params.contract);
+    setPolyArray(location.state.data);
   }, [params, params.city]);
 
   useEffect(() => {
     selectedCity &&
       selectedType &&
       selectedContract &&
+      polyArray &&
       fetch(
-        `${apiUrl}/properties/search/${selectedCity}/${selectedContract}/${selectedType}`
+        `${apiUrl}/properties/search/${selectedCity}/${selectedContract}/${selectedType}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ polyArray: polyArray }),
+        }
       )
         .then((res) => res.json())
         .then((data) => {

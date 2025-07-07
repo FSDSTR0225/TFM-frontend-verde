@@ -25,6 +25,7 @@
   border-radius: 10px;
   cursor: pointer;
   text-align: center;
+  margin: 10px;
 }
 .drawBtn:hover {
   background-color: black;
