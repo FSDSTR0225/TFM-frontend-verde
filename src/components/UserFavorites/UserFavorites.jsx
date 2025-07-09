@@ -63,26 +63,24 @@ export default function UserFavorites() {
             <MoonLoader size="90px" color="#01796f" loading={loading} /> Is
             Loading...
           </div>
+        ) : paginatedCart.length === 0 ? (
+          <NotFoundItem
+            errorTitle={"Could Not Find Any Item ! "}
+            errorText={"Sorry we did not find your selected property"}
+          />
         ) : (
           <>
             <Grid container spacing={2}>
-              {paginatedCart.length ? (
-                paginatedCart.map((item) => (
-                  <Grid size={{ xs: 12, md: 12, lg: 6 }} key={item._id}>
-                    <PropertyCard
-                      item={item}
-                      addNoteHandler={addNoteHandler}
-                      addFavoriteHandler={addFavoriteHandler}
-                      deleteFavoriteHandler={deleteFavoriteHandler}
-                    />
-                  </Grid>
-                ))
-              ) : (
-                <NotFoundItem
-                  errorTitle={"Could Not Find Any Item ! "}
-                  errorText={"Sorry we did not find your selected property"}
-                />
-              )}
+              {paginatedCart.map((item) => (
+                <Grid size={{ xs: 12, md: 12, lg: 6 }} key={item._id}>
+                  <PropertyCard
+                    item={item}
+                    addNoteHandler={addNoteHandler}
+                    addFavoriteHandler={addFavoriteHandler}
+                    deleteFavoriteHandler={deleteFavoriteHandler}
+                  />
+                </Grid>
+              ))}
             </Grid>
             <PaginatioinUI
               allproperties={authContext.userFavorites}
@@ -94,4 +92,43 @@ export default function UserFavorites() {
       </div>
     </div>
   );
+  // return (
+  //   <div className="UserProperties">
+  //     <div className="UserProperties__container">
+  //       {loading ? (
+  //         <div className="loadingWrapper">
+  //           <MoonLoader size="90px" color="#01796f" loading={loading} /> Is
+  //           Loading...
+  //         </div>
+  //       ) : (
+  //         <>
+  //           <Grid container spacing={2}>
+  //             {paginatedCart.length ? (
+  //               paginatedCart.map((item) => (
+  //                 <Grid size={{ xs: 12, md: 12, lg: 6 }} key={item._id}>
+  //                   <PropertyCard
+  //                     item={item}
+  //                     addNoteHandler={addNoteHandler}
+  //                     addFavoriteHandler={addFavoriteHandler}
+  //                     deleteFavoriteHandler={deleteFavoriteHandler}
+  //                   />
+  //                 </Grid>
+  //               ))
+  //             ) : (
+  //               <NotFoundItem
+  //                 errorTitle={"Could Not Find Any Item ! "}
+  //                 errorText={"Sorry we did not find your selected property"}
+  //               />
+  //             )}
+  //           </Grid>
+  //           <PaginatioinUI
+  //             allproperties={authContext.userFavorites}
+  //             setPaginatedCart={setPaginatedCart}
+  //             PropNumberInEachPage={6}
+  //           />
+  //         </>
+  //       )}
+  //     </div>
+  //   </div>
+  // );
 }
