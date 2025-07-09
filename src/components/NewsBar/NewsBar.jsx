@@ -12,6 +12,7 @@ export default function NewsBar() {
   useEffect(() => {
     getAllCategory();
     getAllNews();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const getAllCategory = async () => {

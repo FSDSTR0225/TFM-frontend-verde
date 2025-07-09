@@ -34,6 +34,7 @@ export default function SearchProp() {
     setSelectedType(params.type);
     setSelectedContract(params.contract);
     setPolyArray(location.state.data);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params, params.city]);
 
   useEffect(() => {
@@ -56,7 +57,12 @@ export default function SearchProp() {
           setPropertyArr(data.properties);
           setFilteredArr(data.properties);
         })
-        .then(setLoading(false));
+        .then(
+          setTimeout(() => {
+            setLoading(false);
+          }, 500)
+        );
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCity, selectedContract, selectedType]);
 

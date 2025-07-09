@@ -50,7 +50,9 @@ export default function UserFavorites() {
   }
 
   useEffect(() => {
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
   }, []);
 
   return (
