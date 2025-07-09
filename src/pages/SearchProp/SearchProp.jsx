@@ -34,7 +34,6 @@ export default function SearchProp() {
     setSelectedType(params.type);
     setSelectedContract(params.contract);
     setPolyArray(location.state.data);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params, params.city]);
 
   useEffect(() => {
@@ -60,7 +59,7 @@ export default function SearchProp() {
         .then(
           setTimeout(() => {
             setLoading(false);
-          }, 500)
+          }, 700)
         );
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -114,24 +113,26 @@ export default function SearchProp() {
             <MoonLoader size="90px" color="#01796f" loading={loading} />
             Is Loading...
           </div>
-        ) : filteredArr.length === 0 ? (
-          <NotFoundItem
-            errorTitle="Could Not Find Any Item !"
-            errorText="Sorry we did not find your selected property"
-          />
         ) : (
           <>
             <Grid container spacing={4}>
-              {paginatedCart.map((item) => (
-                <Grid size={{ xs: 12, md: 12, lg: 6 }} key={item._id}>
-                  <PropertyCard
-                    item={item}
-                    addNoteHandler={addNoteHandler}
-                    addFavoriteHandler={addFavoriteHandler}
-                    deleteFavoriteHandler={deleteFavoriteHandler}
-                  />
-                </Grid>
-              ))}
+              {filteredArr.length ? (
+                paginatedCart.map((item) => (
+                  <Grid size={{ xs: 12, md: 12, lg: 6 }} key={item._id}>
+                    <PropertyCard
+                      item={item}
+                      addNoteHandler={addNoteHandler}
+                      addFavoriteHandler={addFavoriteHandler}
+                      deleteFavoriteHandler={deleteFavoriteHandler}
+                    />
+                  </Grid>
+                ))
+              ) : (
+                <NotFoundItem
+                  errorTitle={"Could Not Find Any Item ! "}
+                  errorText={"Sorry we did not find your selected property"}
+                />
+              )}
             </Grid>
             <PaginatioinUI
               allproperties={filteredArr}
@@ -140,39 +141,6 @@ export default function SearchProp() {
             />
           </>
         )}
-        {/* {loading ? (
-          <div className="loadingWrapper">
-            <MoonLoader size="90px" color="#01796f" loading={loading} />
-            Is Loading...
-          </div>
-        ) : (
-          <>
-            <Grid container spacing={4}>
-              {filteredArr.length
-                ? paginatedCart.map((item) => (
-                    <Grid size={{ xs: 12, md: 12, lg: 6 }} key={item._id}>
-                      <PropertyCard
-                        item={item}
-                        addNoteHandler={addNoteHandler}
-                        addFavoriteHandler={addFavoriteHandler}
-                        deleteFavoriteHandler={deleteFavoriteHandler}
-                      />
-                    </Grid>
-                  ))
-                : !loading && (
-                    <NotFoundItem
-                      errorTitle={"Could Not Find Any Item ! "}
-                      errorText={"Sorry we did not find your selected property"}
-                    />
-                  )}
-            </Grid>
-            <PaginatioinUI
-              allproperties={filteredArr}
-              setPaginatedCart={setPaginatedCart}
-              PropNumberInEachPage={4}
-            />
-          </>
-        )} */}
       </div>
     </div>
   );

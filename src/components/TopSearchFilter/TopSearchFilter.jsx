@@ -26,10 +26,10 @@ export default function TopSearchFilter({ propertyArr, setFilteredArr }) {
           ? Number(item.bathrooms) === Number(bathrooms)
           : true) &&
         (lowPrice !== "No Limit"
-          ? Number(item.price) > Number(lowPrice)
+          ? Number(item.price) >= Number(lowPrice)
           : true) &&
         (highPrice !== "No Limit"
-          ? Number(item.price) < Number(highPrice)
+          ? Number(item.price) <= Number(highPrice)
           : true) &&
         (pets !== "No Limit" ? String(item.pets) === String(pets) : true) &&
         (minors !== "No Limit"
