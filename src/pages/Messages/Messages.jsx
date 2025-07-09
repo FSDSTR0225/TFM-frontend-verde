@@ -183,12 +183,11 @@ export default function Messages() {
                       </div>
                       <div className="roomItem__textWrapper">
                         <div className="roomItem__text">
-                          {" "}
                           {item.property.title}
                         </div>
                         <div className="roomItem__text__desc">
-                          Price:{item.property.price} / Address:
-                          {item.property.location}
+                          <div>Price:{item.property.price}</div>
+                          <div>Address:{item.property.location}</div>
                         </div>
                       </div>
                     </div>

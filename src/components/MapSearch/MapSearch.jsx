@@ -11,8 +11,10 @@ import {
 } from "react-leaflet";
 import "../../plugins/leaflet/leaflet.css"; // Ensure you have the correct path to your Leaflet CSS
 import L from "leaflet"; // Import Leaflet icons
-// import markerIconPng from "leaflet/dist/images/marker-icon.png";
+import markerIconPng from "leaflet/dist/images/marker-icon.png";
 import PolyDrawer from "./PolyDrawer/PolyDrawer";
+import { IoLocationSharp } from "react-icons/io5";
+import { IoMdCloseCircle } from "react-icons/io";
 
 export default function MapSearch({
   mapCenter,
@@ -23,7 +25,7 @@ export default function MapSearch({
   const [mapMarker, setMapMarker] = useState(mapCenter);
 
   const customIcon = new L.Icon({
-    iconUrl: "leaflet/dist/images/marker-icon.png",
+    iconUrl: markerIconPng,
     iconSize: [18, 30],
   });
 
@@ -43,13 +45,12 @@ export default function MapSearch({
 
   return (
     showMap && (
-      <>
+      <div className="mapSearch__wrapper">
         <MapContainer
-          className="MapContainer"
+          className="mapSearch__Container"
           center={mapCenter}
-          zoom={12}
-          scrollWheelZoom={true}
-          style={{ height: "500px", width: "30rem" }}
+          zoom={13}
+          scrollWheelZoom={false}
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -62,15 +63,28 @@ export default function MapSearch({
           </Marker>
         </MapContainer>
         <button
-          className="mapBtn"
+          className="mapBtn selectBtn"
           onClick={() => {
             setPropLocation(mapMarker);
             setShowMap(false);
           }}
         >
-          confirm location
+          <IoLocationSharp className="drawBtn__icon" />
+          Finalize Location
         </button>
-      </>
+        <button
+          className="mapBtn closeBtn"
+          onClick={() => {
+            setShowMap(false);
+          }}
+        >
+          <span>Close</span>
+          <IoMdCloseCircle className="drawBtn__icon" />
+        </button>
+        <button className="mapBtn infoBtn">
+          <span>Please select a location then click on "Finalize Location"</span>
+        </button>
+      </div>
     )
   );
 }

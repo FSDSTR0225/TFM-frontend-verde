@@ -18,6 +18,7 @@ import { FaDrawPolygon } from "react-icons/fa";
 import { IoLockClosed } from "react-icons/io5";
 import { CiBoxList } from "react-icons/ci";
 import { IoMdCloseCircle } from "react-icons/io";
+import Swal from "sweetalert2";
 
 const PolygonDrawer = ({ isDrawing, addPoint }) => {
   useMapEvents({
@@ -48,10 +49,10 @@ export default function PolyDrawer({
   const [polygonCoords, setPolygonCoords] = useState([]);
   const [isDrawing, setIsDrawing] = useState(false);
   const [allLocations, setAllLocations] = useState([]);
+  const [isDisableShowList, setIsDisableShowList] = useState(true);
   useEffect(() => {}, [isDrawing]);
 
   const startDrawing = () => {
-    console.log("start draw Polygon:");
     setPolygonCoords([]);
     setIsDrawing(true);
   };
@@ -66,11 +67,19 @@ export default function PolyDrawer({
       body: JSON.stringify({ polygonCoords, city, typeCat, contractCat }),
     })
       .then((res) => {
-        console.log(res);
-        return res.json();
+        if (res.ok) {
+          setIsDisableShowList(false);
+          return res.json();
+        } else {
+          setIsDisableShowList(true);
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "no property found ! Please try again",
+          });
+        }
       })
       .then((data) => {
-        console.log(data.results);
         setAllLocations(data.results);
       })
       .catch((err) => {
@@ -123,11 +132,24 @@ export default function PolyDrawer({
         Finish Drawing
       </button>
 
-      <button className="drawBtn drawBtn3" onClick={() => handleSearch()}>
+      <button
+        disabled={isDisableShowList}
+        className="drawBtn drawBtn3"
+        onClick={() => {
+          handleSearch();
+          setIsShowMap(false);
+        }}
+      >
         <CiBoxList className="drawBtn__icon" />
         Show List
       </button>
-      <button className="drawBtn drawBtn4" onClick={() => setIsShowMap(false)}>
+      <button
+        className="drawBtn drawBtn4"
+        onClick={() => {
+          setIsShowMap(false);
+          setPolyArray([]);
+        }}
+      >
         <span>Close</span>
         <IoMdCloseCircle className="drawBtn__icon" />
       </button>

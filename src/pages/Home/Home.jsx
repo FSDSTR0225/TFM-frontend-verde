@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import "./Home.css";
 import TopMain from "../../components/TopMain/TopMain";
 import BlogCart from "../../components/BlogCart/BlogCart";

@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import "./../Login/Login.css";
-// import sideImg from "/images/sides/1.jpg";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";

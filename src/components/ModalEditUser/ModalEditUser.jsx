@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import "../ModalEditDelete/ModalEditDelete.css";
 import {
   Button,
@@ -14,32 +15,29 @@ import { green, indigo } from "@mui/material/colors";
 import { useForm } from "react-hook-form";
 import TextField from "@mui/material/TextField";
 import Swal from "sweetalert2";
+import AuthContext from "../../contexts/AuthContext";
 
 export default function ModalEditUser({
   isShowModal,
   setIsShowModal,
   username,
   email,
-  password,
   userId,
 }) {
   const apiUrl = import.meta.env.VITE_API_URL;
+  const authContext = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const submitForm = async (data) => {
     setIsShowModal(false);
     Swal.fire({
       title: "Are you sure?",
-      text: "Updating new data!",
+      text: "Updating new data! Your data will be updated and you will log out",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonText: "Yes, Update!",
+      confirmButtonText: "Yes, Update & Logout!",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: "Edited!",
-          text: "Your info has been edited.",
-          icon: "success",
-        });
         fetch(`${apiUrl}/users/${userId}`, {
           method: "PUT",
           headers: {
@@ -48,9 +46,26 @@ export default function ModalEditUser({
           body: JSON.stringify(data),
         })
           .then((resposnse) => {
+            console.log(resposnse);
+
+            if (resposnse.ok) {
+              Swal.fire({
+                title: "Edited!",
+                text: "Your info has been edited.  Please login again",
+                icon: "success",
+              });
+            } else {
+              Swal.fire({
+                title: "Error!",
+                text: "Error in edditing users data",
+                icon: "error",
+              });
+            }
             return resposnse.json();
           })
           .then((res) => {
+            navigate("/");
+            authContext.logout();
             console.log(res);
           })
           .catch((err) => {
@@ -95,7 +110,11 @@ export default function ModalEditUser({
                 <div className="editModal__itemwraper">
                   <span className="editModal__item">
                     <TextField
-                      {...register("username", { required: true })}
+                      {...register("username", {
+                        required: true,
+                        maxLength: 20,
+                        minLength: 6,
+                      })}
                       className="editModal__item__input"
                       aria-invalid={errors.username ? "true" : "false"}
                       error={errors.username}
@@ -110,7 +129,12 @@ export default function ModalEditUser({
                   </span>
                   <span className="editModal__item">
                     <TextField
-                      {...register("email", { required: true })}
+                      {...register("email", {
+                        required: true,
+                        maxLength: 35,
+                        minLength: 10,
+                        pattern: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
+                      })}
                       className="editModal__item__input"
                       aria-invalid={errors.email ? "true" : "false"}
                       error={errors.email}
@@ -125,12 +149,17 @@ export default function ModalEditUser({
                   </span>
                   <span className="editModal__item">
                     <TextField
-                      {...register("password", { required: true })}
+                      {...register("password", {
+                        required: true,
+                        maxLength: 35,
+                        minLength: 6,
+                        pattern: /^(?=.*[0-9])(?=.*[A-Z]).{6,}$/,
+                      })}
                       className="editModal__item__input"
                       aria-invalid={errors.password ? "true" : "false"}
                       error={errors.password}
                       label="password"
-                      defaultValue={password}
+                      defaultValue=""
                       type="text"
                       helperText={
                         errors.password ? "Please enter valid password!" : null

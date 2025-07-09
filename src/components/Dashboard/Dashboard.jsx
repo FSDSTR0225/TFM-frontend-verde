@@ -168,7 +168,6 @@ export default function Dashboard({ currentUser, updateUserInfos }) {
             setIsShowModal={setIsShowModal}
             username={currentUser.username}
             email={currentUser.email}
-            password={currentUser.password}
             userId={currentUser._id}
           />
         )}
