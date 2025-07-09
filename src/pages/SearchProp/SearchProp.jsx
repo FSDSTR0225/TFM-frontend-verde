@@ -34,7 +34,7 @@ export default function SearchProp() {
     setSelectedType(params.type);
     setSelectedContract(params.contract);
     setPolyArray(location.state.data);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params, params.city]);
 
   useEffect(() => {
@@ -117,23 +117,23 @@ export default function SearchProp() {
         ) : (
           <>
             <Grid container spacing={4}>
-              {filteredArr.length ? (
-                paginatedCart.map((item) => (
-                  <Grid size={{ xs: 12, md: 12, lg: 6 }} key={item._id}>
-                    <PropertyCard
-                      item={item}
-                      addNoteHandler={addNoteHandler}
-                      addFavoriteHandler={addFavoriteHandler}
-                      deleteFavoriteHandler={deleteFavoriteHandler}
+              {filteredArr.length
+                ? paginatedCart.map((item) => (
+                    <Grid size={{ xs: 12, md: 12, lg: 6 }} key={item._id}>
+                      <PropertyCard
+                        item={item}
+                        addNoteHandler={addNoteHandler}
+                        addFavoriteHandler={addFavoriteHandler}
+                        deleteFavoriteHandler={deleteFavoriteHandler}
+                      />
+                    </Grid>
+                  ))
+                : !loading && (
+                    <NotFoundItem
+                      errorTitle={"Could Not Find Any Item ! "}
+                      errorText={"Sorry we did not find your selected property"}
                     />
-                  </Grid>
-                ))
-              ) : (
-                <NotFoundItem
-                  errorTitle={"Could Not Find Any Item ! "}
-                  errorText={"Sorry we did not find your selected property"}
-                />
-              )}
+                  )}
             </Grid>
             <PaginatioinUI
               allproperties={filteredArr}
