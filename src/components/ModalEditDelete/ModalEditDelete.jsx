@@ -14,6 +14,7 @@ import {
 import { green, indigo } from "@mui/material/colors";
 import { useForm } from "react-hook-form";
 import TextField from "@mui/material/TextField";
+import Swal from "sweetalert2";
 
 export default function ModalEditDelete({
   isShowModal,
@@ -21,10 +22,21 @@ export default function ModalEditDelete({
   currentProperty,
   getUserProperties,
 }) {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    },
+  });
+
   const onSubmit = async (data) => {
     const apiUrl = import.meta.env.VITE_API_URL;
-
-
+    setIsShowModal(false);
     await fetch(`${apiUrl}/properties/${currentProperty._id}`, {
       method: "PUT",
       headers: {
@@ -33,8 +45,16 @@ export default function ModalEditDelete({
       body: JSON.stringify(data),
     })
       .then((resposnse) => {
-        if (!resposnse.status === 201) {
-          console.log("error, response is :", resposnse);
+        if (resposnse.ok) {
+          Toast.fire({
+            icon: "success",
+            title: "Editted Successfully!",
+          });
+        } else {
+          Toast.fire({
+            icon: "error",
+            title: "Error in editing!",
+          });
         }
         getUserProperties();
       })
@@ -302,6 +322,18 @@ export default function ModalEditDelete({
                       <MenuItem value="forever">forever</MenuItem>
                     </Select>
                   </FormControl>
+
+                  <TextField
+                    {...register("area", { required: true })}
+                    className="editModal__item__input"
+                    aria-invalid={errors.area ? "true" : "false"}
+                    error={errors.area}
+                    label="area / m2"
+                    defaultValue={currentProperty.area ?? " "}
+                    type="text"
+                    helperText={errors.area ? "Please enter valid area!" : " "}
+                    variant="standard"
+                  />
                 </div>
 
                 <Typography className="modalFooter">
@@ -313,7 +345,6 @@ export default function ModalEditDelete({
                     Cancel
                   </Button>
                   <Button
-                    onClick={() => setIsShowModal(false)}
                     className="modalFooter__btn"
                     variant="contained"
                     type="submit"

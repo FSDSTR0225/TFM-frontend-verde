@@ -56,11 +56,7 @@ export default function SearchProp() {
           setPropertyArr(data.properties);
           setFilteredArr(data.properties);
         })
-        .then(
-          setTimeout(() => {
-            setLoading(false);
-          }, 500)
-        );
+        .then(setLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCity, selectedContract, selectedType]);
 

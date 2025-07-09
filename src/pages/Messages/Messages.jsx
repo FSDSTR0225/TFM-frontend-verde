@@ -33,9 +33,7 @@ export default function Messages() {
   }, [messagesArr]);
 
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 500);
+    setLoading(false);
 
     const newSocket = io(apiUrl);
     setSocket(newSocket);

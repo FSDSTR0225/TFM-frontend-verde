@@ -16,8 +16,6 @@ export const FileUploader = ({
     fotoUploadHandler(file);
   }
   async function fotoUploadHandler(file) {
-    console.log("Uploading...");
-
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
