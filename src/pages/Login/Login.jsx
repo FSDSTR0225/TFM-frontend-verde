@@ -52,7 +52,6 @@ export default function Login() {
         return response.json();
       })
       .then((result) => {
-        console.log("server result:", result);
         if (result.token) {
           authContext.login(result.user, result.token);
         }
@@ -83,10 +82,11 @@ export default function Login() {
               })}
               aria-invalid={errors.username ? "true" : "false"}
               error={errors.username}
-              // id="standard-error-helper-text"
+              id="loginForm__username"
               label="username"
               defaultValue=""
-              // color=""
+              name="username"
+              autoComplete="username"
               helperText={
                 errors.username ? "Please enter valid username!" : null
               }
@@ -94,7 +94,7 @@ export default function Login() {
             />
             <TextField
               className="RegisterForm__input"
-              type="text"
+              type="password"
               {...register("password", {
                 required: true,
                 maxLength: 35,
@@ -102,10 +102,11 @@ export default function Login() {
               })}
               aria-invalid={errors.password ? "true" : "false"}
               error={errors.password}
-              id="standard-error-helper-text"
+              id="loginForm__password"
               label="Password"
+              autoComplete="current-password"
               defaultValue=""
-              // color=""
+              name="password"
               helperText={
                 errors.password ? "Please enter correct password! " : null
               }
@@ -132,11 +133,3 @@ export default function Login() {
     </div>
   );
 }
-// List of validation rules supported:
-// required
-// min
-// max
-// minLength
-// maxLength
-// pattern
-// validate

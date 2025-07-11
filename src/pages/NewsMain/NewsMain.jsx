@@ -8,7 +8,7 @@ export default function NewsMain() {
   return (
     <div>
       <WelcomeNews
-        title="Welcome"
+        title="News"
         text="Welcome To Casa Verde News"
         wallpaperUrl="/images/backgrounds/5.png"
       />

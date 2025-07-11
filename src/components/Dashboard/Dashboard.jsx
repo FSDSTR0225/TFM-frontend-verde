@@ -87,7 +87,7 @@ export default function Dashboard({ currentUser, updateUserInfos }) {
         </div>
         <div className="mainbar__datebox">
           <HiCalendarDateRange className="mainbar__datebox__icon" />
-          Date: {currentDate.getDate()}/{currentDate.getMonth()}/
+          Today: {currentDate.getDate()}/{currentDate.getMonth()+1}/
           {currentDate.getFullYear()}
         </div>
       </div>
@@ -155,7 +155,11 @@ export default function Dashboard({ currentUser, updateUserInfos }) {
             </h3>
             <p>
               Amasing you have a perfect and beautifull profle what we are going
-              to do now ?<br /> You can find every thing you want in here.
+              to do now?
+              <br />
+              We're thrilled to have you on board! Here, you’ll find everything
+              you need to get started, stay informed, and make the most of your
+              experience.
             </p>
           </div>
         </div>

@@ -10,7 +10,7 @@ import { MdFavoriteBorder } from "react-icons/md";
 import AuthContext from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-// import nofoto from "/images/properties/noimage.png";
+import nofoto from "/images/properties/noimage.png";
 
 export default function PropertyCard({
   item,
@@ -168,7 +168,7 @@ export default function PropertyCard({
         className="UserProperties__imgContainer"
         onClick={() => cardClickHandler(item._id)}
       >
-        {item.image ? (
+        {item.image.length ? (
           <img
             className="UserProperties__img"
             src={item.image}
@@ -177,7 +177,7 @@ export default function PropertyCard({
         ) : (
           <img
             className="UserProperties__noimg"
-            src="/images/properties/noimage.png"
+            src={nofoto}
             alt="prop-img"
           />
         )}
@@ -248,7 +248,6 @@ export default function PropertyCard({
                     setIsShowEditModal(true);
                   }}
                 />
-                {/* <MdFavoriteBorder className="UserProperties__footerIcon" /> */}
               </div>
             ) : (
               <div className="UserProperties__footerRight">

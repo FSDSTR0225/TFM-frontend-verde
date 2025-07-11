@@ -40,7 +40,6 @@ export default function Register() {
       }),
     })
       .then((res) => {
-        console.log(res);
         if (res.ok === true) {
           setIsModalSuccess(true);
         } else {
@@ -50,11 +49,13 @@ export default function Register() {
         return res.json();
       })
       .then((result) => {
-        sendEmailToUser(result.user._id);
-        authContext.login(result.user, result.access_token);
-        setTimeout(() => {
-          navigate("/");
-        }, 2000);
+        if (result.user) {
+          sendEmailToUser(result.user._id);
+          authContext.login(result.user, result.access_token);
+          setTimeout(() => {
+            navigate("/");
+          }, 2000);
+        }
       })
       .catch((err) => {
         console.log(err);

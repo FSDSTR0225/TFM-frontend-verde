@@ -28,22 +28,18 @@
   justify-content: center;
   align-items: center;
   align-items: center;
-  background-image: linear-gradient(
-  to bottom right,
-    var(--Pine-Green),
-    var(--Light-Jade)
-  );
+  background-image: linear-gradient(to right, #f9f9f9, #c6c6c6);
 }
 .about__missions__leftContainer {
-  color: var(--white);
+  color: var(--dark-Gray);
   border-radius: 10px;
 }
-.about__missions__header{
+.about__missions__header {
   font-family: aladin;
-  color: var(--white);
+  color: #252525;
 }
 .about__missions__subheader {
-  color: var(--white);
+  color: var(--dark-Gray);
 }
 .about__missions__text {
   line-height: 1.5rem;
@@ -68,7 +64,7 @@
     padding-bottom: 1rem;
     width: 100%;
   }
-  .ContactForm__Top{
+  .ContactForm__Top {
     padding: 0 !important;
   }
   .about__missions__header {
@@ -82,11 +78,11 @@
 /* Desktop Size */
 @media only screen and (min-width: 900px) {
   .about__missions {
-    padding: 3rem;
+    /* padding: 3rem; */
   }
   .about__missions__container {
     flex-direction: row;
-    border-radius: 10rem 5rem 15rem 5rem;
+    /* border-radius: 10rem 5rem 15rem 5rem; */
     padding: 1rem;
   }
   .about__missions__leftContainer {

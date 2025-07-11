@@ -23,9 +23,7 @@ export default function About() {
               throughout every step of the buying, selling, or investment
               process.
             </p>
-            <h2 className="about__missions__header ">
-              Our Commitment:
-            </h2>
+            <h2 className="about__missions__header ">Our Commitment:</h2>
             <div className="commitment__Wrapper">
               <h4 className="about__missions__subheader ">Client-Focused:</h4>
               <p className="about__missions__text">
@@ -55,7 +53,7 @@ export default function About() {
           </div>
         </div>
       </div>
-        <ContactForm />
+      <ContactForm />
     </div>
   );
 }
