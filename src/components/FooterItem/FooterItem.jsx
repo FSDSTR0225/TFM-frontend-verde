@@ -94,6 +94,7 @@ export default function FooterItem() {
           </ul>
         </Grid>
       </Grid>
+      <div className="FooterItem__signature">© 2025 Toomaj Bandad all rights reserved</div>
     </div>
   );
 }

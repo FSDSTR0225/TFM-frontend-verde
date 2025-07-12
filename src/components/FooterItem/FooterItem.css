@@ -1,12 +1,15 @@
 .FooterItem {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--Pine-Green);
+  background-image: linear-gradient(to bottom , #01796f , #1f8f85);
+  /* background-color: var(--Pine-Green); */
   color: var(--white);
   width: 100%;
   border-top: 3px solid white;
-  padding: 3rem;
+  padding: 2rem 3rem;
+  padding-top: 4rem;
 }
 .Footer__container {
   width: 100%;
@@ -77,4 +80,11 @@
 .socialItems :hover {
   color: var(--Lemon-Lime);
   transition: all 0.3s ease-in-out;
+}
+.FooterItem__signature{
+  width: 100%;
+  border-top: 1px solid var(--white);
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
 }
