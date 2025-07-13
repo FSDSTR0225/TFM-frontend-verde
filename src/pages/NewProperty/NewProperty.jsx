@@ -119,7 +119,10 @@ export default function NewProperty() {
       <div className="NewProperty">
         <div className="Property__wrapper">
           <div className="PropertyForm__imageWrapper">
-            <img className="PropertyForm__image" src="/images/backgrounds/top2.jpg" />
+            <img
+              className="PropertyForm__image"
+              src="/images/backgrounds/top2.jpg"
+            />
           </div>
 
           <div className="PropertyForm__Container">
@@ -143,23 +146,30 @@ export default function NewProperty() {
                 helperText={errors.title ? "Please enter valid title!" : null}
                 variant="standard"
               />
-              <TextField
-                className="PropertyForm__input halfInput"
-                type="number"
-                size="small"
-                {...register("price", {
-                  required: true,
-                })}
-                aria-invalid={errors.price ? "true" : "false"}
-                error={errors.price}
-                id="standard-error-helper-text"
-                label="Price"
-                defaultValue=""
-                helperText={
-                  errors.price ? `Please enter correct price!  ` : null
-                }
-                variant="standard"
-              />
+              <div className="inputHolder">
+                <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+                  <InputLabel id="select-typeCategory">typeCategory</InputLabel>
+                  <Select
+                    {...register("typeCategory", {
+                      required: true,
+                    })}
+                    labelId="select-typeCategory"
+                    id="demo-simple-select"
+                    value={typeCategory}
+                    label="typeCategory"
+                    onChange={(event) => setTypeCategory(event.target.value)}
+                  >
+                    <MenuItem value="Apartment">Apartment</MenuItem>
+                    <MenuItem value="Villa">Villa</MenuItem>
+                    <MenuItem value="Flat">Flat</MenuItem>
+                    <MenuItem value="Room">Room</MenuItem>
+                    <MenuItem value="Office">Office</MenuItem>
+                    <MenuItem value="Garage">Garage</MenuItem>
+                    <MenuItem value="Storage">Storage</MenuItem>
+                  </Select>
+                </FormControl>
+              </div>
+
               <div className="inputHolder">
                 <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
                   <InputLabel id="select-city">City</InputLabel>
@@ -266,38 +276,23 @@ export default function NewProperty() {
                 </FormControl>
               </div>
 
-              {!isDisactive ? (
-                <FileUploader
-                  setUploadedFile={setUploadedFile}
-                  setIsDisactive={setIsDisactive}
-                />
-              ) : (
-                <span>foto is uploaded</span>
-              )}
-
-              <div className="inputHolder">
-                <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-                  <InputLabel id="select-typeCategory">typeCategory</InputLabel>
-                  <Select
-                    {...register("typeCategory", {
-                      required: true,
-                    })}
-                    labelId="select-typeCategory"
-                    id="demo-simple-select"
-                    value={typeCategory}
-                    label="typeCategory"
-                    onChange={(event) => setTypeCategory(event.target.value)}
-                  >
-                    <MenuItem value="Apartment">Apartment</MenuItem>
-                    <MenuItem value="Villa">Villa</MenuItem>
-                    <MenuItem value="Flat">Flat</MenuItem>
-                    <MenuItem value="Room">Room</MenuItem>
-                    <MenuItem value="Office">Office</MenuItem>
-                    <MenuItem value="Garage">Garage</MenuItem>
-                    <MenuItem value="Storage">Storage</MenuItem>
-                  </Select>
-                </FormControl>
-              </div>
+              <TextField
+                className="PropertyForm__input halfInput"
+                type="number"
+                size="small"
+                {...register("price", {
+                  required: true,
+                })}
+                aria-invalid={errors.price ? "true" : "false"}
+                error={errors.price}
+                id="standard-error-helper-text"
+                label="Price"
+                defaultValue=""
+                helperText={
+                  errors.price ? `Please enter correct price!  ` : null
+                }
+                variant="standard"
+              />
               <div className="inputHolder">
                 <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
                   <InputLabel id="select-duration">Duration</InputLabel>
@@ -410,6 +405,16 @@ export default function NewProperty() {
                   </Select>
                 </FormControl>
               </div>
+
+              {!isDisactive ? (
+                <FileUploader
+                  setUploadedFile={setUploadedFile}
+                  setIsDisactive={setIsDisactive}
+                />
+              ) : (
+                <span>foto is uploaded</span>
+              )}
+
               <div className="inputHolder">
                 <TextField
                   className="PropertyForm__input halfInput"

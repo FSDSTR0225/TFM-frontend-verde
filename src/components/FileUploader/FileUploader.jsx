@@ -1,27 +1,27 @@
 import "./FileUploader.css";
-import { TextField, InputLabel } from "@mui/material";
+import { InputLabel,Button } from "@mui/material";
+import { useRef } from "react";
 
 const CLOUDINARY_ROOT_URL = "https://api.cloudinary.com/v1_1/";
 const CLOUDINARY_CLOUD_NAME = "dvblykeav";
 const CLOUDINARY_UPLOAD_PRESET = "casa_verde";
 
+export const FileUploader = ({ setUploadedFile, setIsDisactive }) => {
+  const fileInputRef = useRef(null);
 
-export const FileUploader = ({
-  setUploadedFile,
-  setIsDisactive,
-}) => {
-  function onChangeFotoHandler(event) {
+  const onChangeFotoHandler = (event) => {
     const file = event.target.files[0];
-    console.log("files", file);
-    fotoUploadHandler(file);
-  }
-  async function fotoUploadHandler(file) {
+    if (file) {
+      fotoUploadHandler(file);
+    }
+  };
+
+  const fotoUploadHandler = async (file) => {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
 
     const response = await fetch(
-      // https://api.cloudinary.com/v1_1/<cloud name>/<resource_type>/upload
       `${CLOUDINARY_ROOT_URL}${CLOUDINARY_CLOUD_NAME}/upload`,
       {
         method: "POST",
@@ -31,20 +31,25 @@ export const FileUploader = ({
     const data = await response.json();
     setUploadedFile(data.url);
     setIsDisactive(true);
-  }
+  };
+
+  const handleClick = () => {
+    fileInputRef.current?.click();
+  };
 
   return (
     <div className="FileUploader">
-      <InputLabel htmlFor="imgUpload" className="imgUpload-label">
-        Property Img
-      </InputLabel>
-      <TextField
-        id="imgUpload"
-        className="PropertyForm__input"
+
+      <Button type="button" className="fakeUploadBtn" onClick={handleClick}>
+        Choose Image
+      </Button>
+
+      <input
+        ref={fileInputRef}
         type="file"
+        id="imgUpload"
         name="file"
-        defaultValue=""
-        variant="standard"
+        style={{ display: "none" }}
         onChange={onChangeFotoHandler}
       />
     </div>
