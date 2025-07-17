@@ -49,8 +49,8 @@ export default function Dashboard({ currentUser, updateUserInfos }) {
     );
     const data = await response.json();
     await Swal.fire({
-      title: "Sweet!",
-      text: "Your fot has been changed!",
+      title: "Perfect!",
+      text: "Your foto has been changed!",
       imageUrl: data.url,
       imageWidth: 400,
       imageHeight: 400,

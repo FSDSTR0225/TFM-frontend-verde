@@ -18,7 +18,7 @@ export default function UserFavorites() {
   const authContext = useContext(AuthContext);
 
   function addNoteHandler() {
-    console.log("hi");
+    console.log("will develope in future !");
   }
   function addFavoriteHandler(itemId) {
     fetch(`${apiUrl}/users/favorite/${authContext.userInfos._id}`, {
